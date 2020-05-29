@@ -2,17 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuData : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class MenuData : MonoBehaviour {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private string playerName;
+    private bool comfortMode;
+    private Color color;
+
+    public void WriteData() {
+        //writing menu data into a json file
     }
 }
