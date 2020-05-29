@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public class GameManager : MonoBehaviour {
+
+    private GameObject[] rooms;
+    private GameObject[] players;
+
+    public void WakeUpRoom(GameObject room) {
+        //instatiate or activate all behaviours and objects
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void EndGame() {
+        //ending the game
     }
 }
