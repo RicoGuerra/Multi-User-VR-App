@@ -4992,7 +4992,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerName: Rico
   ComfortMode: 1
-  Color: {r: 1, g: 0.023584902, b: 0.023584902, a: 0}
+  Color: {r: 1, g: 0, b: 0, a: 0}
 --- !u!4 &924441024
 Transform:
   m_ObjectHideFlags: 0
