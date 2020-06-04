@@ -1,7 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
+[Serializable]
 public class MenuData : MonoBehaviour {
 
     public string PlayerName;
@@ -10,5 +12,8 @@ public class MenuData : MonoBehaviour {
 
     public void WriteData() {
         //writing menu data into a json file
+        string path = Application.persistentDataPath + "/menuData.json";
+        string json = JsonUtility.ToJson(this);
+        File.WriteAllText(path, json);
     }
 }
