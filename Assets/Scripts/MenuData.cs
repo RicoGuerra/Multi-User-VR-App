@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MenuData : MonoBehaviour {
 
-    private string playerName;
-    private bool comfortMode;
-    private Color color;
+    public string PlayerName;
+    public bool ComfortMode;
+    public Color Color;
 
     public void WriteData() {
         //writing menu data into a json file
