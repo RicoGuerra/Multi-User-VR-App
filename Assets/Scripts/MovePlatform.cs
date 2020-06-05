@@ -1,24 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MovePlatform : MonoBehaviour {
 
     private bool PlayerOnPlatform;
-    // Start is called before the first frame update
-    void Start() {
+    private bool floorY;
+    private bool floorX;
 
-    }
-
-    // Update is called once per frame
     void Update() {
-
+        if (!floorY) {
+            transform.position -= new Vector3(0, 0, 0.075f);
+        } else {
+            transform.position += new Vector3(0, 0, 0.075f);
+        }
     }
 
     private void OnTriggerEnter(Collider other) {
-        if(other.tag == "Player") {
+        if (other.tag == "Player") {
             other.transform.parent = transform;
             PlayerOnPlatform = true;
+        }
+        if (other.name == "FloorY") {
+            floorY = true;
         }
     }
 
