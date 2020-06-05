@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovePlatform : MonoBehaviour {
 
-    public GameObject Player;
+    private bool PlayerOnPlatform;
     // Start is called before the first frame update
     void Start() {
 
@@ -18,12 +18,14 @@ public class MovePlatform : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if(other.tag == "Player") {
             other.transform.parent = transform;
+            PlayerOnPlatform = true;
         }
     }
 
     private void OnTriggerExit(Collider other) {
         if (other.tag == "Player") {
             other.transform.parent = null;
+            PlayerOnPlatform = false;
         }
     }
 
