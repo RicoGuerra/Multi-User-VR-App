@@ -2,17 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovePlatform : MonoBehaviour
-{
+public class MovePlatform : MonoBehaviour {
+
+    public GameObject Player;
     // Start is called before the first frame update
-    void Start()
-    {
-        
+    void Start() {
+
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() {
+
     }
+
+    private void OnTriggerEnter(Collider other) {
+        if(other.tag == "Player") {
+            other.transform.parent = transform;
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.tag == "Player") {
+            other.transform.parent = null;
+        }
+    }
+
+
+
+
 }
