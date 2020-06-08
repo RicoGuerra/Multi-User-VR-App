@@ -15,13 +15,15 @@ public class RoomOne : MonoBehaviour {
 
     //fade and camera transition testing
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.K) && TopCamera.activeInHierarchy) {
+        SwitchCamera();
+    }
+
+    private void SwitchCamera() {
+        if (!InterfaceX.GetComponent<InterfaceManager>().Activated && TopCamera.activeInHierarchy) {
             StartCoroutine(FadeAndSwitch(TopCamera, Camera));
-        } else if (Input.GetKeyDown(KeyCode.K) && Camera.activeInHierarchy) {
+        } else if (InterfaceX.GetComponent<InterfaceManager>().Activated && !TopCamera.activeInHierarchy) {
             StartCoroutine(FadeAndSwitch(Camera, TopCamera));
         }
-        //nur als Test. Eigentlich sobald Interface aktiviert wird
-        //und Knopf auf Controller gedrückt wird
     }
 
     private IEnumerator FadeAndSwitch(GameObject from, GameObject to) {
