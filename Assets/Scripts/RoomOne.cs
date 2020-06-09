@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
+using Valve.VR.InteractionSystem;
 
 public class RoomOne : MonoBehaviour {
 
@@ -10,6 +11,8 @@ public class RoomOne : MonoBehaviour {
     public GameObject TopCamera; //wird noch zu "CameraPosition o.Ä"
     public GameObject Camera;
     public float FadeTime;
+    public Hand RightHand;
+    public Hand LeftHand;
 
     private bool isSwitching;
 
@@ -19,9 +22,9 @@ public class RoomOne : MonoBehaviour {
     }
 
     private void SwitchCamera() {
-        if (InterfaceX.GetComponent<InterfaceManager>().Activated && TopCamera.activeInHierarchy) {
+        if (InterfaceX.GetComponent<InterfaceManager>().Activated && TopCamera.activeInHierarchy && (LeftHand.grabPinchAction.state || RightHand.grabPinchAction.state)) {
             StartCoroutine(FadeAndSwitch(TopCamera, Camera));
-        } else if (InterfaceX.GetComponent<InterfaceManager>().Activated && !TopCamera.activeInHierarchy) {
+        } else if (InterfaceX.GetComponent<InterfaceManager>().Activated && !TopCamera.activeInHierarchy && (LeftHand.grabPinchAction.state || RightHand.grabPinchAction.state)) {
             StartCoroutine(FadeAndSwitch(Camera, TopCamera));
         }
     }
