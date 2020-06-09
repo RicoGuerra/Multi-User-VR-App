@@ -19,7 +19,7 @@ public class RoomOne : MonoBehaviour {
     }
 
     private void SwitchCamera() {
-        if (!InterfaceX.GetComponent<InterfaceManager>().Activated && TopCamera.activeInHierarchy) {
+        if (InterfaceX.GetComponent<InterfaceManager>().Activated && TopCamera.activeInHierarchy) {
             StartCoroutine(FadeAndSwitch(TopCamera, Camera));
         } else if (InterfaceX.GetComponent<InterfaceManager>().Activated && !TopCamera.activeInHierarchy) {
             StartCoroutine(FadeAndSwitch(Camera, TopCamera));
