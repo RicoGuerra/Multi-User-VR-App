@@ -8,23 +8,41 @@ public class RoomOne : MonoBehaviour {
 
     public GameObject InterfaceX;
     public GameObject InterfaceY;
+    public GameObject Kugellabyrinth;
     public GameObject TopCamera; //wird noch zu "CameraPosition o.Ä"
     public GameObject Camera;
     public float FadeTime;
     public Hand RightHand;
     public Hand LeftHand;
 
-    private bool isSwitching;
+    private bool isInteracting;
+    private bool handRight;
+    private Vector3 interatingHandPosition;
+    private Quaternion interatingHandRotation;
+    private Hand interfacingHand;
 
-    //fade and camera transition testing
     private void Update() {
         SwitchCamera();
+        if (isInteracting) {
+            interatingHandPosition = interfacingHand.gameObject.transform.position;
+            interatingHandRotation = interfacingHand.gameObject.transform.rotation;
+            Kugellabyrinth.transform.Rotate(Vector3.forward, interatingHandPosition.x/5, Space.Self);
+        }
     }
 
     private void SwitchCamera() {
-        if (InterfaceX.GetComponent<InterfaceManager>().Activated && TopCamera.activeInHierarchy && (LeftHand.grabPinchAction.state || RightHand.grabPinchAction.state)) {
-            StartCoroutine(FadeAndSwitch(TopCamera, Camera));
+        if (InterfaceX.GetComponent<InterfaceManager>().Activated && TopCamera.activeInHierarchy) {
+            if (!interfacingHand.grabPinchAction.state) {
+                isInteracting = false;
+                StartCoroutine(FadeAndSwitch(TopCamera, Camera));
+            }
         } else if (InterfaceX.GetComponent<InterfaceManager>().Activated && !TopCamera.activeInHierarchy && (LeftHand.grabPinchAction.state || RightHand.grabPinchAction.state)) {
+            if (RightHand.grabPinchAction.state) {
+                interfacingHand = RightHand;
+            } else if (LeftHand.grabPinchAction.state) {
+                interfacingHand = LeftHand;
+            }
+            isInteracting = true;
             StartCoroutine(FadeAndSwitch(Camera, TopCamera));
         }
     }
