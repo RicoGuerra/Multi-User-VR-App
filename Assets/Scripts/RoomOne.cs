@@ -26,7 +26,7 @@ public class RoomOne : MonoBehaviour {
         if (isInteracting) {
             interatingHandPosition = interfacingHand.gameObject.transform.position;
             interatingHandRotation = interfacingHand.gameObject.transform.rotation;
-            Kugellabyrinth.transform.Rotate(Vector3.forward, interatingHandPosition.x/5, Space.Self);
+            Kugellabyrinth.transform.Rotate(Vector3.forward, interatingHandPosition.x, Space.Self);
         }
     }
 
