@@ -20,13 +20,24 @@ public class RoomOne : MonoBehaviour {
     private Vector3 interatingHandPosition;
     private Quaternion interatingHandRotation;
     private Hand interfacingHand;
+    private Vector3 currHandPos;
+    private Vector3 prevHandPos;
+    private float rotationX;
 
     private void Update() {
         SwitchCamera();
         if (isInteracting) {
+            if(interatingHandPosition != null) {
+                prevHandPos = interatingHandPosition;
+            }
             interatingHandPosition = interfacingHand.gameObject.transform.position;
-            interatingHandRotation = interfacingHand.gameObject.transform.rotation;
-            Kugellabyrinth.transform.Rotate(Vector3.forward, interatingHandPosition.x, Space.Self);
+            if (prevHandPos.x > interatingHandPosition.x) {
+                rotationX = prevHandPos.x - interatingHandPosition.x;
+                Kugellabyrinth.transform.Rotate(0, 0, rotationX * 20);
+            } else if (prevHandPos.x < interatingHandPosition.x) {
+                rotationX = interatingHandPosition.x - prevHandPos.x;
+                Kugellabyrinth.transform.Rotate(0, 0, -rotationX * 20);
+            }
         }
     }
 

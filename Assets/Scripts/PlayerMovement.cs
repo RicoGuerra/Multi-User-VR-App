@@ -10,12 +10,15 @@ public class PlayerMovement : MonoBehaviour {
     public float Speed;
 
     void Update() {
-        MoveWithHeadDirection();
+        //if (Move.axis.y > 0.05)
+        //transform.localPosition += (transform.forward + new Vector3(Move.axis.x, 0, Move.axis.y)) * Time.deltaTime * Speed;
+        //MoveWithHeadDirection();
+        //MoveWithoutHeadDirection();
     }
 
     private void MoveWithHeadDirection() {
         Vector3 direction = Player.instance.hmdTransform.TransformDirection(new Vector3(Move.axis.x, Move.axis.y, 0));
-        transform.position += Speed * Time.deltaTime * Vector3.ProjectOnPlane(direction,Vector3.up);
+        transform.position += Speed * Time.deltaTime * Vector3.ProjectOnPlane(direction, Vector3.up);
     }
 
     private void MoveWithoutHeadDirection() {
