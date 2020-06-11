@@ -8,20 +8,26 @@ public class PlayerMovement : MonoBehaviour {
 
     public SteamVR_Action_Vector2 Move;
     public float Speed;
+    public GameObject Head;
 
     void Update() {
-        //if (Move.axis.y > 0.05)
-        //transform.localPosition += (transform.forward + new Vector3(Move.axis.x, 0, Move.axis.y)) * Time.deltaTime * Speed;
-        //MoveWithHeadDirection();
-        //MoveWithoutHeadDirection();
+        MovePlayer();
     }
 
-    private void MoveWithHeadDirection() {
-        Vector3 direction = Player.instance.hmdTransform.TransformDirection(new Vector3(Move.axis.x, Move.axis.y, 0));
-        transform.position += Speed * Time.deltaTime * Vector3.ProjectOnPlane(direction, Vector3.up);
+    private void MovePlayer() {
+        Quaternion orientation = Orientation();
+        Vector3 movement = Vector3.zero;
+        movement += orientation * (Speed * Vector3.forward);
+        if (Move.axis.magnitude != 0) {
+            transform.localPosition += movement * Time.deltaTime;
+        }
     }
 
-    private void MoveWithoutHeadDirection() {
-        transform.position += Speed * Time.deltaTime * new Vector3(Move.axis.x, 0, Move.axis.y);
+    private Quaternion Orientation() {
+        float rotation = Mathf.Atan2(Move.axis.x, Move.axis.y);
+        rotation *= Mathf.Rad2Deg;
+
+        Vector3 orientationEuler = new Vector3(0, Head.transform.eulerAngles.y + rotation, 0);
+        return Quaternion.Euler(orientationEuler);
     }
 }
