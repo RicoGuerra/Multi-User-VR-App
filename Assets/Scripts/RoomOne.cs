@@ -33,10 +33,10 @@ public class RoomOne : MonoBehaviour {
             interatingHandPosition = interfacingHand.gameObject.transform.position;
             if (prevHandPos.x > interatingHandPosition.x) {
                 rotationX = prevHandPos.x - interatingHandPosition.x;
-                Kugellabyrinth.transform.Rotate(0, 0, rotationX * 20);
+                Kugellabyrinth.transform.Rotate(0, 0, rotationX * 30);
             } else if (prevHandPos.x < interatingHandPosition.x) {
                 rotationX = interatingHandPosition.x - prevHandPos.x;
-                Kugellabyrinth.transform.Rotate(0, 0, -rotationX * 20);
+                Kugellabyrinth.transform.Rotate(0, 0, -rotationX * 30);
             }
         } else {
             interfacingHand = null;
