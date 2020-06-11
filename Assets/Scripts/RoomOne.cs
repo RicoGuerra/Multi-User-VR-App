@@ -38,6 +38,8 @@ public class RoomOne : MonoBehaviour {
                 rotationX = interatingHandPosition.x - prevHandPos.x;
                 Kugellabyrinth.transform.Rotate(0, 0, -rotationX * 20);
             }
+        } else {
+            interfacingHand = null;
         }
     }
 
