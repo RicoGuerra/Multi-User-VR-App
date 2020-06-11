@@ -10,6 +10,7 @@ public class MovePlatform : MonoBehaviour {
     private Vector3 posFloorX;
     private Vector3 posFloorY;
     private int frameCount;
+    private float defPlayerSpd;
 
     private void Start() {
         posFloorX = transform.position;
@@ -54,6 +55,8 @@ public class MovePlatform : MonoBehaviour {
         if (other.tag == "Player") {
             other.transform.parent = transform;
             playerOnPlatform = true;
+            defPlayerSpd = other.GetComponent<PlayerMovement>().Speed;
+            other.GetComponent<PlayerMovement>().Speed *= 0.25f;
         }
     }
 
@@ -61,6 +64,7 @@ public class MovePlatform : MonoBehaviour {
         if (other.tag == "Player") {
             other.transform.parent = null;
             playerOnPlatform = false;
+            other.GetComponent<PlayerMovement>().Speed = defPlayerSpd;
         }
     }
 
