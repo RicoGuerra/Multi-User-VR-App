@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour {
         float rotation = Mathf.Atan2(Move.axis.x, Move.axis.y);
         rotation *= Mathf.Rad2Deg;
 
-        Vector3 orientationEuler = new Vector3(0, Head.transform.eulerAngles.y + rotation, 0);
+        Vector3 orientationEuler = new Vector3(0, transform.eulerAngles.y + rotation, 0);
         return Quaternion.Euler(orientationEuler);
     }
 }
