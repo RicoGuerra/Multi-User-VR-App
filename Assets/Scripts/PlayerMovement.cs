@@ -8,9 +8,11 @@ public class PlayerMovement : MonoBehaviour {
 
     public SteamVR_Action_Vector2 Move;
     public float Speed;
+    public bool Interface;
 
     void Update() {
-        MovePlayer();
+        if(!Interface)
+            MovePlayer();
     }
 
     private void MovePlayer() {

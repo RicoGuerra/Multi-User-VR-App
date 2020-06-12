@@ -19,4 +19,8 @@ public class InterfaceManager : MonoBehaviour {
     //        Activated = false;
     //    }
     //}
+
+    public void PrintActivated() {
+        Debug.Log("Activated = " + Activated);
+    }
 }

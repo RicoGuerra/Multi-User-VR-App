@@ -6,6 +6,7 @@ using Valve.VR.InteractionSystem;
 
 public class RoomOne : MonoBehaviour {
 
+    public GameObject Player;
     public GameObject InterfaceX;
     public GameObject InterfaceY;
     public GameObject Kugellabyrinth;
@@ -16,6 +17,7 @@ public class RoomOne : MonoBehaviour {
     public Hand LeftHand;
 
     private bool isInteracting;
+    private bool isInteractingY;
     private bool handRight;
     private Vector3 interatingHandPosition;
     private Quaternion interatingHandRotation;
@@ -23,10 +25,13 @@ public class RoomOne : MonoBehaviour {
     private Vector3 currHandPos;
     private Vector3 prevHandPos;
     private float rotationX;
+    private float rotationY;
 
     private void Update() {
-        SwitchCamera();
+        SwitchCameraX();
+        SwitchCameraY();
         if (isInteracting) {
+            Player.GetComponent<PlayerMovement>().enabled = false;
             if(interatingHandPosition != null) {
                 prevHandPos = interatingHandPosition;
             }
@@ -39,23 +44,62 @@ public class RoomOne : MonoBehaviour {
                 Kugellabyrinth.transform.Rotate(0, 0, -rotationX * 75);
             }
         } else {
+            Player.GetComponent<PlayerMovement>().enabled = true;
+            interfacingHand = null;
+        }
+
+        if (isInteractingY) {
+            Player.GetComponent<PlayerMovement>().enabled = false;
+            if (interatingHandPosition != null) {
+                prevHandPos = interatingHandPosition;
+            }
+            interatingHandPosition = interfacingHand.gameObject.transform.position;
+            if (prevHandPos.z > interatingHandPosition.z) {
+                rotationY = prevHandPos.z - interatingHandPosition.z;
+                Kugellabyrinth.transform.Rotate(rotationY * 75, 0, 0);
+            } else if (prevHandPos.z < interatingHandPosition.z) {
+                rotationY = interatingHandPosition.z - prevHandPos.z;
+                Kugellabyrinth.transform.Rotate(-rotationY * 75, 0, 0);
+            }
+        } else {
+            Player.GetComponent<PlayerMovement>().enabled = true;
             interfacingHand = null;
         }
     }
 
-    private void SwitchCamera() {
+    private void SwitchCameraX() {
         if (InterfaceX.GetComponent<InterfaceManager>().Activated && TopCamera.activeInHierarchy) {
             if (!interfacingHand.grabPinchAction.state) {
                 isInteracting = false;
+                InterfaceX.GetComponent<InterfaceManager>().Activated = false;
                 StartCoroutine(FadeAndSwitch(TopCamera, Camera));
             }
         } else if (InterfaceX.GetComponent<InterfaceManager>().Activated && !TopCamera.activeInHierarchy && (LeftHand.grabPinchAction.state || RightHand.grabPinchAction.state)) {
+            Debug.Log("INTERFACE");
             if (RightHand.grabPinchAction.state) {
                 interfacingHand = RightHand;
             } else if (LeftHand.grabPinchAction.state) {
                 interfacingHand = LeftHand;
             }
             isInteracting = true;
+            StartCoroutine(FadeAndSwitch(Camera, TopCamera));
+        }
+    }
+
+    private void SwitchCameraY() {
+        if (InterfaceY.GetComponent<InterfaceManager>().Activated && TopCamera.activeInHierarchy) {
+            if (!interfacingHand.grabPinchAction.state) {
+                isInteractingY = false;
+                InterfaceY.GetComponent<InterfaceManager>().Activated = false;
+                StartCoroutine(FadeAndSwitch(TopCamera, Camera));
+            }
+        } else if (InterfaceY.GetComponent<InterfaceManager>().Activated && !TopCamera.activeInHierarchy && (LeftHand.grabPinchAction.state || RightHand.grabPinchAction.state)) {
+            if (RightHand.grabPinchAction.state) {
+                interfacingHand = RightHand;
+            } else if (LeftHand.grabPinchAction.state) {
+                interfacingHand = LeftHand;
+            }
+            isInteractingY = true;
             StartCoroutine(FadeAndSwitch(Camera, TopCamera));
         }
     }
