@@ -5,6 +5,8 @@ using Valve.VR.InteractionSystem;
 
 public class RoomOne : MonoBehaviour {
 
+    public bool Solved { get; set; }
+
     public GameObject Player;
     public GameObject InterfaceX;
     public GameObject InterfaceY;
@@ -31,7 +33,7 @@ public class RoomOne : MonoBehaviour {
         SwitchCameraY();
         if (isInteracting) {
             Player.GetComponent<PlayerMovement>().enabled = false;
-            if(interatingHandPosition != null) {
+            if (interatingHandPosition != null) {
                 prevHandPos = interatingHandPosition;
             }
             interatingHandPosition = interfacingHand.gameObject.transform.position;
