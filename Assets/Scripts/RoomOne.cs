@@ -1,9 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
-using Valve.VR;
-using Valve.VR.InteractionSystem;
-
-/// <ClassInfo>
+﻿/// <ClassInfo>
 /// __Bugs gefunden:__
 ///     _#001_(13.06.20)
 ///         Hier wird die Hand immer wieder auf "NULL" gesetzt. Somit kann die Rotation des Controllers beim InterfaceY niemals erkannt werden, 
@@ -17,6 +12,11 @@ using Valve.VR.InteractionSystem;
 ///     Noch keine...
 ///     
 /// </ClassInfo>
+
+using System.Collections;
+using UnityEngine;
+using Valve.VR;
+using Valve.VR.InteractionSystem;
 
 public class RoomOne : MonoBehaviour {
 
