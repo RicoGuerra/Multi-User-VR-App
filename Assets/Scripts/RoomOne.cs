@@ -5,9 +5,13 @@ using Valve.VR.InteractionSystem;
 
 /// <ClassInfo>
 /// __Bugs gefunden:__
-/// _#001_(13.06.20)
-///     Hier wird die Hand immer wieder auf "NULL" gesetzt. Somit kann die Rotation des Controllers beim InterfaceY niemals erkannt werden, 
-///     da die Hand ja immer wieder herausgelöscht wird.
+///     _#001_(13.06.20)
+///         Hier wird die Hand immer wieder auf "NULL" gesetzt. Somit kann die Rotation des Controllers beim InterfaceY niemals erkannt werden, 
+///         da die Hand ja immer wieder herausgelöscht wird.
+///     _#002_(13.06.20)
+///         Bug liegt höchstwahrscheinlich in der SwitchCamera-Methode. Manchmal ist es möglich das Interface zu aktivieren (also Kamera zu wechseln)
+///         obwohl das Interface gar nicht berührt wird. Tritt immer nur dann auf nachdem das Interface einmal benutzt wurde. Dann kann man es EINMAL
+///         machen. Danach tritt der Bug nicht mehr auf. (Note for future-Rico: Hoffentlich verstehst du das morgen noch)
 ///     
 /// __Bugs behoben:__
 ///     Noch keine...
@@ -79,7 +83,7 @@ public class RoomOne : MonoBehaviour {
         }
     }
 
-    private void SwitchCameraX() {
+    private void SwitchCameraX() { // Bug#002
         if (InterfaceX.GetComponent<InterfaceManager>().Activated && TopCamera.activeInHierarchy) {
             if (!interfacingHand.grabPinchAction.state) {
                 isInteracting = false;
