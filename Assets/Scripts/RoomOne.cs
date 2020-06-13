@@ -3,6 +3,17 @@ using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 
+/// <ClassInfo>
+/// __Bugs gefunden:__
+/// _#001_(13.06.20)
+///     Hier wird die Hand immer wieder auf "NULL" gesetzt. Somit kann die Rotation des Controllers beim InterfaceY niemals erkannt werden, 
+///     da die Hand ja immer wieder herausgelöscht wird.
+///     
+/// __Bugs behoben:__
+///     Noch keine...
+///     
+/// </ClassInfo>
+
 public class RoomOne : MonoBehaviour {
 
     public bool Solved { get; set; }
@@ -46,7 +57,7 @@ public class RoomOne : MonoBehaviour {
             }
         } else {
             Player.GetComponent<PlayerMovement>().enabled = true;
-            interfacingHand = null;
+            interfacingHand = null; // Bug#001
         }
 
         if (isInteractingY) {
