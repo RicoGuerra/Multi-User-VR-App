@@ -3,13 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour {
-    // Start is called before the first frame update
+
+    private int PlayerID;
+    private string PlayerName;
+    private Color PlayerColor;
+    private bool ComfortMode;
+    [SerializeField]
+    private Behaviour[] componentsToDisable;
+
     void Start() {
 
     }
 
-    // Update is called once per frame
     void Update() {
+
+    }
+
+    public void PlayerSetup() {
+
+    }
+
+    public void ReadData() {
+
+    }
+
+    public void ReceiveEndGameReq() {
+
+    }
+    
+    public void SendEndGameReq() {
 
     }
 }
