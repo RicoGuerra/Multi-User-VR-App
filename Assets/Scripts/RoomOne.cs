@@ -31,6 +31,7 @@ public class RoomOne : MonoBehaviour {
     public float FadeTime;
     public Hand RightHand;
     public Hand LeftHand;
+    public SteamVR_Action_Boolean Trigger;
 
     private bool isInteracting;
     private bool isInteractingY;
@@ -90,12 +91,13 @@ public class RoomOne : MonoBehaviour {
                 InterfaceX.GetComponent<InterfaceManager>().Activated = false;
                 StartCoroutine(FadeAndSwitch(TopCamera, Camera));
             }
-        } else if (InterfaceX.GetComponent<InterfaceManager>().Activated && !TopCamera.activeInHierarchy && (LeftHand.grabPinchAction.state || RightHand.grabPinchAction.state)) {
-            Debug.Log("INTERFACE");
-            if (RightHand.grabPinchAction.state) {
+        } else if (InterfaceX.GetComponent<InterfaceManager>().Activated && !TopCamera.activeInHierarchy && (LeftHand.grabPinchAction.GetState(LeftHand.handType) || RightHand.grabPinchAction.GetState(RightHand.handType))) {
+            if (RightHand.grabPinchAction.GetState(RightHand.handType) && RightHand.hoveringInteractable.name == "InterfaceX") {
                 interfacingHand = RightHand;
-            } else if (LeftHand.grabPinchAction.state) {
+            } else if (LeftHand.grabPinchAction.GetState(LeftHand.handType) && LeftHand.hoveringInteractable.name == "InterfaceX") {
                 interfacingHand = LeftHand;
+            } else {
+                return;
             }
             isInteracting = true;
             StartCoroutine(FadeAndSwitch(Camera, TopCamera));
