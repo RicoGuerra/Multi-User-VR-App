@@ -9,7 +9,9 @@
 ///         machen. Danach tritt der Bug nicht mehr auf. (Note for future-Rico: Hoffentlich verstehst du das morgen noch)
 ///     
 /// __Bugs behoben:__
-///     Noch keine...
+///     Bug#001 -> gefixt. Hand wird nun nicht immer wieder auf NULL gesetzt, sondern nur wenn weder "isInteracting", noch "isInteractingY" 
+///                auf TRUE stehen.
+///     Bug#002 -> fixed
 ///     
 /// </ClassInfo>
 
@@ -31,7 +33,6 @@ public class RoomOne : MonoBehaviour {
     public float FadeTime;
     public Hand RightHand;
     public Hand LeftHand;
-    public SteamVR_Action_Boolean Trigger;
 
     private bool isInteracting;
     private bool isInteractingY;
@@ -49,38 +50,41 @@ public class RoomOne : MonoBehaviour {
         SwitchCameraY();
         if (isInteracting) {
             Player.GetComponent<PlayerMovement>().enabled = false;
-            if (interatingHandPosition != null) {
-                prevHandPos = interatingHandPosition;
-            }
-            interatingHandPosition = interfacingHand.gameObject.transform.position;
-            if (prevHandPos.x > interatingHandPosition.x) {
-                rotationX = prevHandPos.x - interatingHandPosition.x;
-                Kugellabyrinth.transform.Rotate(0, 0, rotationX * 75);
-            } else if (prevHandPos.x < interatingHandPosition.x) {
-                rotationX = interatingHandPosition.x - prevHandPos.x;
-                Kugellabyrinth.transform.Rotate(0, 0, -rotationX * 75);
-            }
-        } else {
-            Player.GetComponent<PlayerMovement>().enabled = true;
-            interfacingHand = null; // Bug#001
-        }
-
-        if (isInteractingY) {
+            RotateX();
+        } else if (isInteractingY) {
             Player.GetComponent<PlayerMovement>().enabled = false;
-            if (interatingHandPosition != null) {
-                prevHandPos = interatingHandPosition;
-            }
-            interatingHandPosition = interfacingHand.gameObject.transform.position;
-            if (prevHandPos.z > interatingHandPosition.z) {
-                rotationY = prevHandPos.z - interatingHandPosition.z;
-                Kugellabyrinth.transform.Rotate(rotationY * 75, 0, 0);
-            } else if (prevHandPos.z < interatingHandPosition.z) {
-                rotationY = interatingHandPosition.z - prevHandPos.z;
-                Kugellabyrinth.transform.Rotate(-rotationY * 75, 0, 0);
-            }
+            RotateY();
         } else {
             Player.GetComponent<PlayerMovement>().enabled = true;
             interfacingHand = null;
+        }
+    }
+
+    private void RotateX() {
+        if (interatingHandPosition != null) {
+            prevHandPos = interatingHandPosition;
+        }
+        interatingHandPosition = interfacingHand.gameObject.transform.position;
+        if (prevHandPos.x > interatingHandPosition.x) {
+            rotationX = prevHandPos.x - interatingHandPosition.x;
+            Kugellabyrinth.transform.Rotate(0, 0, rotationX * 75);
+        } else if (prevHandPos.x < interatingHandPosition.x) {
+            rotationX = interatingHandPosition.x - prevHandPos.x;
+            Kugellabyrinth.transform.Rotate(0, 0, -rotationX * 75);
+        }
+    }
+
+    private void RotateY() {
+        if (interatingHandPosition != null) {
+            prevHandPos = interatingHandPosition;
+        }
+        interatingHandPosition = interfacingHand.gameObject.transform.position;
+        if (prevHandPos.z > interatingHandPosition.z) {
+            rotationY = prevHandPos.z - interatingHandPosition.z;
+            Kugellabyrinth.transform.Rotate(rotationY * 75, 0, 0);
+        } else if (prevHandPos.z < interatingHandPosition.z) {
+            rotationY = interatingHandPosition.z - prevHandPos.z;
+            Kugellabyrinth.transform.Rotate(-rotationY * 75, 0, 0);
         }
     }
 
@@ -111,10 +115,10 @@ public class RoomOne : MonoBehaviour {
                 InterfaceY.GetComponent<InterfaceManager>().Activated = false;
                 StartCoroutine(FadeAndSwitch(TopCamera, Camera));
             }
-        } else if (InterfaceY.GetComponent<InterfaceManager>().Activated && !TopCamera.activeInHierarchy && (LeftHand.grabPinchAction.state || RightHand.grabPinchAction.state)) {
-            if (RightHand.grabPinchAction.state) {
+        } else if (InterfaceY.GetComponent<InterfaceManager>().Activated && !TopCamera.activeInHierarchy && (LeftHand.grabPinchAction.GetState(LeftHand.handType) || RightHand.grabPinchAction.GetState(RightHand.handType))) {
+            if (RightHand.grabPinchAction.GetState(RightHand.handType) && RightHand.hoveringInteractable.name == "InterfaceY") {
                 interfacingHand = RightHand;
-            } else if (LeftHand.grabPinchAction.state) {
+            } else if (LeftHand.grabPinchAction.GetState(LeftHand.handType) && LeftHand.hoveringInteractable.name == "InterfaceY") {
                 interfacingHand = LeftHand;
             }
             isInteractingY = true;
