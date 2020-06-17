@@ -28,4 +28,18 @@ public class MenuData : MonoBehaviour {
     public void SetComfortMode(bool onOff) {
         ComfortMode = onOff;
     }
+
+    public void SetPlayerColor(int color) {
+        if (color == 0) {
+            Color = Color.red;
+        } else if (color == 1) {
+            Color = Color.green;
+        } else if (color == 2){
+            Color = Color.blue;
+        }
+    }
+
+    public void SetPlayerName(string name) {
+        PlayerName = name;
+    }
 }
