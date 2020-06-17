@@ -24,4 +24,8 @@ public class MenuData : MonoBehaviour {
         LoadMenuData load = new LoadMenuData(gameObject);
         load.LoadData();
     }
+
+    public void SetComfortMode(bool onOff) {
+        ComfortMode = onOff;
+    }
 }
