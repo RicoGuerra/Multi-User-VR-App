@@ -10,7 +10,7 @@ public class MenuData : MonoBehaviour {
     public Color Color;
 
     public void Start() {
-        LoadData();
+        //LoadData();
     }
 
     public void WriteData() {

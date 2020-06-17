@@ -5,14 +5,17 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour {
 
     private int PlayerID;
-    private string PlayerName;
-    private Color PlayerColor;
-    private bool ComfortMode;
+    public GameObject Avatar;
+    public string PlayerName { get; set; }
+    public Color PlayerColor { get; set; }
+    public bool ComfortMode { get; set; }
     [SerializeField]
     private Behaviour[] componentsToDisable;
 
     void Start() {
-
+        ReadData();
+        Avatar.GetComponent<Renderer>().material.color = PlayerColor;
+        name = PlayerName;
     }
 
     void Update() {
@@ -24,13 +27,14 @@ public class PlayerManager : MonoBehaviour {
     }
 
     public void ReadData() {
-
+        LoadMenuData load = new LoadMenuData(gameObject);
+        load.LoadData();
     }
 
     public void ReceiveEndGameReq() {
 
     }
-    
+
     public void SendEndGameReq() {
 
     }
