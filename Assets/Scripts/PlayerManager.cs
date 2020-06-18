@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class PlayerManager : MonoBehaviour {
+public class PlayerManager : NetworkBehaviour {
 
     private int PlayerID;
     public GameObject Avatar;
@@ -37,5 +38,9 @@ public class PlayerManager : MonoBehaviour {
 
     public void SendEndGameReq() {
 
+    }
+
+    public GameObject GetCamera() {
+        return GameObject.Find("VRCamera");
     }
 }

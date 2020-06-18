@@ -24,6 +24,8 @@ public class RoomOne : MonoBehaviour {
 
     public bool Solved { get; set; }
 
+    public GameObject GameManager;
+
     public GameObject Player;
     public GameObject InterfaceX;
     public GameObject InterfaceY;
@@ -46,6 +48,9 @@ public class RoomOne : MonoBehaviour {
     private float rotationY;
 
     private void Update() {
+        if (Player == null) {
+            SetPlayerObject();
+        }
         SwitchCameraX();
         SwitchCameraY();
         if (isInteracting) {
@@ -123,6 +128,28 @@ public class RoomOne : MonoBehaviour {
             }
             isInteractingY = true;
             StartCoroutine(FadeAndSwitch(Camera, TopCamera));
+        }
+    }
+
+    private void SetPlayerObject() {
+        for (int i = 0; i < GameManager.GetComponent<GameManager>().players.Length; i++) {
+            PlayerManager tpm = GameManager.GetComponent<GameManager>().players[i].GetComponent<PlayerManager>();
+            if (tpm.isLocalPlayer) {
+                Player = GameManager.GetComponent<GameManager>().players[i];
+                Camera = tpm.GetCamera();
+                SetHands();
+            }
+        }
+    }
+
+    private void SetHands() {
+        Hand[] hands = Player.GetComponentsInChildren<Hand>(true);
+        for (int x = 0; x < hands.Length; x++) {
+            if (hands[x].handType == SteamVR_Input_Sources.RightHand) {
+                RightHand = hands[x];
+            } else {
+                LeftHand = hands[x];
+            }
         }
     }
 
