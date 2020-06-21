@@ -25,6 +25,7 @@ public class RoomOne : MonoBehaviour {
     public bool Solved { get; set; }
 
     public GameObject GameManager;
+    public Transform TCamera;
 
     public GameObject Player;
     public GameObject InterfaceX;
