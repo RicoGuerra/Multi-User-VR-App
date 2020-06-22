@@ -25,7 +25,6 @@ public class RoomOne : MonoBehaviour {
     public bool Solved { get; set; }
 
     public GameObject GameManager;
-    public Transform TCamera;
 
     public GameObject Player;
     public GameObject InterfaceX;
@@ -62,7 +61,7 @@ public class RoomOne : MonoBehaviour {
             RotateY();
         } else {
             Player.GetComponent<PlayerMovement>().enabled = true;
-            interfacingHand = null;
+            //interfacingHand = null;
         }
     }
 
@@ -144,7 +143,7 @@ public class RoomOne : MonoBehaviour {
     }
 
     private void SetHands() {
-        Hand[] hands = Player.GetComponentsInChildren<Hand>(true);
+        Hand[] hands = Player.GetComponentsInChildren<Hand>(false);
         for (int x = 0; x < hands.Length; x++) {
             if (hands[x].handType == SteamVR_Input_Sources.RightHand) {
                 RightHand = hands[x];

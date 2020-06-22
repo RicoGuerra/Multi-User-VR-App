@@ -1563,7 +1563,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameManager: {fileID: 1707945583}
-  TCamera: {fileID: 0}
   Player: {fileID: 0}
   InterfaceX: {fileID: 387211128}
   InterfaceY: {fileID: 997786875}
@@ -5426,7 +5425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1309789953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6234,7 +6233,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1478573759}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: BowlingAlley
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
