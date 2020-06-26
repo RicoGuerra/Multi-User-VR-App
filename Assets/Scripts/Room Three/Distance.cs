@@ -12,11 +12,16 @@ public class Distance : MonoBehaviour {
     private Vector3 origin;
     private bool safeDistance;
     public float threshold;
+    public bool ShallNotFall;
 
     // Start is called before the first frame update
     void Start() {
+        Obj2 = gameObject;
         origin = Obj2.transform.position;
         threshold = 0.15f;
+        if (ShallNotFall) {
+            gameObject.GetComponent<Rigidbody>().freezeRotation = true;
+        }
     }
 
     // Update is called once per frame
