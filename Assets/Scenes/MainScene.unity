@@ -2531,6 +2531,7 @@ MonoBehaviour:
   InterfaceX: {fileID: 387211128}
   InterfaceY: {fileID: 997786875}
   Kugellabyrinth: {fileID: 260944692}
+  TopCameraY: {fileID: 1568772834}
   TopCamera: {fileID: 534669902}
   Camera: {fileID: 0}
   FadeTime: 1
