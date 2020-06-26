@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Distance : MonoBehaviour {
-
+    [Tooltip("Objekt von dem sich wegbewegt wird")]
     public GameObject Obj1;
-    public GameObject Obj2;
+    private GameObject Obj2;
     public float distance;
     public float x = 3f;
     public float z = 3f;
