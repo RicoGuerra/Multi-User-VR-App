@@ -1,4 +1,9 @@
 ﻿/// <ClassInfo>
+/// __Allg. Infos:__
+///     _Info1_(26.06.20)
+///         TopCamera & TopCameraY koennen in der Szene lokal aktiviert werden, ohne, dass es interferenzen mit der Kamera des anderen Spielers gibt. 
+///         Dies ist jedoch noch ausgiebiger zu testen.
+/// 
 /// __Bugs gefunden:__
 ///     _#001_(13.06.20)
 ///         Hier wird die Hand immer wieder auf "NULL" gesetzt. Somit kann die Rotation des Controllers beim InterfaceY niemals erkannt werden, 
@@ -30,7 +35,8 @@ public class RoomOne : MonoBehaviour {
     public GameObject InterfaceX;
     public GameObject InterfaceY;
     public GameObject Kugellabyrinth;
-    public GameObject TopCamera; //wird noch zu "CameraPosition o.Ä"
+    public GameObject TopCameraY; 
+    public GameObject TopCamera; 
     public GameObject Camera;
     public float FadeTime;
     public Hand RightHand;
@@ -118,7 +124,7 @@ public class RoomOne : MonoBehaviour {
             if (!interfacingHand.grabPinchAction.state) {
                 isInteractingY = false;
                 InterfaceY.GetComponent<InterfaceManager>().Activated = false;
-                StartCoroutine(FadeAndSwitch(TopCamera, Camera));
+                StartCoroutine(FadeAndSwitch(TopCameraY, Camera));
             }
         } else if (InterfaceY.GetComponent<InterfaceManager>().Activated && !TopCamera.activeInHierarchy && (LeftHand.grabPinchAction.GetState(LeftHand.handType) || RightHand.grabPinchAction.GetState(RightHand.handType))) {
             if (RightHand.grabPinchAction.GetState(RightHand.handType) && RightHand.hoveringInteractable.name == "InterfaceY") {
@@ -127,7 +133,7 @@ public class RoomOne : MonoBehaviour {
                 interfacingHand = LeftHand;
             }
             isInteractingY = true;
-            StartCoroutine(FadeAndSwitch(Camera, TopCamera));
+            StartCoroutine(FadeAndSwitch(Camera, TopCameraY));
         }
     }
 
