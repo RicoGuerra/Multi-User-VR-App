@@ -10,6 +10,8 @@ public class RoomThree : MonoBehaviour {
     private Vector3 BowlingBallPosition;
     public BowlingPlatform Platform;
     private int callCount;
+    public GameObject Barriere;
+    public Distance Distance;
 
     // Start is called before the first frame update
     void Start() {
@@ -20,6 +22,12 @@ public class RoomThree : MonoBehaviour {
     void Update() {
         if (Platform.BallIsColliding && callCount == 0) {
             StartCoroutine(DestroyBall());
+        }
+
+        if (Distance.IsMoving) {
+            Barriere.SetActive(false);
+        } else {
+            Barriere.SetActive(true);
         }
     }
 
