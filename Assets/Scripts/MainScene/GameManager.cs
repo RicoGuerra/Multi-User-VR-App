@@ -16,9 +16,16 @@ public class GameManager : MonoBehaviour {
 
     public void WakeUpRoom(GameObject room) {
         //instatiate or activate all behaviours and objects
+        room.SetActive(true);
+    }
+
+    public void DeactivateRoom(GameObject room) {
+        //destroy or deactivate all behaviours and objects
+        room.SetActive(false);
     }
 
     public void EndGame() {
         //ending the game
+        Application.Quit();
     }
 }
