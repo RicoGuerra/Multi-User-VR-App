@@ -1,4 +1,12 @@
-﻿using System.Collections;
+﻿/// <ClassInfo>
+/// __Allg. Infos:__
+///     _Info1_(29.06.20)
+///         Versuch eine unsichtbare Barriere zu erzeugen, sodass die Pins nicht herunterfallen können. Basiert auf der Position des Objekts.
+///         !Funktioniert noch nicht!
+///     
+/// </ClassInfo>
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +28,6 @@ public class Distance : MonoBehaviour {
     public float South;
     public float West;
 
-    // Start is called before the first frame update
     void Start() {
         Obj2 = gameObject;
         origin = Obj2.transform.position;
@@ -30,7 +37,6 @@ public class Distance : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
     void Update() {
         distance = Vector3.Distance(Obj1.transform.position, Obj2.transform.position);
         KeepDistance();
@@ -70,7 +76,7 @@ public class Distance : MonoBehaviour {
         }
     }
 
-    private void AwayFromPlayer() {
+    private void AwayFromPlayer() {//Info1
         if (!safeDistance) {
             if (Obj2.transform.position.x > Obj1.transform.position.x && (Obj2.transform.position.x <= North || Obj2.transform.position.x >= South)) {
                 Obj2.transform.position += new Vector3(x * Time.deltaTime, 0, 0);
