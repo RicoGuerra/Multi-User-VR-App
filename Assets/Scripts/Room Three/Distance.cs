@@ -14,6 +14,11 @@ public class Distance : MonoBehaviour {
     public float threshold;
     public bool ShallNotFall;
     public bool IsMoving { get; private set; }
+    [Header("Border")]
+    public float North;
+    public float East;
+    public float South;
+    public float West;
 
     // Start is called before the first frame update
     void Start() {
@@ -39,7 +44,7 @@ public class Distance : MonoBehaviour {
         } else if (distance >= 5.5f) {
             safeDistance = true;
             BackToOrigin();
-        } 
+        }
     }
 
     private void BackToOrigin() {
@@ -67,12 +72,12 @@ public class Distance : MonoBehaviour {
 
     private void AwayFromPlayer() {
         if (!safeDistance) {
-            if (Obj2.transform.position.x > Obj1.transform.position.x) {
+            if (Obj2.transform.position.x > Obj1.transform.position.x && (Obj2.transform.position.x <= North || Obj2.transform.position.x >= South)) {
                 Obj2.transform.position += new Vector3(x * Time.deltaTime, 0, 0);
             } else {
                 Obj2.transform.position -= new Vector3(x * Time.deltaTime, 0, 0);
             }
-            if (Obj2.transform.position.z > Obj1.transform.position.z) {
+            if (Obj2.transform.position.z > Obj1.transform.position.z && (Obj2.transform.position.z >= East || Obj2.transform.position.z <= West)) {
                 Obj2.transform.position += new Vector3(0, 0, z * Time.deltaTime);
             } else {
                 Obj2.transform.position -= new Vector3(0, 0, z * Time.deltaTime);
