@@ -55,6 +55,7 @@ public class Distance : MonoBehaviour {
 
     private void BackToOrigin() {
         if (safeDistance && Obj2.transform.position != origin) {
+            //IsMoving = true;
             if (Obj2.transform.position.x < origin.x && Obj2.transform.position.x < origin.x - threshold) {
                 Obj2.transform.position += new Vector3(x * Time.deltaTime, 0, 0);
             } else if (Obj2.transform.position.x > origin.x && Obj2.transform.position.x > origin.x + threshold) {
@@ -73,17 +74,19 @@ public class Distance : MonoBehaviour {
             } else {
                 IsMoving = false;
             }
+        } else {
+            //IsMoving = false;
         }
     }
 
     private void AwayFromPlayer() {//Info1
         if (!safeDistance) {
-            if (Obj2.transform.position.x > Obj1.transform.position.x && (Obj2.transform.position.x <= North || Obj2.transform.position.x >= South)) {
+            if (Obj2.transform.position.x > Obj1.transform.position.x ) {
                 Obj2.transform.position += new Vector3(x * Time.deltaTime, 0, 0);
             } else {
                 Obj2.transform.position -= new Vector3(x * Time.deltaTime, 0, 0);
             }
-            if (Obj2.transform.position.z > Obj1.transform.position.z && (Obj2.transform.position.z >= East || Obj2.transform.position.z <= West)) {
+            if (Obj2.transform.position.z > Obj1.transform.position.z) {
                 Obj2.transform.position += new Vector3(0, 0, z * Time.deltaTime);
             } else {
                 Obj2.transform.position -= new Vector3(0, 0, z * Time.deltaTime);

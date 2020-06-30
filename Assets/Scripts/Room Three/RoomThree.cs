@@ -25,10 +25,23 @@ public class RoomThree : MonoBehaviour {
         }
 
         if (Distance.IsMoving) {
-            Barriere.SetActive(false);
+            //Barriere.SetActive(false);
+            CollisionIgnoring();
         } else {
             Barriere.SetActive(true);
         }
+    }
+
+    private void CollisionIgnoring() {
+        Collider[] barr = Barriere.GetComponentsInChildren<Collider>();
+        Physics.IgnoreCollision(BowlingBall.GetComponentInChildren<Collider>(), barr[0]);
+        Physics.IgnoreCollision(BowlingBall.GetComponentInChildren<Collider>(), barr[1]);
+        Physics.IgnoreCollision(BowlingBall.GetComponentInChildren<Collider>(), barr[2]);
+        Physics.IgnoreCollision(BowlingBall.GetComponentInChildren<Collider>(), barr[3]);
+        Physics.IgnoreCollision(BowlingBall.GetComponentInChildren<Collider>(), barr[4]);
+        Physics.IgnoreCollision(BowlingBall.GetComponentInChildren<Collider>(), barr[5]);
+        Physics.IgnoreCollision(BowlingBall.GetComponentInChildren<Collider>(), barr[6]);
+        Physics.IgnoreCollision(BowlingBall.GetComponentInChildren<Collider>(), barr[7]);
     }
 
     private void DestroyObject(GameObject obj, bool spawnAgain) {
