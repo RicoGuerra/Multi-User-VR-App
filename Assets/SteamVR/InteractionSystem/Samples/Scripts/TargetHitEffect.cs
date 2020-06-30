@@ -17,6 +17,11 @@ namespace Valve.VR.InteractionSystem.Sample
 
         private void OnCollisionEnter(Collision collision)
         {
+            //own addition to SteamVR-Script
+            if (collision.collider.name.Contains("Capsule")) {
+                Destroy(collision.collider.gameObject);
+            }
+
             if (collision.collider == targetCollider)
             {
                 ContactPoint contact = collision.contacts[0];
