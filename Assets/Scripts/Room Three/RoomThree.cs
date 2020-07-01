@@ -5,13 +5,15 @@ using UnityEngine.Events;
 
 public class RoomThree : MonoBehaviour {
 
-    private Vector3 destroyingObjectPosition;
-    public GameObject BowlingBall;
-    private Vector3 BowlingBallPosition;
-    public BowlingPlatform Platform;
     private int callCount;
-    public GameObject Barriere;
+    private Vector3 destroyingObjectPosition;
+    private Vector3 BowlingBallPosition;
+
+    public BowlingPlatform Platform;
+    public Collider[] Barriere;
     public Distance Distance;
+    public GameObject BowlingBall;
+    public GameObject[] ThrowableBalls;
 
     // Start is called before the first frame update
     void Start() {
@@ -23,25 +25,19 @@ public class RoomThree : MonoBehaviour {
         if (Platform.BallIsColliding && callCount == 0) {
             StartCoroutine(DestroyBall());
         }
-
         if (Distance.IsMoving) {
-            //Barriere.SetActive(false);
-            CollisionIgnoring();
+            IgnoreBarrier(true);
         } else {
-            Barriere.SetActive(true);
+            IgnoreBarrier(false);
         }
     }
 
-    private void CollisionIgnoring() {
-        Collider[] barr = Barriere.GetComponentsInChildren<Collider>();
-        Physics.IgnoreCollision(BowlingBall.GetComponentInChildren<Collider>(), barr[0]);
-        Physics.IgnoreCollision(BowlingBall.GetComponentInChildren<Collider>(), barr[1]);
-        Physics.IgnoreCollision(BowlingBall.GetComponentInChildren<Collider>(), barr[2]);
-        Physics.IgnoreCollision(BowlingBall.GetComponentInChildren<Collider>(), barr[3]);
-        Physics.IgnoreCollision(BowlingBall.GetComponentInChildren<Collider>(), barr[4]);
-        Physics.IgnoreCollision(BowlingBall.GetComponentInChildren<Collider>(), barr[5]);
-        Physics.IgnoreCollision(BowlingBall.GetComponentInChildren<Collider>(), barr[6]);
-        Physics.IgnoreCollision(BowlingBall.GetComponentInChildren<Collider>(), barr[7]);
+    private void IgnoreBarrier(bool ignore) {
+        foreach (Collider collider in Barriere) {
+            foreach (GameObject ball in ThrowableBalls) {
+                Physics.IgnoreCollision(ball.GetComponentInChildren<Collider>(), collider, ignore);
+            }
+        }
     }
 
     private void DestroyObject(GameObject obj, bool spawnAgain) {
