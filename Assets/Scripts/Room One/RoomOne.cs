@@ -114,8 +114,8 @@ public class RoomOne : MonoBehaviour {
             } else {
                 return;
             }
-            isInteracting = true;
             StartCoroutine(FadeAndSwitch(Camera, TopCamera));
+            isInteracting = true;
         }
     }
 
@@ -132,8 +132,8 @@ public class RoomOne : MonoBehaviour {
             } else if (LeftHand.grabPinchAction.GetState(LeftHand.handType) && LeftHand.hoveringInteractable.name == "InterfaceY") {
                 interfacingHand = LeftHand;
             }
-            isInteractingY = true;
             StartCoroutine(FadeAndSwitch(Camera, TopCameraY));
+            isInteractingY = true;
         }
     }
 
