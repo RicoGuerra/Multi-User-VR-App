@@ -35,8 +35,9 @@ public class RoomOne : MonoBehaviour {
     public GameObject InterfaceX;
     public GameObject InterfaceY;
     public GameObject Kugellabyrinth;
-    public GameObject TopCameraY; 
-    public GameObject TopCamera; 
+    public GameObject Kugel;
+    public GameObject TopCameraY;
+    public GameObject TopCamera;
     public GameObject Camera;
     public float FadeTime;
     public Hand RightHand;
@@ -69,6 +70,7 @@ public class RoomOne : MonoBehaviour {
             Player.GetComponent<PlayerMovement>().enabled = true;
             //interfacingHand = null;
         }
+        BringBallBack();
     }
 
     private void RotateX() {
@@ -156,6 +158,20 @@ public class RoomOne : MonoBehaviour {
             } else {
                 LeftHand = hands[x];
             }
+        }
+    }
+
+    private void BringBallBack() {
+        Rigidbody rb = Kugel.GetComponent<Rigidbody>();
+        if (Kugel.transform.position.y < -15) {
+            Vector3 pos = new Vector3(0, 30, 20);
+            Kugel.transform.position = pos;
+            Kugel.transform.rotation = Quaternion.identity;
+            rb.velocity = Vector3.zero;
+            rb.freezeRotation = true;
+        } else {
+            rb.freezeRotation = false;
+            rb = null;
         }
     }
 
