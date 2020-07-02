@@ -1504,9 +1504,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Avatar: {fileID: 1095250701306530251}
   componentsToDisable:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2177480437324724739}
+  - {fileID: 2177480437334160131}
+  - {fileID: 2177480437334111133}
+  - {fileID: 2177480437435219370}
+  - {fileID: 2177480437334175765}
+  - {fileID: 2279653243822564317}
+  - {fileID: 2177480437334173597}
 --- !u!114 &2177480437435219369
 MonoBehaviour:
   m_ObjectHideFlags: 0

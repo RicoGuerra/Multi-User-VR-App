@@ -14,6 +14,7 @@ public class PlayerManager : NetworkBehaviour {
     private Behaviour[] componentsToDisable;
 
     void Start() {
+        PlayerSetup();
         ReadData();
         Avatar.GetComponent<Renderer>().material.color = PlayerColor;
         name = PlayerName;
@@ -24,7 +25,11 @@ public class PlayerManager : NetworkBehaviour {
     }
 
     public void PlayerSetup() {
-
+        if (!isLocalPlayer) {
+            for (int i = 0; i < componentsToDisable.Length; i++) {
+                componentsToDisable[i].enabled = false;
+            }
+        }
     }
 
     public void ReadData() {
