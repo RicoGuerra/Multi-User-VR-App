@@ -2933,6 +2933,7 @@ MonoBehaviour:
   InterfaceX: {fileID: 387211128}
   InterfaceY: {fileID: 997786875}
   Kugellabyrinth: {fileID: 260944692}
+  Kugel: {fileID: 996575097}
   TopCameraY: {fileID: 1568772834}
   TopCamera: {fileID: 534669902}
   Camera: {fileID: 0}
@@ -5852,6 +5853,12 @@ MonoBehaviour:
   East: 4.5
   South: -5.25
   West: -4.5
+--- !u!1 &996575097 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 753ea9ccf9eee6c42a0954ec8663b992,
+    type: 3}
+  m_PrefabInstance: {fileID: 1291261331}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &996783125
 GameObject:
   m_ObjectHideFlags: 0
@@ -7570,7 +7577,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1309789953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7681,7 +7688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
-  showGUI: 0
+  showGUI: 1
   offsetX: 0
   offsetY: 0
 --- !u!1 &1315616728 stripped
