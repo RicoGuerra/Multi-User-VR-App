@@ -27,9 +27,17 @@ using Valve.VR.InteractionSystem;
 
 public class RoomOne : MonoBehaviour {
 
-    public bool Solved { get; set; }
-
-    public GameObject GameManager;
+    private bool solved;
+    public bool Solved {
+        get { return solved; }
+        set {
+            solved = value;
+            if(solved == true) {
+                GameManager.ActivateCorridor(0);
+            }
+        }
+    }
+    public GameManager GameManager;
 
     public GameObject Player;
     public GameObject InterfaceX;

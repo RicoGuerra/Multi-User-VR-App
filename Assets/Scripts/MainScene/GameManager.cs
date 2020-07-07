@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private GameObject[] rooms;
     public GameObject[] players;
+    public GameObject[] PassageWays;
 
     private void Update() {
         if (players.Length < 2) {
@@ -22,6 +23,14 @@ public class GameManager : MonoBehaviour {
     public void DeactivateRoom(GameObject room) {
         //destroy or deactivate all behaviours and objects
         room.SetActive(false);
+    }
+
+    public void ActivateCorridor(int corridorIndex) {
+        PassageWays[corridorIndex].SetActive(true);
+    }
+
+    public void DeactivateCorridor(int corridorIndex) {
+        PassageWays[corridorIndex].SetActive(false);
     }
 
     public void EndGame() {

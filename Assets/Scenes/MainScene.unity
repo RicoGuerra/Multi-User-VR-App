@@ -3156,7 +3156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 715c0bea01feec14297cc7f9818a47fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameManager: {fileID: 1707945583}
+  GameManager: {fileID: 1707945584}
   Player: {fileID: 0}
   InterfaceX: {fileID: 387211128}
   InterfaceY: {fileID: 997786875}
@@ -10652,8 +10652,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9234a13f416d3c84eaf679393a00b594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rooms: []
+  rooms:
+  - {fileID: 452759267}
+  - {fileID: 1154453828}
+  - {fileID: 1621313892}
   players: []
+  PassageWays:
+  - {fileID: 529872652}
+  - {fileID: 1772023543}
 --- !u!4 &1707945585
 Transform:
   m_ObjectHideFlags: 0
