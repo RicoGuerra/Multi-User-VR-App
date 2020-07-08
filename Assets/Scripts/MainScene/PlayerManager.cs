@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
+using System.Linq;
+using Random = System.Random;
 
 public class PlayerManager : NetworkBehaviour {
 
-    private int PlayerID;
+    public int PlayerID { get; private set; }
     public GameObject Avatar;
+    public TextMesh NameTag;
+
     public string PlayerName { get; set; }
     public Color PlayerColor { get; set; }
     public bool ComfortMode { get; set; }
@@ -12,10 +16,8 @@ public class PlayerManager : NetworkBehaviour {
     private Behaviour[] componentsToDisable;
 
     void Start() {
-        PlayerSetup();
         ReadData();
-        Avatar.GetComponent<Renderer>().material.color = PlayerColor;
-        name = PlayerName;
+        PlayerSetup();
     }
 
     void Update() {
@@ -28,6 +30,16 @@ public class PlayerManager : NetworkBehaviour {
                 componentsToDisable[i].enabled = false;
             }
         }
+        Random rnd = new Random();
+        Avatar.GetComponent<Renderer>().material.color = PlayerColor;
+        PlayerID = rnd.Next();
+        if (PlayerName.All(char.IsWhiteSpace)) {
+            name = "Player" + PlayerID;
+            PlayerName = name;
+        } else {
+            name = PlayerName;
+        }
+        NameTag.text = name;
     }
 
     public void ReadData() {
