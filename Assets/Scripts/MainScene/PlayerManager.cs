@@ -12,8 +12,7 @@ public class PlayerManager : NetworkBehaviour {
     public string PlayerName { get; set; }
     public Color PlayerColor { get; set; }
     public bool ComfortMode { get; set; }
-    [SerializeField]
-    private Behaviour[] componentsToDisable;
+    public Behaviour[] componentsToDisable;
 
     void Start() {
         ReadData();
