@@ -61,6 +61,7 @@ public class RoomOne : MonoBehaviour {
     private Vector3 prevHandPos;
     private float rotationX;
     private float rotationY;
+    private int transitionWaitX;
 
     private void Update() {
         if (Player == null) {
@@ -70,12 +71,17 @@ public class RoomOne : MonoBehaviour {
         SwitchCameraY();
         if (isInteracting) {
             Player.GetComponent<PlayerMovement>().enabled = false;
-            RotateX();
+            if(transitionWaitX < 90) {
+                transitionWaitX++;
+            } else {
+                RotateX();
+            }
         } else if (isInteractingY) {
             Player.GetComponent<PlayerMovement>().enabled = false;
             RotateY();
         } else {
             Player.GetComponent<PlayerMovement>().enabled = true;
+            transitionWaitX = 0;
             //interfacingHand = null;
         }
         BringBallBack();
