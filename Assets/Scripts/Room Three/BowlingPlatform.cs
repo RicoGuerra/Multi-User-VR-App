@@ -24,4 +24,9 @@ public class BowlingPlatform : MonoBehaviour {
             BallIsColliding = false;
         }
     }
+
+    private void OnCollisionExit(Collision collision) {
+        if (collision.gameObject.name == "Big Ball")
+            BallIsColliding = false;
+    }
 }

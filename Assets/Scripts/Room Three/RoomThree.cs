@@ -22,8 +22,13 @@ public class RoomThree : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Platform.BallIsColliding && callCount == 0) {
-            StartCoroutine(DestroyBall());
+        if (Platform.BallIsColliding) {
+            if (callCount < 300) {
+                callCount++;
+            } else {
+                callCount = 0;
+                DestroyBall();
+            }
         }
         if (Distance.IsMoving) {
             IgnoreBarrier(true);
@@ -56,13 +61,8 @@ public class RoomThree : MonoBehaviour {
         }
     }
 
-    private IEnumerator DestroyBall() {
-        callCount++;
-        Platform.BallIsColliding = false;
-        yield return new WaitForSeconds(5);
-        //Destroy(BowlingBall);
+    private void DestroyBall() {
         BowlingBall.transform.rotation = new Quaternion(0, 0, 0, 0);
         BowlingBall.transform.position = BowlingBallPosition;
-        callCount = 0;
     }
 }
