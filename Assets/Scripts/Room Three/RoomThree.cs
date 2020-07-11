@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class RoomThree : MonoBehaviour {
+public class RoomThree {
 
     private int callCount;
     private Vector3 destroyingObjectPosition;
@@ -42,22 +42,6 @@ public class RoomThree : MonoBehaviour {
             foreach (GameObject ball in ThrowableBalls) {
                 Physics.IgnoreCollision(ball.GetComponentInChildren<Collider>(), collider, ignore);
             }
-        }
-    }
-
-    private void DestroyObject(GameObject obj, bool spawnAgain) {
-        if (spawnAgain) {
-            destroyingObjectPosition = obj.transform.position;
-        }
-        Destroy(obj);
-    }
-
-    private void InstantiateObj(GameObject obj) {
-        if (destroyingObjectPosition != Vector3.zero) {
-            Instantiate(obj, destroyingObjectPosition, new Quaternion(0, 0, 0, 0));
-            destroyingObjectPosition = Vector3.zero;
-        } else {
-            Instantiate(obj);
         }
     }
 

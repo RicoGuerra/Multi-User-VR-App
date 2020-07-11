@@ -7952,6 +7952,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1154453829}
+  - component: {fileID: 1154453830}
   m_Layer: 0
   m_Name: Room Two
   m_TagString: Untagged
@@ -7978,6 +7979,24 @@ Transform:
   m_Father: {fileID: 2097372361}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1154453830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154453828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 687e4f7d420b303448365fbce017eb45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RiddleRight:
+  - {fileID: 1044128772}
+  - {fileID: 1934893417}
+  - {fileID: 1128706853}
+  - {fileID: 1850723648}
+  - {fileID: 1985494008}
 --- !u!1 &1217696753
 GameObject:
   m_ObjectHideFlags: 0
@@ -10737,6 +10756,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f464a446b0d0d4ba2fc1664385d16f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  callCount: 0
+  destroyingObjectPosition: {x: 0, y: 0, z: 0}
+  BowlingBallPosition: {x: 0, y: 0, z: 0}
   Platform: {fileID: 996783130}
   Barriere:
   - {fileID: 678237760}

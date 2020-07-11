@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomTwo : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public class RoomTwo : MonoBehaviour {
+
+    public List<GameObject> RiddleRight;
+
+    void Update() {
+        if (RiddleRight.TrueForAll(TargetCollision)) {
+            Debug.Log("___CUBES ARE IN THE CORECT ORDER___");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private bool TargetCollision(GameObject cube) {
+        return cube.GetComponent<CheckTargetCollision>().TargetCollision;
     }
 }
