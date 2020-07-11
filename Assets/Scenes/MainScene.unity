@@ -7156,7 +7156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db52615deb9e8864ea4f91f2ccdd6a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetObject: 
+  TargetObject: PurpleCube
 --- !u!1 &1047491199
 GameObject:
   m_ObjectHideFlags: 0
@@ -7851,7 +7851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db52615deb9e8864ea4f91f2ccdd6a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetObject: 
+  TargetObject: BlueCube
 --- !u!1 &1153587863
 GameObject:
   m_ObjectHideFlags: 0
@@ -12287,7 +12287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db52615deb9e8864ea4f91f2ccdd6a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetObject: 
+  TargetObject: BlueCube
 --- !u!1 &1867605599
 GameObject:
   m_ObjectHideFlags: 0
@@ -13087,7 +13087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db52615deb9e8864ea4f91f2ccdd6a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetObject: 
+  TargetObject: RedCube
 --- !u!43 &1951820767
 Mesh:
   m_ObjectHideFlags: 0
@@ -13659,7 +13659,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db52615deb9e8864ea4f91f2ccdd6a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetObject: 
+  TargetObject: GreenCube
 --- !u!1 &1987581012
 GameObject:
   m_ObjectHideFlags: 0
