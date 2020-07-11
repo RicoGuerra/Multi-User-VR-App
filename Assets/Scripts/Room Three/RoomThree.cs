@@ -9,7 +9,7 @@ public class RoomThree : MonoBehaviour {
     private Vector3 destroyingObjectPosition;
     private Vector3 BowlingBallPosition;
 
-    public BowlingPlatform Platform;
+    public CheckTargetCollision Platform;
     public Collider[] Barriere;
     public Distance Distance;
     public GameObject BowlingBall;
@@ -22,7 +22,7 @@ public class RoomThree : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Platform.BallIsColliding) {
+        if (Platform.TargetCollision) {
             if (callCount < 300) {
                 callCount++;
             } else {
