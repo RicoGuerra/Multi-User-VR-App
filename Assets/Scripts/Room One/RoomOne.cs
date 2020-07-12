@@ -25,19 +25,7 @@ using UnityEngine;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 
-public class RoomOne : MonoBehaviour {
-
-    private bool solved;
-    public bool Solved {
-        get { return solved; }
-        set {
-            solved = value;
-            if(solved == true) {
-                GameManager.ActivateCorridor(0);
-            }
-        }
-    }
-    public GameManager GameManager;
+public class RoomOne : Room {
 
     public GameObject Player;
     public GameObject InterfaceX;
@@ -71,7 +59,7 @@ public class RoomOne : MonoBehaviour {
         SwitchCameraY();
         if (isInteracting) {
             Player.GetComponent<PlayerMovement>().enabled = false;
-            if(transitionWaitX < 90) {
+            if (transitionWaitX < 90) {
                 transitionWaitX++;
             } else {
                 RotateX();
