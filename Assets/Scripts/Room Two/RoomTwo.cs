@@ -2,13 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomTwo : MonoBehaviour {
+public class RoomTwo : Room {
 
     public List<GameObject> RiddleRight;
 
+    private bool rightSolved;
+    private bool leftSolved;
+    private AudioSource successSound;
+
+    private void Start() {
+        successSound = GetComponent<AudioSource>();
+    }
+
     void Update() {
         if (RiddleRight.TrueForAll(TargetCollision)) {
-            Debug.Log("___CUBES ARE IN THE CORECT ORDER___");
+            if (!rightSolved) {
+                successSound.Play();
+                rightSolved = true;
+            }
         }
     }
 

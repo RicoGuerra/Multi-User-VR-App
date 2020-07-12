@@ -51,6 +51,10 @@ public class RoomOne : Room {
     private float rotationY;
     private int transitionWaitX;
 
+    private void Start() {
+        CorridorToActivate = 0;
+    }
+
     private void Update() {
         if (Player == null) {
             SetPlayerObject();

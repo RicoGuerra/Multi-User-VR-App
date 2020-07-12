@@ -8,8 +8,6 @@ public class CheckTargetCollision : MonoBehaviour {
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.name == TargetObject) {
             TargetCollision = true;
-        } else {
-            TargetCollision = false;
         }
     }
 

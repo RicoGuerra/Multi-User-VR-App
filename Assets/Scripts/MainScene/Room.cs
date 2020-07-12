@@ -7,7 +7,10 @@ using UnityEngine;
 
 public abstract class Room : MonoBehaviour {
     private bool solved;
-    public bool Solved { get => solved; set { solved = value; if (solved) GameManager.ActivateCorridor(0); } }
+
+    public bool Solved { get => solved; set { solved = value; if (solved) GameManager.ActivateCorridor(CorridorToActivate); } }
+
+    public int CorridorToActivate { get; set; }
 
     public GameManager GameManager;
 }
