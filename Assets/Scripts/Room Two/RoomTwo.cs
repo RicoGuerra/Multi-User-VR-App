@@ -19,7 +19,17 @@ public class RoomTwo : Room {
             if (!rightSolved) {
                 successSound.Play();
                 rightSolved = true;
+                GameObject.Find("ExitRight").SetActive(false);
             }
+        }
+        Entrance("EntranceRight");
+    }
+
+    private static void Entrance(string enter) {
+        GameObject entrance = GameObject.Find(enter);
+        if (entrance.GetComponent<CheckTargetCollision>().TargetTriggerExit) {
+            entrance.GetComponent<MeshRenderer>().enabled = true;
+            entrance.GetComponent<Collider>().isTrigger = false;
         }
     }
 
