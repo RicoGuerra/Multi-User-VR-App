@@ -25,6 +25,10 @@ public class RoomTwo : Room {
         Entrance("EntranceRight");
     }
 
+    public void WriteLog() {
+        Debug.Log("___BUTTUN-IS-DOWN!!____");
+    }
+
     private static void Entrance(string enter) {
         GameObject entrance = GameObject.Find(enter);
         if (entrance.GetComponent<CheckTargetCollision>().TargetTriggerExit) {
