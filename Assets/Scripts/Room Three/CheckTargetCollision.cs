@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 public class CheckTargetCollision : MonoBehaviour {
 
@@ -10,11 +11,17 @@ public class CheckTargetCollision : MonoBehaviour {
     public bool TargetTriggerExit { get; private set; }
     public string TargetObject;
 
+    public UnityEvent OnTargetCollisionEnter;
+    public UnityEvent OnTargetTriggerEnter;
+    public UnityEvent OnTargetCollisionExit;
+    public UnityEvent OnTargetTriggerExit;
+
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.name == TargetObject) {
             TargetCollision = true;
             TargetCollisionEnter = true;
             TargetCollisionExit = false;
+            OnTargetCollisionEnter.Invoke();
         }
     }
 
@@ -23,6 +30,7 @@ public class CheckTargetCollision : MonoBehaviour {
             TargetCollision = false;
             TargetCollisionEnter = false;
             TargetCollisionExit = true;
+            OnTargetCollisionExit.Invoke();
         }
     }
 
@@ -31,6 +39,7 @@ public class CheckTargetCollision : MonoBehaviour {
             TargetTrigger = true;
             TargetTriggerEnter = true;
             TargetTriggerExit = false;
+            OnTargetTriggerEnter.Invoke();
         }
     }
 
@@ -39,6 +48,7 @@ public class CheckTargetCollision : MonoBehaviour {
             TargetTrigger = false;
             TargetTriggerEnter = false;
             TargetTriggerExit = true;
+            OnTargetTriggerExit.Invoke();
         }
     }
 }
