@@ -1,11 +1,24 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.Networking.Match;
+using UnityEngine.XR;
 
 public class MyNetworkManager : NetworkManager {
 
     private MatchInfoSnapshot match;
+
+    private void Start() {
+        if (!XRDevice.isPresent) {
+            playerPrefab = spawnPrefabs.First();
+            GameObject.Find("EventSystem").SetActive(true);
+            GameObject.Find("VRInputModule").SetActive(false);
+        } else {
+            GameObject.Find("EventSystem").SetActive(false);
+            GameObject.Find("VRInputModule").SetActive(true);
+        }
+    }
 
     public void StartMatch() {
         StartMatchMaker();
