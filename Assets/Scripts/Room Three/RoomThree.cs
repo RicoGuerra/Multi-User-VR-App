@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class RoomThree {
+public class RoomThree : Room {
 
     private int callCount;
     private Vector3 destroyingObjectPosition;
     private Vector3 BowlingBallPosition;
+    private Vector3[] throwableBallOrigins;
 
     public CheckTargetCollision Platform;
     public Collider[] Barriere;
@@ -18,6 +19,10 @@ public class RoomThree {
     // Start is called before the first frame update
     void Start() {
         BowlingBallPosition = BowlingBall.transform.position;
+        throwableBallOrigins = new Vector3[3];
+        for (int i = 0; i < ThrowableBalls.Length; i++) {
+            throwableBallOrigins[i] = ThrowableBalls[i].transform.position;
+        }
     }
 
     // Update is called once per frame
@@ -27,13 +32,18 @@ public class RoomThree {
                 callCount++;
             } else {
                 callCount = 0;
-                DestroyBall();
+                BringBallBack(BowlingBall, BowlingBallPosition);
             }
         }
         if (Distance.IsMoving) {
             IgnoreBarrier(true);
         } else {
             IgnoreBarrier(false);
+        }
+        for (int i = 0; i < ThrowableBalls.Length; i++) {
+            if (ThrowableBalls[i].transform.position.y < -15f) {
+                BringBallBack(ThrowableBalls[i], throwableBallOrigins[i]);
+            }
         }
     }
 

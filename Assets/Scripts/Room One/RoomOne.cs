@@ -50,9 +50,11 @@ public class RoomOne : Room {
     private float rotationX;
     private float rotationY;
     private int transitionWaitX;
+    private Vector3 kugelOrigin;
 
     private void Start() {
         CorridorToActivate = 0;
+        kugelOrigin = Kugel.transform.position;
     }
 
     private void Update() {
@@ -76,7 +78,8 @@ public class RoomOne : Room {
             transitionWaitX = 0;
             //interfacingHand = null;
         }
-        BringBallBack();
+        if (Kugel.transform.position.y < -15)
+            BringBallBack(Kugel, kugelOrigin);
     }
 
     private void RotateX() {
@@ -167,19 +170,19 @@ public class RoomOne : Room {
         }
     }
 
-    private void BringBallBack() {
-        Rigidbody rb = Kugel.GetComponent<Rigidbody>();
-        if (Kugel.transform.position.y < -15) {
-            Vector3 pos = new Vector3(0, 30, 20);
-            Kugel.transform.position = pos;
-            Kugel.transform.rotation = Quaternion.identity;
-            rb.velocity = Vector3.zero;
-            rb.freezeRotation = true;
-        } else {
-            rb.freezeRotation = false;
-            rb = null;
-        }
-    }
+    //private void BringBallBack() {
+    //    Rigidbody rb = Kugel.GetComponent<Rigidbody>();
+    //    if (Kugel.transform.position.y < -15) {
+    //        Vector3 pos = new Vector3(0, 30, 20);
+    //        Kugel.transform.position = pos;
+    //        Kugel.transform.rotation = Quaternion.identity;
+    //        rb.velocity = Vector3.zero;
+    //        rb.freezeRotation = true;
+    //    } else {
+    //        rb.freezeRotation = false;
+    //        rb = null;
+    //    }
+    //}
 
     private IEnumerator FadeAndSwitch(GameObject from, GameObject to) {
         SteamVR_Fade.Start(Color.black, FadeTime, true);

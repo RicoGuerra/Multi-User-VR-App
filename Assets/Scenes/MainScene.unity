@@ -3399,7 +3399,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &452759268
 Transform:
   m_ObjectHideFlags: 0
@@ -3930,7 +3930,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &529872653
 Transform:
   m_ObjectHideFlags: 0
@@ -11741,7 +11741,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1621313893
 Transform:
   m_ObjectHideFlags: 0
@@ -11776,6 +11776,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f464a446b0d0d4ba2fc1664385d16f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameManager: {fileID: 1707945584}
+  Platform: {fileID: 996783130}
+  Barriere:
+  - {fileID: 678237760}
+  - {fileID: 780302886}
+  - {fileID: 1217696755}
+  - {fileID: 330504578}
+  - {fileID: 1896622400}
+  - {fileID: 1818070888}
+  - {fileID: 1867605601}
+  - {fileID: 1913969675}
+  Distance: {fileID: 975968813}
+  BowlingBall: {fileID: 1000013416659992}
+  ThrowableBalls:
+  - {fileID: 1000012714677250}
+  - {fileID: 1235388411}
+  - {fileID: 1822250151}
 --- !u!1 &1635527143
 GameObject:
   m_ObjectHideFlags: 0
@@ -12907,7 +12924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1772023544
 Transform:
   m_ObjectHideFlags: 0

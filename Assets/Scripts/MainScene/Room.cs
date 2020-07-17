@@ -13,4 +13,13 @@ public abstract class Room : MonoBehaviour {
     public int CorridorToActivate { get; set; }
 
     public GameManager GameManager;
+
+    public void BringBallBack(GameObject ballToReturn, Vector3 origin) {
+        Rigidbody rb = ballToReturn.GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
+        rb.velocity = Vector3.zero;
+        ballToReturn.transform.position = origin;
+        ballToReturn.transform.rotation = Quaternion.identity;
+        rb.freezeRotation = false;
+    }
 }
