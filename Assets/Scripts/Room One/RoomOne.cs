@@ -74,7 +74,7 @@ public class RoomOne : Room {
             Player.GetComponent<PlayerMovement>().enabled = false;
             RotateY();
         } else {
-            Player.GetComponent<PlayerMovement>().enabled = true;
+            if (!Player.GetComponent<PlayerManager>().ComfortMode) Player.GetComponent<PlayerMovement>().enabled = true;
             transitionWaitX = 0;
             //interfacingHand = null;
         }

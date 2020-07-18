@@ -1509,6 +1509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Avatar: {fileID: 1095250701306530251}
   NameTag: {fileID: 5276875287196981175}
+  Teleporting: {fileID: 153878, guid: 7a135b1a2cb9c8f488d4dd00c55ab283, type: 3}
   componentsToDisable:
   - {fileID: 2177480437324724739}
   - {fileID: 2177480437334160131}
@@ -1627,7 +1628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Target: {fileID: 2177480437323263041}
   m_ChildIndex: 1
-  m_SendInterval: 0.1
+  m_SendInterval: 0.033333335
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
   m_MovementThreshold: 0.001
