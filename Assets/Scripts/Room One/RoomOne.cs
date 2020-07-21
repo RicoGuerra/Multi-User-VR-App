@@ -76,7 +76,6 @@ public class RoomOne : Room {
         } else {
             if (!Player.GetComponent<PlayerManager>().ComfortMode) Player.GetComponent<PlayerMovement>().enabled = true;
             transitionWaitX = 0;
-            //interfacingHand = null;
         }
         if (Kugel.transform.position.y < -15)
             BringBallBack(Kugel, kugelOrigin);
@@ -131,13 +130,14 @@ public class RoomOne : Room {
     }
 
     private void SwitchCameraY() {
-        if (InterfaceY.GetComponent<InterfaceManager>().Activated && TopCamera.activeInHierarchy) {
+        if (InterfaceY.GetComponent<InterfaceManager>().Activated && TopCameraY.activeInHierarchy) {
             if (!interfacingHand.grabPinchAction.state) {
                 isInteractingY = false;
                 InterfaceY.GetComponent<InterfaceManager>().Activated = false;
                 StartCoroutine(FadeAndSwitch(TopCameraY, Camera));
             }
-        } else if (InterfaceY.GetComponent<InterfaceManager>().Activated && !TopCamera.activeInHierarchy && (LeftHand.grabPinchAction.GetState(LeftHand.handType) || RightHand.grabPinchAction.GetState(RightHand.handType))) {
+        } else if (InterfaceY.GetComponent<InterfaceManager>().Activated && !TopCameraY.activeInHierarchy &&
+                    (LeftHand.grabPinchAction.GetState(LeftHand.handType) || RightHand.grabPinchAction.GetState(RightHand.handType))) {
             if (RightHand.grabPinchAction.GetState(RightHand.handType) && RightHand.hoveringInteractable.name == "InterfaceY") {
                 interfacingHand = RightHand;
             } else if (LeftHand.grabPinchAction.GetState(LeftHand.handType) && LeftHand.hoveringInteractable.name == "InterfaceY") {
@@ -169,20 +169,6 @@ public class RoomOne : Room {
             }
         }
     }
-
-    //private void BringBallBack() {
-    //    Rigidbody rb = Kugel.GetComponent<Rigidbody>();
-    //    if (Kugel.transform.position.y < -15) {
-    //        Vector3 pos = new Vector3(0, 30, 20);
-    //        Kugel.transform.position = pos;
-    //        Kugel.transform.rotation = Quaternion.identity;
-    //        rb.velocity = Vector3.zero;
-    //        rb.freezeRotation = true;
-    //    } else {
-    //        rb.freezeRotation = false;
-    //        rb = null;
-    //    }
-    //}
 
     private IEnumerator FadeAndSwitch(GameObject from, GameObject to) {
         SteamVR_Fade.Start(Color.black, FadeTime, true);
