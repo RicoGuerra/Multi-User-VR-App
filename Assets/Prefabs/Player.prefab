@@ -1381,11 +1381,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2177480437323157785}
   - component: {fileID: 2177480437334175765}
+  - component: {fileID: 143236699458832880}
   - component: {fileID: 2177480437435219375}
-  - component: {fileID: 2177480437435219374}
   - component: {fileID: 2177480437435219370}
   - component: {fileID: 2177480437435219371}
-  - component: {fileID: 143236699458832880}
   - component: {fileID: 114984724725279954}
   - component: {fileID: 5235819630934767789}
   - component: {fileID: 3533620133402687407}
@@ -1448,6 +1447,24 @@ MonoBehaviour:
     actionPath: /actions/default/in/HeadsetOnHead
     needsReinit: 1
   allowToggleTo2D: 1
+--- !u!143 &143236699458832880
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2177480437323342177}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1.25
+  m_Radius: 0.25
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2177480437435219375
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1464,19 +1481,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 3
---- !u!135 &2177480437435219374
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2177480437323342177}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2177480437435219370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1520,24 +1524,6 @@ MonoBehaviour:
   - {fileID: 2177480437324795471}
   - {fileID: 2177480437334251541}
   - {fileID: 2177480437334272821}
---- !u!143 &143236699458832880
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2177480437323342177}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 1.25
-  m_Radius: 0.25
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114984724725279954
 MonoBehaviour:
   m_ObjectHideFlags: 0
