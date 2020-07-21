@@ -17,7 +17,7 @@ public class CheckTargetCollision : MonoBehaviour {
     public UnityEvent OnTargetTriggerExit;
 
     private void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.name == TargetObject) {
+        if (collision.gameObject.name == TargetObject || collision.gameObject.tag == TargetObject) {
             TargetCollision = true;
             TargetCollisionEnter = true;
             TargetCollisionExit = false;
@@ -26,7 +26,7 @@ public class CheckTargetCollision : MonoBehaviour {
     }
 
     private void OnCollisionExit(Collision collision) {
-        if (collision.gameObject.name == TargetObject) {
+        if (collision.gameObject.name == TargetObject || collision.gameObject.tag == TargetObject) {
             TargetCollision = false;
             TargetCollisionEnter = false;
             TargetCollisionExit = true;

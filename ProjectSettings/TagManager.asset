@@ -8,6 +8,7 @@ TagManager:
   - FxTemporaire
   - Hand
   - Data
+  - Corridor
   layers:
   - Default
   - TransparentFX
