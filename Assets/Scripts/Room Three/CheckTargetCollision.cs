@@ -16,11 +16,14 @@ public class CheckTargetCollision : MonoBehaviour {
     public UnityEvent OnTargetCollisionExit;
     public UnityEvent OnTargetTriggerExit;
 
+    public GameObject TargetObjectInfo { get; private set; }
+
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.name == TargetObject || collision.gameObject.tag == TargetObject) {
             TargetCollision = true;
             TargetCollisionEnter = true;
             TargetCollisionExit = false;
+            TargetObjectInfo = collision.gameObject;
             OnTargetCollisionEnter.Invoke();
         }
     }
@@ -30,6 +33,7 @@ public class CheckTargetCollision : MonoBehaviour {
             TargetCollision = false;
             TargetCollisionEnter = false;
             TargetCollisionExit = true;
+            TargetObjectInfo = collision.gameObject;
             OnTargetCollisionExit.Invoke();
         }
     }
