@@ -340,6 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Avatar: {fileID: 5430329717274280119}
   NameTag: {fileID: 1131279088368546527}
+  Teleporting: {fileID: 0}
   componentsToDisable:
   - {fileID: 11400000}
   - {fileID: 2000000}
@@ -576,7 +577,7 @@ Transform:
   m_GameObject: {fileID: 5430329717274280119}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 400002}
   m_RootOrder: 0
