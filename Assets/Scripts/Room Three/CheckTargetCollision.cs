@@ -43,6 +43,7 @@ public class CheckTargetCollision : MonoBehaviour {
             TargetTrigger = true;
             TargetTriggerEnter = true;
             TargetTriggerExit = false;
+            TargetObjectInfo = other.gameObject;
             OnTargetTriggerEnter.Invoke();
         }
     }
@@ -52,6 +53,7 @@ public class CheckTargetCollision : MonoBehaviour {
             TargetTrigger = false;
             TargetTriggerEnter = false;
             TargetTriggerExit = true;
+            TargetObjectInfo = other.gameObject;
             OnTargetTriggerExit.Invoke();
         }
     }
