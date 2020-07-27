@@ -3,6 +3,9 @@ using UnityEngine.Networking;
 using UnityEngine.XR;
 using System.Linq;
 using Random = System.Random;
+using System.Collections.Generic;
+using Assets.Scripts.MainScene;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerManager : NetworkBehaviour {
 
@@ -10,15 +13,20 @@ public class PlayerManager : NetworkBehaviour {
     public GameObject Avatar;
     public TextMesh NameTag;
     public GameObject Teleporting;
-
     public string PlayerName { get; set; }
     public Color PlayerColor { get; set; }
     public bool ComfortMode { get; set; }
-    public Behaviour[] componentsToDisable;
+
+    [SerializeField] private Behaviour[] componentsToDisable;
+    [SerializeField] private List<Behaviour> disableWhenPaused;
 
     void Start() {
         ReadData();
         PlayerSetup();
+    }
+
+    private void Update() {
+        PauseMenu();
     }
 
     public void PlayerSetup() {
@@ -51,17 +59,18 @@ public class PlayerManager : NetworkBehaviour {
         NameTag.text = name;
     }
 
+    public void PauseMenu() {
+        if (isLocalPlayer) {
+            if (Pause.Paused != disableWhenPaused.First().enabled) return;
+            foreach (Behaviour b in disableWhenPaused) {
+                b.enabled = !Pause.Paused;
+            }
+        }
+    }
+
     public void ReadData() {
         LoadMenuData load = new LoadMenuData(gameObject);
         load.LoadData();
-    }
-
-    public void ReceiveEndGameReq() {
-
-    }
-
-    public void SendEndGameReq() {
-
     }
 
     public GameObject GetCamera() {

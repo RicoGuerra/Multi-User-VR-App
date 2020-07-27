@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public void EndGame() {
+    public static void EndGame() {
         //ending the game
         Application.Quit();
     }
