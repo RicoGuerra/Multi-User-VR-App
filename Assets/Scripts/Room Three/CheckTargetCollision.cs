@@ -9,13 +9,13 @@ public class CheckTargetCollision : MonoBehaviour {
     public bool TargetTrigger { get; private set; }
     public bool TargetTriggerEnter { get; private set; }
     public bool TargetTriggerExit { get; private set; }
+    [Tooltip("If there is not target needed, leave this empty")]
     public string TargetObject;
 
     public UnityEvent OnTargetCollisionEnter;
     public UnityEvent OnTargetTriggerEnter;
     public UnityEvent OnTargetCollisionExit;
     public UnityEvent OnTargetTriggerExit;
-
     public GameObject TargetObjectInfo { get; private set; }
 
     private void OnCollisionEnter(Collision collision) {
@@ -23,6 +23,9 @@ public class CheckTargetCollision : MonoBehaviour {
             TargetCollision = true;
             TargetCollisionEnter = true;
             TargetCollisionExit = false;
+            TargetObjectInfo = collision.gameObject;
+            OnTargetCollisionEnter.Invoke();
+        } else if (TargetObject == "") {
             TargetObjectInfo = collision.gameObject;
             OnTargetCollisionEnter.Invoke();
         }

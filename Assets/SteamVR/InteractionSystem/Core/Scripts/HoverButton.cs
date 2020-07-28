@@ -39,7 +39,7 @@ namespace Valve.VR.InteractionSystem
 
         private bool hovering;
 
-        private Hand lastHoveredHand;
+        public Hand lastHoveredHand { get; private set; }
 
         private void Start()
         {
