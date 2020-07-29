@@ -12917,7 +12917,7 @@ GameObject:
   - component: {fileID: 1649711336}
   - component: {fileID: 1649711335}
   m_Layer: 0
-  m_Name: ClueRight
+  m_Name: ClueLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
