@@ -72,7 +72,11 @@ public class RoomOne : Room {
             }
         } else if (isInteractingY) {
             Player.GetComponent<PlayerMovement>().enabled = false;
-            RotateY();
+            if (transitionWaitX < 90) {
+                transitionWaitX++;
+            } else {
+                RotateY();
+            }
         } else {
             if (!Player.GetComponent<PlayerManager>().ComfortMode) Player.GetComponent<PlayerMovement>().enabled = true;
             transitionWaitX = 0;
