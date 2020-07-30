@@ -109,10 +109,10 @@ public class RoomOne : Room {
         interatingHandPosition = interfacingHand.gameObject.transform.position;
         if (prevHandPos.z > interatingHandPosition.z) {
             rotationY = prevHandPos.z - interatingHandPosition.z;
-            Kugellabyrinth.transform.Rotate(rotationY * 75, 0, 0);
+            Kugellabyrinth.transform.Rotate(-rotationY * 75, 0, 0);
         } else if (prevHandPos.z < interatingHandPosition.z) {
             rotationY = interatingHandPosition.z - prevHandPos.z;
-            Kugellabyrinth.transform.Rotate(-rotationY * 75, 0, 0);
+            Kugellabyrinth.transform.Rotate(rotationY * 75, 0, 0);
         }
     }
 
