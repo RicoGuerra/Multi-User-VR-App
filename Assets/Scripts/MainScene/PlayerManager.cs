@@ -20,12 +20,12 @@ public class PlayerManager : NetworkBehaviour {
     [SerializeField] private Behaviour[] componentsToDisable;
     [SerializeField] private List<Behaviour> disableWhenPaused;
 
-    void Start() {
+    public void Start() {
         ReadData();
         PlayerSetup();
     }
 
-    private void Update() {
+    public void Update() {
         PauseMenu();
     }
 

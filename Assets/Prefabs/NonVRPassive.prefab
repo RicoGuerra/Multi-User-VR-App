@@ -368,6 +368,10 @@ MonoBehaviour:
   - {fileID: 2000000}
   disableWhenPaused:
   - {fileID: 11400000}
+  _spawnsWhenRoomDeactivated:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0
