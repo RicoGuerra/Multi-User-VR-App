@@ -20,6 +20,7 @@
 ///     
 /// </ClassInfo>
 
+using Assets.Scripts.MainScene;
 using System.Collections;
 using UnityEngine;
 using Valve.VR;
@@ -78,7 +79,9 @@ public class RoomOne : Room {
                 RotateY();
             }
         } else {
-            if (!Player.GetComponent<PlayerManager>().ComfortMode) Player.GetComponent<PlayerMovement>().enabled = true;
+            if (!Player.GetComponent<PlayerManager>().ComfortMode && !Pause.Paused) {
+                Player.GetComponent<PlayerMovement>().enabled = true;
+            }
             transitionWaitX = 0;
         }
         if (Kugel.transform.position.y < -15)
