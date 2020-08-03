@@ -12,6 +12,14 @@ public class InterfaceManager : MonoBehaviour {
         Activated = false;
     }
 
+    public void Activate() {
+        Activated = true;
+    }
+
+    public void Deactivate() {
+        Activated = false;
+    }
+
     //private void OnTriggerStay(Collider other) {
     //    if (other.tag == "Hand" && other.GetComponent<Hand>().grabGripAction.state) {//doesnt work
     //        Activated = true;
