@@ -54,6 +54,14 @@
       "type": "vector2"
     },
     {
+      "name": "/actions/default/in/Pause",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/TeleportReady",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },

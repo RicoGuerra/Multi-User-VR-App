@@ -41,7 +41,7 @@ public class PlayerManager : NetworkBehaviour {
 
     private void SetMode() {
         if (ComfortMode && XRDevice.isPresent) {
-            Instantiate(Teleporting);
+            //Instantiate(Teleporting);
             GetComponent<PlayerMovement>().enabled = false;
         }
     }
@@ -63,7 +63,11 @@ public class PlayerManager : NetworkBehaviour {
         if (isLocalPlayer) {
             if (Pause.Paused != disableWhenPaused.First().enabled) return;
             foreach (Behaviour b in disableWhenPaused) {
-                b.enabled = !Pause.Paused;
+                if(ComfortMode && b.Equals(GetComponent<PlayerMovement>())) {
+                    b.enabled = false;
+                } else {
+                    b.enabled = !Pause.Paused;
+                }
             }
         }
     }

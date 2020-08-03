@@ -936,7 +936,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pauseButton:
-    actionPath: /actions/default/in/GrabPinch
+    actionPath: /actions/default/in/Pause
     needsReinit: 0
 --- !u!1 &113625757
 GameObject:
@@ -4823,10 +4823,6 @@ PrefabInstance:
     - target: {fileID: 153878, guid: 7a135b1a2cb9c8f488d4dd00c55ab283, type: 3}
       propertyPath: m_Name
       value: Teleporting
-      objectReference: {fileID: 0}
-    - target: {fileID: 153878, guid: 7a135b1a2cb9c8f488d4dd00c55ab283, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 475244, guid: 7a135b1a2cb9c8f488d4dd00c55ab283, type: 3}
       propertyPath: m_LocalPosition.x
