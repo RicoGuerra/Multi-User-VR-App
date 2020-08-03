@@ -21,13 +21,13 @@ public class Teleporter : MonoBehaviour {
         hasPosition = UpdatePointer();
         Pointer.SetActive(hasPosition);
 
-        if (TeleportAction.GetStateUp(pose.inputSource) && hitPointY < 0.55f) {
+        if (TeleportAction.GetStateUp(pose.inputSource)) {
             TryTeleport();
         }
     }
 
     void TryTeleport() {
-        if(!hasPosition || isTeleporting) {
+        if (!hasPosition || isTeleporting) {
             return;
         }
         Transform camera = SteamVR_Render.Top().origin;
@@ -56,8 +56,7 @@ public class Teleporter : MonoBehaviour {
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit) && TriggerDown.GetState(pose.inputSource)) {
-            hitPointY = hit.point.y;
+        if (Physics.Raycast(ray, out hit) && hit.collider.tag == "Floor" && hit.distance <= 5.0f && TriggerDown.GetState(pose.inputSource)) {
             Pointer.transform.position = hit.point;
             return true;
         }
