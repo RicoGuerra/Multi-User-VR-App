@@ -12,11 +12,11 @@ public class PlayerManager : NetworkBehaviour {
     public int PlayerID { get; private set; }
     public GameObject Avatar;
     public TextMesh NameTag;
-    public GameObject Teleporting;
     public string PlayerName { get; set; }
     public Color PlayerColor { get; set; }
     public bool ComfortMode { get; set; }
 
+    [SerializeField] private Teleporter _teleporting;
     [SerializeField] private Behaviour[] componentsToDisable;
     [SerializeField] private List<Behaviour> disableWhenPaused;
 
@@ -41,7 +41,7 @@ public class PlayerManager : NetworkBehaviour {
 
     private void SetMode() {
         if (ComfortMode && XRDevice.isPresent) {
-            //Instantiate(Teleporting);
+            _teleporting.enabled = true;
             GetComponent<PlayerMovement>().enabled = false;
         }
     }
