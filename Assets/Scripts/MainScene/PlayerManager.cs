@@ -19,6 +19,7 @@ public class PlayerManager : NetworkBehaviour {
     [SerializeField] private Teleporter _teleporting;
     [SerializeField] private Behaviour[] componentsToDisable;
     [SerializeField] private List<Behaviour> disableWhenPaused;
+    [SerializeField] private GameObject _pauseViewVR;
 
     public void Start() {
         ReadData();
@@ -63,12 +64,14 @@ public class PlayerManager : NetworkBehaviour {
         if (isLocalPlayer) {
             if (Pause.Paused != disableWhenPaused.First().enabled) return;
             foreach (Behaviour b in disableWhenPaused) {
-                if(ComfortMode && b.Equals(GetComponent<PlayerMovement>())) {
+                if (ComfortMode && b.Equals(GetComponent<PlayerMovement>())) {
                     b.enabled = false;
                 } else {
                     b.enabled = !Pause.Paused;
                 }
             }
+            if (XRDevice.isPresent)
+                _pauseViewVR.SetActive(Pause.Paused);
         }
     }
 
