@@ -10,6 +10,7 @@ TagManager:
   - Data
   - Corridor
   - NVRSpawn
+  - Floor
   layers:
   - Default
   - TransparentFX

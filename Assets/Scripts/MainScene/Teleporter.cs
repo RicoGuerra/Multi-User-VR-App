@@ -12,6 +12,10 @@ public class Teleporter : MonoBehaviour {
     private bool isTeleporting = false;
     private float fadeTime = 0.5f;
     private float hitPointY;
+    private RaycastHit _hit;
+
+    [SerializeField] private Material _teleportOK;
+    [SerializeField] private Material _teleportNotOK;
 
     void Awake() {
         pose = GetComponent<SteamVR_Behaviour_Pose>();
@@ -20,9 +24,18 @@ public class Teleporter : MonoBehaviour {
     void Update() {
         hasPosition = UpdatePointer();
         Pointer.SetActive(hasPosition);
+        SetPointerMaterial();
 
-        if (TeleportAction.GetStateUp(pose.inputSource)) {
+        if (TeleportAction.GetStateUp(pose.inputSource) && _hit.collider.tag == "Floor" && _hit.distance <= 7.5f) {
             TryTeleport();
+        }
+    }
+
+    private void SetPointerMaterial() {
+        if (_hit.collider.tag == "Floor" && _hit.distance <= 7.5f) {
+            Pointer.GetComponent<Renderer>().material = _teleportOK;
+        } else {
+            Pointer.GetComponent<Renderer>().material = _teleportNotOK;
         }
     }
 
@@ -56,8 +69,8 @@ public class Teleporter : MonoBehaviour {
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit) && hit.collider.tag == "Floor" && hit.distance <= 5.0f && TriggerDown.GetState(pose.inputSource)) {
-            Pointer.transform.position = hit.point;
+        if (Physics.Raycast(ray, out _hit) && TriggerDown.GetState(pose.inputSource)) {
+            Pointer.transform.position = _hit.point;
             return true;
         }
         return false;

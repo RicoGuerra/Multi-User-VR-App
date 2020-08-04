@@ -2854,6 +2854,8 @@ MonoBehaviour:
   TriggerDown:
     actionPath: /actions/default/in/TeleportReady
     needsReinit: 0
+  _teleportOK: {fileID: 2100000, guid: 56942340bdf596b4ab2bc833ea3f5d10, type: 2}
+  _teleportNotOK: {fileID: 2100000, guid: 4553574f763edef41ac1f446a855c82b, type: 2}
 --- !u!1 &2177480437323462559
 GameObject:
   m_ObjectHideFlags: 0
@@ -3147,6 +3149,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7048118785286588355, guid: c608e8d596081364f961f4e9a0e517cf,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7048118785286588355, guid: c608e8d596081364f961f4e9a0e517cf,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7048118785286588355, guid: c608e8d596081364f961f4e9a0e517cf,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 7048118785286588380, guid: c608e8d596081364f961f4e9a0e517cf,
         type: 3}

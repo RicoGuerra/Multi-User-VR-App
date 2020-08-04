@@ -5458,7 +5458,7 @@ GameObject:
   - component: {fileID: 714433641}
   m_Layer: 0
   m_Name: FloorY
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967294
@@ -6360,7 +6360,7 @@ GameObject:
   - component: {fileID: 811231583}
   m_Layer: 0
   m_Name: FloorX
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967294
