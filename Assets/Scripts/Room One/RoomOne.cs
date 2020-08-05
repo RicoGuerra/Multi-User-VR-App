@@ -40,6 +40,8 @@ public class RoomOne : Room {
     public Hand RightHand;
     public Hand LeftHand;
 
+    [SerializeField] private GameObject handle;
+
     private bool isInteracting;
     private bool isInteractingY;
     private bool handRight;
@@ -62,6 +64,12 @@ public class RoomOne : Room {
         if (Player == null) {
             SetPlayerObject();
         }
+
+        //RotateTest
+        //Kugellabyrinth.transform.Rotate(0, 0, (-handle.transform.localPosition.x * 100));
+        Kugellabyrinth.transform.rotation = Quaternion.Euler(0, 0, -handle.transform.localPosition.x * 100);
+        //Test
+
         SwitchCameraX();
         SwitchCameraY();
         if (isInteracting) {
