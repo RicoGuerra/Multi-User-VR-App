@@ -149,6 +149,8 @@ public class RoomOne : Room {
                 interfacingHand = RightHand;
             } else if (LeftHand.grabPinchAction.GetState(LeftHand.handType) && LeftHand.hoveringInteractable.name == "InterfaceY") {
                 interfacingHand = LeftHand;
+            } else {
+                return;
             }
             StartCoroutine(FadeAndSwitch(Camera, TopCameraY));
             isInteractingY = true;
