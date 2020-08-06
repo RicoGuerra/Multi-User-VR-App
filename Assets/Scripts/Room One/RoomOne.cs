@@ -40,7 +40,8 @@ public class RoomOne : Room {
     public Hand RightHand;
     public Hand LeftHand;
 
-    [SerializeField] private GameObject handle;
+    [SerializeField] private GameObject _handleX;
+    [SerializeField] private GameObject _handleY;
 
     private bool isInteracting;
     private bool isInteractingY;
@@ -61,135 +62,47 @@ public class RoomOne : Room {
     }
 
     private void Update() {
-        if (Player == null) {
-            SetPlayerObject();
-        }
-
-        //RotateTest
-        //Kugellabyrinth.transform.Rotate(0, 0, (-handle.transform.localPosition.x * 100));
-        Kugellabyrinth.transform.rotation = Quaternion.Euler(0, 0, -handle.transform.localPosition.x * 100);
-        //Test
 
         /* OnHandAttached() beim Handle-Objekt setzt das Activated-Attribut der Interfaces auf TRUE;
          * Dadurch werden beide "IsInteracting"-Variablen nicht mehr gebraucht;
          * Die ROTATE-Methoden können deutlich vereinfacht werden, siehe oben. Und die SWITCHCAMERA-Methoden können ebenfalls vereinfacht werden, 
          * da alle Abfragen, die die Hände betreffen komplett wegfallen
          */
-
-        SwitchCameraX();
-        SwitchCameraY();
-        if (isInteracting) {
-            Player.GetComponent<PlayerMovement>().enabled = false;
-            if (transitionWaitX < 90) {
-                transitionWaitX++;
-            } else {
-                RotateX();
-            }
-        } else if (isInteractingY) {
-            Player.GetComponent<PlayerMovement>().enabled = false;
-            if (transitionWaitX < 90) {
-                transitionWaitX++;
-            } else {
-                RotateY();
-            }
-        } else {
-            if (!Player.GetComponent<PlayerManager>().ComfortMode && !Pause.Paused) {
-                Player.GetComponent<PlayerMovement>().enabled = true;
-            }
-            transitionWaitX = 0;
-        }
+        //RotateX();
+        //RotateY();
+        Rotate();
         if (Kugel.transform.position.y < -15)
             BringBallBack(Kugel, kugelOrigin);
     }
 
     private void RotateX() {
-        if (interatingHandPosition != null) {
-            prevHandPos = interatingHandPosition;
-        }
-        interatingHandPosition = interfacingHand.gameObject.transform.position;
-        if (prevHandPos.x > interatingHandPosition.x) {
-            rotationX = prevHandPos.x - interatingHandPosition.x;
-            Kugellabyrinth.transform.Rotate(0, 0, rotationX * 75);
-        } else if (prevHandPos.x < interatingHandPosition.x) {
-            rotationX = interatingHandPosition.x - prevHandPos.x;
-            Kugellabyrinth.transform.Rotate(0, 0, -rotationX * 75);
-        }
+        if (InterfaceX.GetComponent<InterfaceManager>().Activated && TopCamera.activeInHierarchy)
+            Kugellabyrinth.transform.rotation = Quaternion.Euler(0, 0, -_handleX.transform.localPosition.x * 100);
     }
 
     private void RotateY() {
-        if (interatingHandPosition != null) {
-            prevHandPos = interatingHandPosition;
-        }
-        interatingHandPosition = interfacingHand.gameObject.transform.position;
-        if (prevHandPos.z > interatingHandPosition.z) {
-            rotationY = prevHandPos.z - interatingHandPosition.z;
-            Kugellabyrinth.transform.Rotate(-rotationY * 75, 0, 0);
-        } else if (prevHandPos.z < interatingHandPosition.z) {
-            rotationY = interatingHandPosition.z - prevHandPos.z;
-            Kugellabyrinth.transform.Rotate(rotationY * 75, 0, 0);
+        if (InterfaceY.GetComponent<InterfaceManager>().Activated && TopCameraY.activeInHierarchy)
+            Kugellabyrinth.transform.rotation = Quaternion.Euler(_handleY.transform.localPosition.z * 100, 0, -_handleX.transform.localPosition.x * 100);
+    }
+
+    private void Rotate() {
+        if ((InterfaceY.GetComponent<InterfaceManager>().Activated || InterfaceX.GetComponent<InterfaceManager>().Activated) && (TopCameraY.activeInHierarchy || TopCamera.activeInHierarchy))
+            Kugellabyrinth.transform.rotation = Quaternion.Euler(_handleY.transform.localPosition.z * 100, 0, -_handleX.transform.localPosition.x * 100);
+    }
+
+    public void SwitchCameraX() { // Bug#002
+        if (!InterfaceX.GetComponent<InterfaceManager>().Activated && InterfaceX.GetComponent<InterfaceManager>().PlayerOnInterface != null) {
+            StartCoroutine(FadeAndSwitch(TopCamera, InterfaceX.GetComponent<InterfaceManager>().PlayerOnInterface.GetCamera()));
+        } else if (InterfaceX.GetComponent<InterfaceManager>().Activated) {
+            StartCoroutine(FadeAndSwitch(InterfaceX.GetComponent<InterfaceManager>().PlayerOnInterface.GetCamera(), TopCamera));
         }
     }
 
-    private void SwitchCameraX() { // Bug#002
-        if (InterfaceX.GetComponent<InterfaceManager>().Activated && TopCamera.activeInHierarchy) {
-            if (!interfacingHand.grabPinchAction.state) {
-                isInteracting = false;
-                InterfaceX.GetComponent<InterfaceManager>().Activated = false;
-                StartCoroutine(FadeAndSwitch(TopCamera, Camera));
-            }
-        } else if (InterfaceX.GetComponent<InterfaceManager>().Activated && !TopCamera.activeInHierarchy && (LeftHand.grabPinchAction.GetState(LeftHand.handType) || RightHand.grabPinchAction.GetState(RightHand.handType))) {
-            if (RightHand.grabPinchAction.GetState(RightHand.handType) && RightHand.hoveringInteractable.name == "InterfaceX") {
-                interfacingHand = RightHand;
-            } else if (LeftHand.grabPinchAction.GetState(LeftHand.handType) && LeftHand.hoveringInteractable.name == "InterfaceX") {
-                interfacingHand = LeftHand;
-            } else {
-                return;
-            }
-            StartCoroutine(FadeAndSwitch(Camera, TopCamera));
-            isInteracting = true;
-        }
-    }
-
-    private void SwitchCameraY() {
-        if (InterfaceY.GetComponent<InterfaceManager>().Activated && TopCameraY.activeInHierarchy) {
-            if (!interfacingHand.grabPinchAction.state) {
-                isInteractingY = false;
-                InterfaceY.GetComponent<InterfaceManager>().Activated = false;
-                StartCoroutine(FadeAndSwitch(TopCameraY, Camera));
-            }
-        } else if (InterfaceY.GetComponent<InterfaceManager>().Activated && !TopCameraY.activeInHierarchy &&
-                    (LeftHand.grabPinchAction.GetState(LeftHand.handType) || RightHand.grabPinchAction.GetState(RightHand.handType))) {
-            if (RightHand.grabPinchAction.GetState(RightHand.handType) && RightHand.hoveringInteractable.name == "InterfaceY") {
-                interfacingHand = RightHand;
-            } else if (LeftHand.grabPinchAction.GetState(LeftHand.handType) && LeftHand.hoveringInteractable.name == "InterfaceY") {
-                interfacingHand = LeftHand;
-            } else {
-                return;
-            }
-            StartCoroutine(FadeAndSwitch(Camera, TopCameraY));
-            isInteractingY = true;
-        }
-    }
-
-    private void SetPlayerObject() {
-        for (int i = 0; i < GameManager.GetComponent<GameManager>().players.Length; i++) {
-            PlayerManager tpm = GameManager.GetComponent<GameManager>().players[i].GetComponent<PlayerManager>();
-            if (tpm.isLocalPlayer) {
-                Player = GameManager.GetComponent<GameManager>().players[i];
-                Camera = tpm.GetCamera();
-                SetHands();
-            }
-        }
-    }
-
-    private void SetHands() {
-        Hand[] hands = Player.GetComponentsInChildren<Hand>(false);
-        for (int x = 0; x < hands.Length; x++) {
-            if (hands[x].handType == SteamVR_Input_Sources.RightHand) {
-                RightHand = hands[x];
-            } else {
-                LeftHand = hands[x];
-            }
+    public void SwitchCameraY() {
+        if (!InterfaceY.GetComponent<InterfaceManager>().Activated && InterfaceY.GetComponent<InterfaceManager>().PlayerOnInterface != null) {
+            StartCoroutine(FadeAndSwitch(TopCameraY, InterfaceY.GetComponent<InterfaceManager>().PlayerOnInterface.GetCamera()));
+        } else if (InterfaceY.GetComponent<InterfaceManager>().Activated) {
+            StartCoroutine(FadeAndSwitch(InterfaceY.GetComponent<InterfaceManager>().PlayerOnInterface.GetCamera(), TopCameraY));
         }
     }
 
@@ -201,13 +114,5 @@ public class RoomOne : Room {
         to.SetActive(true);
 
         SteamVR_Fade.Start(Color.clear, FadeTime, true);
-    }
-
-    public void Handattachment(string s) {
-        Debug.Log(s);
-    }
-
-    public void HandDeattachment(string s) {
-        Debug.Log(s);
     }
 }

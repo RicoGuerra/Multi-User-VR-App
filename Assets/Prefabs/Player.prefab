@@ -1613,6 +1613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Avatar: {fileID: 1095250701306530251}
   NameTag: {fileID: 5276875287196981175}
+  _playerCamera: {fileID: 2177480437323347127}
   _teleporting: {fileID: 3536905833715265951}
   componentsToDisable:
   - {fileID: 2177480437324724739}

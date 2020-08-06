@@ -16,6 +16,7 @@ public class PlayerManager : NetworkBehaviour {
     public Color PlayerColor { get; set; }
     public bool ComfortMode { get; set; }
 
+    [SerializeField] private GameObject _playerCamera; // Zum testen wird die NonVRCamera des DebugModes zugeteilt
     [SerializeField] private Teleporter _teleporting;
     [SerializeField] private Behaviour[] componentsToDisable;
     [SerializeField] private List<Behaviour> disableWhenPaused;
@@ -81,6 +82,6 @@ public class PlayerManager : NetworkBehaviour {
     }
 
     public GameObject GetCamera() {
-        return GameObject.Find("VRCamera");
+        return _playerCamera;
     }
 }
