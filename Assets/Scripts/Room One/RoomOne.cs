@@ -70,6 +70,12 @@ public class RoomOne : Room {
         Kugellabyrinth.transform.rotation = Quaternion.Euler(0, 0, -handle.transform.localPosition.x * 100);
         //Test
 
+        /* OnHandAttached() beim Handle-Objekt setzt das Activated-Attribut der Interfaces auf TRUE;
+         * Dadurch werden beide "IsInteracting"-Variablen nicht mehr gebraucht;
+         * Die ROTATE-Methoden können deutlich vereinfacht werden, siehe oben. Und die SWITCHCAMERA-Methoden können ebenfalls vereinfacht werden, 
+         * da alle Abfragen, die die Hände betreffen komplett wegfallen
+         */
+
         SwitchCameraX();
         SwitchCameraY();
         if (isInteracting) {
@@ -195,5 +201,13 @@ public class RoomOne : Room {
         to.SetActive(true);
 
         SteamVR_Fade.Start(Color.clear, FadeTime, true);
+    }
+
+    public void Handattachment(string s) {
+        Debug.Log(s);
+    }
+
+    public void HandDeattachment(string s) {
+        Debug.Log(s);
     }
 }
