@@ -3657,7 +3657,7 @@ PrefabInstance:
     - target: {fileID: 18288266700541748, guid: a77c6884a0e7829448208ba310864784,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 18288266700541751, guid: a77c6884a0e7829448208ba310864784,
         type: 3}
@@ -3672,7 +3672,7 @@ PrefabInstance:
     - target: {fileID: 18288266700541751, guid: a77c6884a0e7829448208ba310864784,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.5
+      value: -0.7
       objectReference: {fileID: 0}
     - target: {fileID: 18288266700541751, guid: a77c6884a0e7829448208ba310864784,
         type: 3}
@@ -3722,7 +3722,7 @@ PrefabInstance:
     - target: {fileID: 18288266700541751, guid: a77c6884a0e7829448208ba310864784,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.9
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 18288266700541751, guid: a77c6884a0e7829448208ba310864784,
         type: 3}
@@ -3764,27 +3764,106 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 18288266803887528, guid: a77c6884a0e7829448208ba310864784,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 18288266803887528, guid: a77c6884a0e7829448208ba310864784,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 18288266803887528, guid: a77c6884a0e7829448208ba310864784,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.001
+      objectReference: {fileID: 0}
     - target: {fileID: 18288266803887530, guid: a77c6884a0e7829448208ba310864784,
         type: 3}
       propertyPath: m_Text
-      value: 'Hand auflegen
-
-        zum aktivieren'
+      value: "Hebel mit der Trigger-Tasteausw\xE4hlen.\nAnschlie\xDFend nach Rechts
+        und Links bewegen\num das Kugellabyrinth zu kippen."
       objectReference: {fileID: 0}
     - target: {fileID: 18288266803887530, guid: a77c6884a0e7829448208ba310864784,
         type: 3}
       propertyPath: m_FontData.m_FontSize
-      value: 30
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 18288266803887530, guid: a77c6884a0e7829448208ba310864784,
         type: 3}
       propertyPath: m_FontData.m_MinSize
-      value: 3
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 18288266803887530, guid: a77c6884a0e7829448208ba310864784,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 18288266803887530, guid: a77c6884a0e7829448208ba310864784,
+        type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 18288266803887530, guid: a77c6884a0e7829448208ba310864784,
+        type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 18288266803887531, guid: a77c6884a0e7829448208ba310864784,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 18288266803887531, guid: a77c6884a0e7829448208ba310864784,
+        type: 3}
+      propertyPath: m_UseGraphicAlpha
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 18288266803887531, guid: a77c6884a0e7829448208ba310864784,
+        type: 3}
+      propertyPath: m_EffectDistance.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1887857123601583025, guid: a77c6884a0e7829448208ba310864784,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.2509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 1887857123601583025, guid: a77c6884a0e7829448208ba310864784,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.0017799971
+      objectReference: {fileID: 0}
+    - target: {fileID: 1887857123601583025, guid: a77c6884a0e7829448208ba310864784,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.06981961
+      objectReference: {fileID: 0}
+    - target: {fileID: 1887857123601583025, guid: a77c6884a0e7829448208ba310864784,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.3773585
+      objectReference: {fileID: 0}
+    - target: {fileID: 2234204430069156428, guid: a77c6884a0e7829448208ba310864784,
+        type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2234204430069156428, guid: a77c6884a0e7829448208ba310864784,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595977541875514401, guid: a77c6884a0e7829448208ba310864784,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4610249645218413810, guid: a77c6884a0e7829448208ba310864784,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a77c6884a0e7829448208ba310864784, type: 3}

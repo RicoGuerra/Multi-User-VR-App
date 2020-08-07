@@ -33,6 +33,9 @@ public class MyNetworkManager : NetworkManager {
     public void JoinMatch() {
         StartMatchMaker();
         matchMaker.ListMatches(0, 1, "", true, 0, 0, OnMatchList);
+        // vielleicht eine Schleife, solange bis die Coroutine beendet ist
+        // oder eine weitere Coroutine, in der ListMatches aufgerufen wird. 
+        // dort wird dann gewartet bis ListMatches fertig ist.
         foreach (MatchInfoSnapshot m in matches) {
             if (m.name == matchName) {
                 match = m;
