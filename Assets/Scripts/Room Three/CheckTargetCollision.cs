@@ -48,6 +48,8 @@ public class CheckTargetCollision : MonoBehaviour {
             TargetTriggerExit = false;
             TargetObjectInfo = other.gameObject;
             OnTargetTriggerEnter.Invoke();
+        } else {
+            TargetObjectInfo = other.gameObject;
         }
     }
 

@@ -14,6 +14,7 @@ public class Teleporter : MonoBehaviour {
     private float hitPointY;
     private RaycastHit _hit;
 
+    [SerializeField] private LineRenderer _lineRenderer;
     [SerializeField] private Material _teleportOK;
     [SerializeField] private Material _teleportNotOK;
 
@@ -24,18 +25,28 @@ public class Teleporter : MonoBehaviour {
     void Update() {
         hasPosition = UpdatePointer();
         Pointer.SetActive(hasPosition);
+        _lineRenderer.enabled = hasPosition;
+        //UpdateLineRenderer(hasPosition);
         SetPointerMaterial();
 
-        if (TeleportAction.GetStateUp(pose.inputSource) && _hit.collider.tag == "Floor" && _hit.distance <= 7.5f) {
+        if (TeleportAction.GetStateUp(pose.inputSource) && _hit.collider.tag == "Floor" && _hit.distance <= 10f) {
             TryTeleport();
         }
     }
 
+    //private void UpdateLineRenderer(bool enabled) {
+    //    _lineRenderer.enabled = enabled;
+    //    if (_lineRenderer.enabled) {
+    //        _lineRenderer.SetPosition(0, transform.position);
+    //        _lineRenderer.SetPosition(1, _hit.point);
+    //    }
+    //}
+
     private void SetPointerMaterial() {
-        if (_hit.collider.tag == "Floor" && _hit.distance <= 7.5f) {
-            Pointer.GetComponent<Renderer>().material = _teleportOK;
+        if (_hit.collider.tag == "Floor" && _hit.distance <= 10f) {
+            Pointer.GetComponent<Renderer>().material = _lineRenderer.material = _teleportOK;
         } else {
-            Pointer.GetComponent<Renderer>().material = _teleportNotOK;
+            Pointer.GetComponent<Renderer>().material = _lineRenderer.material = _teleportNotOK;
         }
     }
 
@@ -58,7 +69,7 @@ public class Teleporter : MonoBehaviour {
         SteamVR_Fade.Start(Color.black, fadeTime, true);
 
         yield return new WaitForSeconds(fadeTime);
-        camera.position += translation;
+        camera.transform.root.position += translation;
 
         SteamVR_Fade.Start(Color.clear, fadeTime, true);
 
@@ -69,8 +80,10 @@ public class Teleporter : MonoBehaviour {
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out _hit) && TriggerDown.GetState(pose.inputSource)) {
+        if (Physics.SphereCast(ray, 0.25f, out _hit) && TriggerDown.GetState(pose.inputSource)) {
             Pointer.transform.position = _hit.point;
+            _lineRenderer.SetPosition(0, ray.origin);
+            _lineRenderer.SetPosition(1, _hit.point);
             return true;
         }
         return false;

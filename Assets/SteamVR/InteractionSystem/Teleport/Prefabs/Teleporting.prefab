@@ -1126,7 +1126,7 @@ MonoBehaviour:
   goodHighlightSound: {fileID: 8300000, guid: 4e2e74504a83fbd438147cfda37cf3d0, type: 3}
   badHighlightSound: {fileID: 8300000, guid: aa9e211c83b607f479bd7772eb56a98c, type: 3}
   debugFloor: 0
-  showOffsetReticle: 0
+  showOffsetReticle: 1
   offsetReticleTransform: {fileID: 457198}
   floorDebugSphere: {fileID: 2336214}
   floorDebugLine: {fileID: 12050142}
