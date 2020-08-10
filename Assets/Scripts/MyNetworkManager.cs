@@ -47,4 +47,5 @@ public class MyNetworkManager : NetworkManager {
     public void EndGame() {
         Application.Quit();
     }
+
 }
