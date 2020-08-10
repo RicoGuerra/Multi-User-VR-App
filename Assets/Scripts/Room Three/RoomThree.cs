@@ -9,10 +9,10 @@ public class RoomThree : Room {
     private Vector3 destroyingObjectPosition;
     private Vector3 BowlingBallPosition;
     private Vector3[] throwableBallOrigins;
+    private Distance distance;
 
     public CheckTargetCollision Platform;
     public Collider[] Barriere;
-    public Distance Distance;
     public GameObject BowlingBall;
     public GameObject[] ThrowableBalls;
 
@@ -35,7 +35,7 @@ public class RoomThree : Room {
                 BringBallBack(BowlingBall, BowlingBallPosition);
             }
         }
-        if (Distance.IsMoving) {
+        if (distance.IsMoving) {
             IgnoreBarrier(true);
         } else {
             IgnoreBarrier(false);

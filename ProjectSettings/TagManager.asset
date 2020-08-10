@@ -11,6 +11,7 @@ TagManager:
   - Corridor
   - NVRSpawn
   - Floor
+  - Pin
   layers:
   - Default
   - TransparentFX
