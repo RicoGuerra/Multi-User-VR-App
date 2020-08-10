@@ -35,15 +35,23 @@ public class RoomThree : Room {
                 BringBallBack(BowlingBall, BowlingBallPosition);
             }
         }
-        if (distance.IsMoving) {
-            IgnoreBarrier(true);
-        } else {
-            IgnoreBarrier(false);
-        }
+        IfPinsMove();
         for (int i = 0; i < ThrowableBalls.Length; i++) {
             if (ThrowableBalls[i].transform.position.y < -15f) {
                 BringBallBack(ThrowableBalls[i], throwableBallOrigins[i]);
             }
+        }
+    }
+
+    private void IfPinsMove() {
+        distance = GameObject.FindGameObjectWithTag("Pin").GetComponent<Distance>();
+        if (distance == null)
+            return;
+
+        if (distance.IsMoving) {
+            IgnoreBarrier(true);
+        } else {
+            IgnoreBarrier(false);
         }
     }
 
