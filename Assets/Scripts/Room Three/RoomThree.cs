@@ -44,7 +44,7 @@ public class RoomThree : Room {
     }
 
     private void IfPinsMove() {
-        distance = GameObject.FindGameObjectWithTag("Pin").GetComponent<Distance>();
+        distance = GameObject.FindGameObjectWithTag("Pin").GetComponent<Distance>(); //testen ob mit array funktioniert
         if (distance == null)
             return;
 

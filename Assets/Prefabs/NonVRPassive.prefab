@@ -362,13 +362,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Avatar: {fileID: 5430329717274280119}
   NameTag: {fileID: 1131279088368546527}
-  PlayerName: 
   _playerCamera: {fileID: 100002}
   _teleporting: {fileID: 0}
   componentsToDisable:
   - {fileID: 11400000}
   - {fileID: 2000000}
   - {fileID: 8100000}
+  - {fileID: 114971077166414126}
   disableWhenPaused:
   - {fileID: 11400000}
   _pauseViewVR: {fileID: 0}
@@ -475,6 +475,7 @@ GameObject:
   - component: {fileID: 5857186661288597352}
   - component: {fileID: 5907669007878327879}
   - component: {fileID: 1131279088368546527}
+  - component: {fileID: 9058593181158527178}
   m_Layer: 0
   m_Name: Name Tag
   m_TagString: Untagged
@@ -555,6 +556,39 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
+--- !u!114 &9058593181158527178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2676741556151795084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 0
+    i2: 0
+    i3: 0
+    i4: 0
+    i5: 0
+    i6: 0
+    i7: 0
+    i8: 0
+    i9: 0
+    i10: 0
+    i11: 0
+    i12: 0
+    i13: 0
+    i14: 0
+    i15: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!1 &5430329717274280119
 GameObject:
   m_ObjectHideFlags: 0
