@@ -17,7 +17,18 @@ namespace Assets.Scripts.Menu {
         public Camera NonVRInputSource;
 
         private void Start() {
+            SetEventSystem();
             SetupCanvasInput();
+        }
+
+        private static void SetEventSystem() {
+            if (!XRDevice.isPresent) {
+                GameObject.Find("EventSystem").SetActive(true);
+                GameObject.Find("VRInputModule").SetActive(false);
+            } else {
+                GameObject.Find("EventSystem").SetActive(false);
+                GameObject.Find("VRInputModule").SetActive(true);
+            }
         }
 
         private void SetupCanvasInput() {

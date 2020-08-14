@@ -12,11 +12,6 @@ public class MyNetworkManager : NetworkManager {
     private void Start() {
         if (!XRDevice.isPresent) {
             playerPrefab = spawnPrefabs.First();
-            GameObject.Find("EventSystem").SetActive(true);
-            GameObject.Find("VRInputModule").SetActive(false);
-        } else {
-            GameObject.Find("EventSystem").SetActive(false);
-            GameObject.Find("VRInputModule").SetActive(true);
         }
     }
 
