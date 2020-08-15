@@ -33,8 +33,8 @@ public class PlayerManager : NetworkBehaviour {
 
     public void PlayerSetup() {
         if (!isLocalPlayer) {
-            for (int i = 0; i < componentsToDisable.Length; i++) {
-                componentsToDisable[i].enabled = false;
+            foreach (Behaviour b in componentsToDisable) {
+                b.enabled = false;
             }
         }
         SetNameTag();
@@ -51,7 +51,8 @@ public class PlayerManager : NetworkBehaviour {
     private void SetNameTag() {
         Random rnd = new Random();
         Avatar.GetComponent<Renderer>().material.color = PlayerColor;
-        PlayerID = rnd.Next();
+        //PlayerID = rnd.Next();
+        PlayerID = netId.GetHashCode();
         if (PlayerName.All(char.IsWhiteSpace)) {
             name = "Player" + PlayerID;
             PlayerName = name;
