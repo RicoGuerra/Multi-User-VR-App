@@ -6,43 +6,43 @@ public class RoomTwo : Room {
 
     public List<GameObject> RiddleRight;
 
-    private int[] riddleLeftOrder;
-    private int buttonCounter;
-    private bool rightSolved;
-    private bool leftSolved;
-    private AudioSource successSound;
+    private int[] _riddleLeftOrder;
+    private int _buttonCounter;
+    private bool _rightSolved;
+    private bool _leftSolved;
+    private AudioSource _successSound;
 
     private void Start() {
-        successSound = GetComponent<AudioSource>();
-        riddleLeftOrder = new int[4];
-        buttonCounter = 0;
+        _successSound = GetComponent<AudioSource>();
+        _riddleLeftOrder = new int[4];
+        _buttonCounter = 0;
         CorridorToActivate = 1;
     }
 
     void Update() {
-        if(rightSolved && leftSolved) {
+        if(_rightSolved && _leftSolved) {
             Solved = true;
         }
         if (RiddleRight.TrueForAll(TargetCollision)) {
-            if (!rightSolved) {
-                successSound.Play();
-                rightSolved = true;
+            if (!_rightSolved) {
+                _successSound.Play();
+                _rightSolved = true;
                 GameObject.Find("ExitRight").SetActive(false);
             }
         }
     }
 
     public void CheckRiddleLeft(int buttonIndex) {
-        riddleLeftOrder[buttonCounter] = buttonIndex;
-        buttonCounter++;
-        if (riddleLeftOrder[0] == 2 && riddleLeftOrder[1] == 1 && riddleLeftOrder[2] == 0 && riddleLeftOrder[3] == 4 && !leftSolved) {
-            successSound.Play();
-            leftSolved = true;
+        _riddleLeftOrder[_buttonCounter] = buttonIndex;
+        _buttonCounter++;
+        if (_riddleLeftOrder[0] == 2 && _riddleLeftOrder[1] == 1 && _riddleLeftOrder[2] == 0 && _riddleLeftOrder[3] == 4 && !_leftSolved) {
+            _successSound.Play();
+            _leftSolved = true;
             GameObject.Find("ExitLeft").SetActive(false);
-        } else if (buttonCounter == 4) {
-            buttonCounter = 0;
-            for (int i = 0; i < riddleLeftOrder.Length; i++)
-                riddleLeftOrder[i] = 0;
+        } else if (_buttonCounter == 4) {
+            _buttonCounter = 0;
+            for (int i = 0; i < _riddleLeftOrder.Length; i++)
+                _riddleLeftOrder[i] = 0;
         }
     }
 

@@ -51,7 +51,6 @@ public class PlayerManager : NetworkBehaviour {
     private void SetNameTag() {
         Random rnd = new Random();
         Avatar.GetComponent<Renderer>().material.color = PlayerColor;
-        //PlayerID = rnd.Next();
         PlayerID = netId.GetHashCode();
         if (PlayerName.All(char.IsWhiteSpace)) {
             name = "Player" + PlayerID;
