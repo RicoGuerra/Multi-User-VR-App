@@ -48,7 +48,8 @@ public class RoomTwo : Room {
 
     public void Entrance(string enter) {
         GameObject entrance = GameObject.Find(enter);
-        if (entrance.GetComponent<CheckTargetCollision>().TargetTriggerExit) {
+        CheckTargetCollision target = entrance.GetComponent<CheckTargetCollision>();
+        if (target.TargetTriggerExit && target.TargetObjectInfo.transform.position.z < entrance.transform.position.z) {
             entrance.GetComponent<MeshRenderer>().enabled = true;
             entrance.GetComponent<Collider>().isTrigger = false;
         }
