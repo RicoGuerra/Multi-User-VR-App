@@ -31,7 +31,13 @@ public class GameManager : MonoBehaviour {
         PassageWays[corridorIndex].SetActive(true);
     }
 
+    public void PlayerLeavingCorridor(GameObject corridor) {
+        GameObject playerObject = corridor.GetComponentInChildren<CheckTargetCollision>().TargetObjectInfo;
+        playersInCorridor.Remove(playerObject);
+    }
+
     public void DeactivateCorridor(int corridorIndex) {
+        if (playersInCorridor.Count > 0) return;
         PassageWays[corridorIndex].SetActive(false);
     }
 
@@ -46,7 +52,6 @@ public class GameManager : MonoBehaviour {
             if (corridor == PassageWays[i] && playersInCorridor.Count == 2) {
                 WakeUpRoom(rooms[i + 1]);
                 DeactivateRoom(rooms[i]);
-                playersInCorridor.Clear();
             } else {
                 Debug.Log("Colliding object does not match any existing corridor in the scene or there are not exactly 2 different objects in the list.");
             }
