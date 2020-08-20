@@ -23,8 +23,14 @@ public class PlayerManager : NetworkBehaviour {
     [SerializeField] private GameObject _pauseViewVR;
 
     public void Start() {
-        ReadData();
-        PlayerSetup();
+        if (isLocalPlayer && isServer) {
+            CmdPlayerSetup();
+        } else if (isLocalPlayer && isClient) {
+            RpcPlayerSetup();
+        } else if (isLocalPlayer) {
+            ReadData();
+            PlayerSetup();
+        }
     }
 
     public void Update() {
@@ -77,12 +83,23 @@ public class PlayerManager : NetworkBehaviour {
     }
 
     public void ReadData() {
-        if (!isLocalPlayer) return;
         LoadMenuData load = new LoadMenuData(gameObject);
         load.LoadData();
     }
 
     public GameObject GetCamera() {
         return _playerCamera;
+    }
+
+    [Command]
+    public void CmdPlayerSetup() {
+        ReadData();
+        PlayerSetup();
+    }
+
+    [ClientRpc]
+    public void RpcPlayerSetup() {
+        ReadData();
+        PlayerSetup();
     }
 }

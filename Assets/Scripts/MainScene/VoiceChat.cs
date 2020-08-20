@@ -163,7 +163,7 @@ namespace Assets.Scripts.MainScene {
             Debug.Log(string.Format("left channel name {0}", channelName));
         }
 
-        void OnApplicationQuit() {
+        public void OnApplicationQuit() {
             if (mRtcEngine != null) {
                 IRtcEngine.Destroy();
             }
