@@ -77,7 +77,6 @@ public class PlayerManager : NetworkBehaviour {
     }
 
     public void ReadData() {
-        if (!isLocalPlayer) return;
         LoadMenuData load = new LoadMenuData(gameObject);
         load.LoadData();
     }
