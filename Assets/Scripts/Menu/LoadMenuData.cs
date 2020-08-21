@@ -15,11 +15,7 @@ public class LoadMenuData {
         string path = Application.persistentDataPath + "/menuData.json";
         string dataString = File.ReadAllText(path);
         JsonUtility.FromJsonOverwrite(dataString, m);
-        if (GameObject.tag == "Data") {
-            GameObject.GetComponent<MenuData>().PlayerName = m.PlayerName;
-            GameObject.GetComponent<MenuData>().ComfortMode = m.ComfortMode;
-            GameObject.GetComponent<MenuData>().Color = m.Color;
-        } else if (GameObject.tag == "Player") {
+        if (GameObject.tag == "Player") {
             GameObject.GetComponent<PlayerManager>().PlayerName = m.PlayerName;
             GameObject.GetComponent<PlayerManager>().ComfortMode = m.ComfortMode;
             GameObject.GetComponent<PlayerManager>().PlayerColor = m.Color;

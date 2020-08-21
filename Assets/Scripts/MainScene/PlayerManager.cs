@@ -9,12 +9,12 @@ using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerManager : NetworkBehaviour {
 
-    public int PlayerID { get; private set; }
+    [SyncVar] public int PlayerID; /*{ get; private set; }*/
     public GameObject Avatar;
     public TextMesh NameTag;
-    public string PlayerName { get; set; }
-    public Color PlayerColor { get; set; }
-    public bool ComfortMode { get; set; }
+    [SyncVar] public string PlayerName; /*{ get; set; }*/
+    [SyncVar] public Color PlayerColor; /*{ get; set; }*/
+    [SyncVar] public bool ComfortMode; /*{ get; set; }*/
 
     [SerializeField] private GameObject _playerCamera; // Zum testen wird die NonVRCamera des DebugModes zugeteilt
     [SerializeField] private Teleporter _teleporting;
@@ -23,7 +23,8 @@ public class PlayerManager : NetworkBehaviour {
     [SerializeField] private GameObject _pauseViewVR;
 
     public void Start() {
-        ReadData();
+        RpcReadData();
+        CmdReadData();
         PlayerSetup();
     }
 
@@ -49,7 +50,6 @@ public class PlayerManager : NetworkBehaviour {
     }
 
     private void SetNameTag() {
-        Random rnd = new Random();
         Avatar.GetComponent<Renderer>().material.color = PlayerColor;
         PlayerID = netId.GetHashCode();
         if (PlayerName.All(char.IsWhiteSpace)) {
@@ -74,6 +74,18 @@ public class PlayerManager : NetworkBehaviour {
             if (XRDevice.isPresent)
                 _pauseViewVR.SetActive(Pause.Paused);
         }
+    }
+
+    [ClientRpc]
+    public void RpcReadData() {
+        LoadMenuData load = new LoadMenuData(gameObject);
+        load.LoadData();
+    }
+
+    [Command]
+    public void CmdReadData() {
+        LoadMenuData load = new LoadMenuData(gameObject);
+        load.LoadData();
     }
 
     public void ReadData() {

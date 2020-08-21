@@ -339,7 +339,7 @@ MonoBehaviour:
   m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TransformSyncMode: 4
+  m_TransformSyncMode: 1
   m_SendInterval: 0.033333335
   m_SyncRotationAxis: 7
   m_RotationSyncCompression: 0
@@ -361,8 +361,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2db6e16a522b2a40866c6a5956782ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerID: 0
   Avatar: {fileID: 5430329717274280119}
   NameTag: {fileID: 1131279088368546527}
+  PlayerName: 
+  PlayerColor: {r: 0, g: 0, b: 0, a: 0}
+  ComfortMode: 0
   _playerCamera: {fileID: 100002}
   _teleporting: {fileID: 0}
   componentsToDisable:
