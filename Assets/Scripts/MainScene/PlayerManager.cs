@@ -93,6 +93,23 @@ public class PlayerManager : NetworkBehaviour {
         load.LoadData();
     }
 
+    [Command]
+    public void CmdObjectAuthority(GameObject obj) {
+        if (!isServer)
+            obj.GetComponent<NetworkIdentity>().AssignClientAuthority(connectionToClient);
+    }
+
+    [Command]
+    public void CmdRemoveAuthority(GameObject obj) {
+        if (!isServer)
+            obj.GetComponent<NetworkIdentity>().AssignClientAuthority(connectionToClient);
+    }
+
+    [ClientRpc]
+    public void RpcObjectAuthority(GameObject obj) {
+        obj.GetComponent<NetworkIdentity>().AssignClientAuthority(connectionToClient);
+    }
+
     public GameObject GetCamera() {
         return _playerCamera;
     }

@@ -23,6 +23,7 @@
 using Assets.Scripts.MainScene;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 
@@ -32,6 +33,7 @@ public class RoomOne : Room {
     public GameObject InterfaceX;
     public GameObject InterfaceY;
     public GameObject Kugellabyrinth;
+    //public BallMaze Kugellabyrinth;
     public GameObject Kugel;
     public GameObject TopCameraY;
     public GameObject TopCamera;
@@ -62,17 +64,16 @@ public class RoomOne : Room {
     }
 
     private void Update() {
-
-        /* OnHandAttached() beim Handle-Objekt setzt das Activated-Attribut der Interfaces auf TRUE;
-         * Dadurch werden beide "IsInteracting"-Variablen nicht mehr gebraucht;
-         * Die ROTATE-Methoden können deutlich vereinfacht werden, siehe oben. Und die SWITCHCAMERA-Methoden können ebenfalls vereinfacht werden, 
-         * da alle Abfragen, die die Hände betreffen komplett wegfallen
-         */
-        //RotateX();
-        //RotateY();
         Rotate();
         if (Kugel.transform.position.y < -15)
             BringBallBack(Kugel, kugelOrigin);
+
+        //if (GameManager.players.Length == 2) {
+        //    foreach (GameObject p in GameManager.players) {
+        //        Kugellabyrinth.GetComponent<NetworkIdentity>().AssignClientAuthority(p.GetComponent<PlayerManager>().connectionToClient);
+        //        Debug.LogError("Player: " + p.name + " Netw: " + p.GetComponent<PlayerManager>().connectionToClient);
+        //    }
+        //}
     }
 
     private void RotateX() {
@@ -86,8 +87,19 @@ public class RoomOne : Room {
     }
 
     private void Rotate() {
-        if ((InterfaceY.GetComponent<InterfaceManager>().Activated || InterfaceX.GetComponent<InterfaceManager>().Activated) && (TopCameraY.activeInHierarchy || TopCamera.activeInHierarchy))
+        if ((InterfaceY.GetComponent<InterfaceManager>().Activated || InterfaceX.GetComponent<InterfaceManager>().Activated) && (TopCameraY.activeInHierarchy || TopCamera.activeInHierarchy)) {
+            PlayerManager player = _handleX.GetComponent<Interactable>().attachedToHand.transform.root.gameObject.GetComponent<PlayerManager>();
+            //if (!_handleX.GetComponent<Interactable>().attachedToHand.transform.root.GetComponent<PlayerManager>().isServer) {
+            //    Kugellabyrinth.CmdRotate(Quaternion.Euler(_handleY.transform.localPosition.z * 100, 0, -_handleX.transform.localPosition.x * 100));
+            //} else {
+            //    Kugellabyrinth.RpcRotate(Quaternion.Euler(_handleY.transform.localPosition.z * 100, 0, -_handleX.transform.localPosition.x * 100));
+            //}
+            //if (!player.GetComponent<PlayerManager>().isLocalPlayer)
+            //    Kugellabyrinth.GetComponent<NetworkIdentity>().AssignClientAuthority(player.GetComponent<PlayerManager>().connectionToClient);
+            //Kugel.GetComponent<NetworkIdentity>().AssignClientAuthority(player.connectionToClient);
+            //player.CmdObjectAuthority(Kugellabyrinth);
             Kugellabyrinth.transform.rotation = Quaternion.Euler(_handleY.transform.localPosition.z * 100, 0, -_handleX.transform.localPosition.x * 100);
+        }
     }
 
     public void SwitchCameraX() { // Bug#002
