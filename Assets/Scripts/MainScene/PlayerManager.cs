@@ -95,19 +95,22 @@ public class PlayerManager : NetworkBehaviour {
 
     [Command]
     public void CmdObjectAuthority(GameObject obj) {
-        if (!isServer)
-            obj.GetComponent<NetworkIdentity>().AssignClientAuthority(connectionToClient);
-    }
-
-    [Command]
-    public void CmdRemoveAuthority(GameObject obj) {
-        if (!isServer)
-            obj.GetComponent<NetworkIdentity>().AssignClientAuthority(connectionToClient);
+        obj.GetComponent<NetworkIdentity>().AssignClientAuthority(connectionToClient);
     }
 
     [ClientRpc]
     public void RpcObjectAuthority(GameObject obj) {
         obj.GetComponent<NetworkIdentity>().AssignClientAuthority(connectionToClient);
+    }
+
+    [Command]
+    public void CmdRemoveAuthority(GameObject obj) {
+        obj.GetComponent<NetworkIdentity>().RemoveClientAuthority(obj.GetComponent<NetworkIdentity>().clientAuthorityOwner);
+    }
+
+    [ClientRpc]
+    public void RpcRemoveAuthority(GameObject obj) {
+        obj.GetComponent<NetworkIdentity>().RemoveClientAuthority(obj.GetComponent<NetworkIdentity>().clientAuthorityOwner);
     }
 
     public GameObject GetCamera() {

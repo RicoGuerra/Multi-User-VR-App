@@ -23,83 +23,52 @@
 using Assets.Scripts.MainScene;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Networking;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 
 public class RoomOne : Room {
 
-    public GameObject Player;
     public GameObject InterfaceX;
     public GameObject InterfaceY;
     public GameObject Kugellabyrinth;
-    //public BallMaze Kugellabyrinth;
     public GameObject Kugel;
     public GameObject TopCameraY;
     public GameObject TopCamera;
     public GameObject Camera;
-    public float FadeTime;
-    public Hand RightHand;
-    public Hand LeftHand;
 
     [SerializeField] private GameObject _handleX;
     [SerializeField] private GameObject _handleY;
-
-    private bool isInteracting;
-    private bool isInteractingY;
-    private bool handRight;
-    private Vector3 interatingHandPosition;
-    private Quaternion interatingHandRotation;
-    private Hand interfacingHand;
-    private Vector3 currHandPos;
-    private Vector3 prevHandPos;
-    private float rotationX;
-    private float rotationY;
-    private int transitionWaitX;
+    private float _fadeTime;
     private Vector3 kugelOrigin;
+    private bool _XLocked;
+    private bool _YLocked;
+    private bool _usingHandleX;
+
+    public UnityEvent LockInterfaceX;
+    public UnityEvent LockInterfaceY;
 
     private void Start() {
         CorridorToActivate = 0;
         kugelOrigin = Kugel.transform.position;
+        _fadeTime = 0.5f;
     }
 
     private void Update() {
         Rotate();
-        if (Kugel.transform.position.y < -15)
+        if (Kugel.transform.position.y < -15) {
             BringBallBack(Kugel, kugelOrigin);
-
-        //if (GameManager.players.Length == 2) {
-        //    foreach (GameObject p in GameManager.players) {
-        //        Kugellabyrinth.GetComponent<NetworkIdentity>().AssignClientAuthority(p.GetComponent<PlayerManager>().connectionToClient);
-        //        Debug.LogError("Player: " + p.name + " Netw: " + p.GetComponent<PlayerManager>().connectionToClient);
-        //    }
-        //}
-    }
-
-    private void RotateX() {
-        if (InterfaceX.GetComponent<InterfaceManager>().Activated && TopCamera.activeInHierarchy)
-            Kugellabyrinth.transform.rotation = Quaternion.Euler(0, 0, -_handleX.transform.localPosition.x * 100);
-    }
-
-    private void RotateY() {
-        if (InterfaceY.GetComponent<InterfaceManager>().Activated && TopCameraY.activeInHierarchy)
-            Kugellabyrinth.transform.rotation = Quaternion.Euler(_handleY.transform.localPosition.z * 100, 0, -_handleX.transform.localPosition.x * 100);
+        }
+        if (_handleX.transform.localPosition.x != 0 && InterfaceX.GetComponent<InterfaceManager>().PlayerOnInterface == null) {
+            LockInterfaceX.Invoke();
+        } else if (_handleY.transform.localPosition.x != 0 && InterfaceY.GetComponent<InterfaceManager>().PlayerOnInterface == null) {
+            LockInterfaceY.Invoke();
+        }
     }
 
     private void Rotate() {
-        if ((InterfaceY.GetComponent<InterfaceManager>().Activated || InterfaceX.GetComponent<InterfaceManager>().Activated) && (TopCameraY.activeInHierarchy || TopCamera.activeInHierarchy)) {
-            PlayerManager player = _handleX.GetComponent<Interactable>().attachedToHand.transform.root.gameObject.GetComponent<PlayerManager>();
-            //if (!_handleX.GetComponent<Interactable>().attachedToHand.transform.root.GetComponent<PlayerManager>().isServer) {
-            //    Kugellabyrinth.CmdRotate(Quaternion.Euler(_handleY.transform.localPosition.z * 100, 0, -_handleX.transform.localPosition.x * 100));
-            //} else {
-            //    Kugellabyrinth.RpcRotate(Quaternion.Euler(_handleY.transform.localPosition.z * 100, 0, -_handleX.transform.localPosition.x * 100));
-            //}
-            //if (!player.GetComponent<PlayerManager>().isLocalPlayer)
-            //    Kugellabyrinth.GetComponent<NetworkIdentity>().AssignClientAuthority(player.GetComponent<PlayerManager>().connectionToClient);
-            //Kugel.GetComponent<NetworkIdentity>().AssignClientAuthority(player.connectionToClient);
-            //player.CmdObjectAuthority(Kugellabyrinth);
-            Kugellabyrinth.transform.rotation = Quaternion.Euler(_handleY.transform.localPosition.z * 100, 0, -_handleX.transform.localPosition.x * 100);
-        }
+        Kugellabyrinth.transform.rotation = Quaternion.Euler(_handleY.transform.localPosition.z * 100, 0, -_handleX.transform.localPosition.x * 100);
     }
 
     public void SwitchCameraX() { // Bug#002
@@ -119,12 +88,16 @@ public class RoomOne : Room {
     }
 
     private IEnumerator FadeAndSwitch(GameObject from, GameObject to) {
-        SteamVR_Fade.Start(Color.black, FadeTime, true);
+        SteamVR_Fade.Start(Color.black, _fadeTime, true);
 
-        yield return new WaitForSeconds(FadeTime);
+        yield return new WaitForSeconds(_fadeTime);
         from.SetActive(false);
         to.SetActive(true);
 
-        SteamVR_Fade.Start(Color.clear, FadeTime, true);
+        SteamVR_Fade.Start(Color.clear, _fadeTime, true);
+    }
+
+    private GameObject GetRootOfHand(Hand hand) {
+        return hand.transform.root.gameObject;
     }
 }
