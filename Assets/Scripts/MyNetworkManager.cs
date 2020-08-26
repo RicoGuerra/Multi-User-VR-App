@@ -12,7 +12,7 @@ public class MyNetworkManager : NetworkManager {
 
     private void Start() {
         if (!XRDevice.isPresent) {
-            //playerPrefab = spawnPrefabs.First();
+            playerPrefab = spawnPrefabs.First();
         }
     }
 
@@ -39,6 +39,7 @@ public class MyNetworkManager : NetworkManager {
                 _match = m;
             }
         }
+        List<MatchInfoSnapshot.MatchInfoDirectConnectSnapshot> a = _match.directConnectInfos;
         matchMaker.JoinMatch(_match.networkId, "", "", "", 0, 0, OnMatchJoined);
     }
 

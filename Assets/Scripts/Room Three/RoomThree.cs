@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,7 @@ public class RoomThree : Room {
     private Vector3 BowlingBallPosition;
     private Vector3[] throwableBallOrigins;
     private Distance distance;
+    private List<GameObject> _pins;
 
     public CheckTargetCollision Platform;
     public Collider[] Barriere;
@@ -44,11 +46,12 @@ public class RoomThree : Room {
     }
 
     private void IfPinsMove() {
-        distance = GameObject.FindGameObjectWithTag("Pin").GetComponent<Distance>(); //testen ob mit array funktioniert
-        if (distance == null)
+        //distance = GameObject.FindGameObjectWithTag("Pin").GetComponent<Distance>(); //testen ob mit array funktioniert
+        _pins = GameObject.FindGameObjectsWithTag("Pin").ToList();
+        if (_pins == null)
             return;
 
-        if (distance.IsMoving) {
+        if (_pins.TrueForAll(IsMoving)) {
             IgnoreBarrier(true);
         } else {
             IgnoreBarrier(false);
@@ -66,5 +69,9 @@ public class RoomThree : Room {
     private void DestroyBall() {
         BowlingBall.transform.rotation = new Quaternion(0, 0, 0, 0);
         BowlingBall.transform.position = BowlingBallPosition;
+    }
+
+    private bool IsMoving(GameObject pin) {
+        return pin.GetComponent<Distance>().IsMoving;
     }
 }

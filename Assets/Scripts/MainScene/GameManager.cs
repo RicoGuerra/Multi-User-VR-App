@@ -34,11 +34,12 @@ public class GameManager : MonoBehaviour {
     public void PlayerLeavingCorridor(GameObject corridor) {
         GameObject playerObject = corridor.GetComponentInChildren<CheckTargetCollision>().TargetObjectInfo;
         playersInCorridor.Remove(playerObject);
+        if (playerObject.transform.position.z < corridor.transform.position.z && playersInCorridor.Count == 0)
+            DeactivateCorridor(corridor);
     }
 
-    public void DeactivateCorridor(int corridorIndex) {
-        if (playersInCorridor.Count > 0) return;
-        PassageWays[corridorIndex].SetActive(false);
+    public void DeactivateCorridor(GameObject corridor) {
+        corridor.SetActive(false);
     }
 
     public void RoomTransition(GameObject corridor) {
