@@ -12,9 +12,8 @@ namespace Assets.Scripts.Menu {
 
         [SerializeField] private Canvas[] _menuCanvas;
         [SerializeField] private GameObject _keyboard;
-
-        public Camera VRInputSource;
-        public Camera NonVRInputSource;
+        [SerializeField] private Camera _VRInputSource;
+        [SerializeField] private Camera _nonVRInputSource;
 
         private void Start() {
             SetEventSystem();
@@ -34,13 +33,21 @@ namespace Assets.Scripts.Menu {
         private void SetupCanvasInput() {
             if (XRDevice.isPresent) {
                 foreach (Canvas c in _menuCanvas) {
-                    c.worldCamera = VRInputSource;
+                    c.worldCamera = _VRInputSource;
                 }
                 _keyboard.SetActive(true);
             } else {
                 foreach (Canvas c in _menuCanvas) {
-                    c.worldCamera = NonVRInputSource;
+                    c.worldCamera = _nonVRInputSource;
                 }
+            }
+        }
+
+        public void ToggleControllerPic(GameObject picture) {
+            if (picture.activeInHierarchy) {
+                picture.SetActive(false);
+            } else {
+                picture.SetActive(true);
             }
         }
     }
