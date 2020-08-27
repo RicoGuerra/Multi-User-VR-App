@@ -17,8 +17,20 @@ public class MyNetworkManager : NetworkManager {
     }
 
     public void StartMatch() {
+        StartCoroutine(StartM());
+        //StartMatchMaker();
+        //matchMaker.CreateMatch(matchName, matchSize, true, "", "", "", 0, 0, OnMatchCreate);
+    }
+
+    public IEnumerator StartM() {
         StartMatchMaker();
-        matchMaker.CreateMatch(matchName, matchSize, true, "", "", "", 0, 0, OnMatchCreate);
+        matchMaker.ListMatches(0, 1, "", true, 0, 0, OnMatchList);
+        yield return new WaitForSeconds(0.5f);
+        if (matches.Exists(x => x.name == matchName)) {
+            Debug.LogError("Match already exitst! Please press SPIEL BEITRETEN to join the match! ");
+        } else {
+            matchMaker.CreateMatch(matchName, matchSize, true, "", "", "", 0, 0, OnMatchCreate);
+        }
     }
 
     public override void OnMatchList(bool success, string extendedInfo, List<MatchInfoSnapshot> matchList) {
