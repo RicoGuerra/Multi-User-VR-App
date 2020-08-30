@@ -40,6 +40,11 @@ public class PlayerManager : NetworkBehaviour {
         }
         SetNameTag();
         SetMode();
+        SetPlayerType();
+    }
+
+    private void SetPlayerType() {
+        if (!isLocalPlayer) return;
         GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
         gm.SetLocalPlayerType(this);
     }
