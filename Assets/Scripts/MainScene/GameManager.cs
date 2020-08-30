@@ -54,16 +54,17 @@ public class GameManager : MonoBehaviour {
 
     public void ActivateCorridor(int corridorIndex) {
         PassageWays[corridorIndex].SetActive(true);
-        if (corridorIndex == 0) {
-            BorderManager.DeactivateBorder(GameObject.Find("CubeR1_toCorridor1"));
-        }
+        BorderManager.CorridorToggle(1, corridorIndex); // opt 1
     }
 
     public void PlayerLeavingCorridor(GameObject corridor) {
         GameObject playerObject = corridor.GetComponentInChildren<CheckTargetCollision>().TargetObjectInfo;
         playersInCorridor.Remove(playerObject);
-        if (playerObject.transform.position.z < corridor.transform.position.z && playersInCorridor.Count == 0)
+        if (playerObject.transform.position.z < corridor.transform.position.z && playersInCorridor.Count == 0) {
+            // opt 0
+            BorderManager.CorridorToggle(0, GetCorridorIndex(corridor));
             DeactivateCorridor(corridor);
+        }
     }
 
     public void DeactivateCorridor(GameObject corridor) {
@@ -81,11 +82,22 @@ public class GameManager : MonoBehaviour {
             if (corridor == PassageWays[i] && playersInCorridor.Count == 2) {
                 WakeUpRoom(rooms[i + 1]);
                 DeactivateRoom(rooms[i]);
+                // opt 2
+                BorderManager.CorridorToggle(2, i);
             } else {
                 Debug.Log("Colliding object does not match any existing corridor in the scene or there are not exactly 2 different objects in the list.");
             }
         }
     }
+
+    public int GetCorridorIndex(GameObject corridor) {
+        for (int i = 0; i < PassageWays.Length; i++) {
+            if (PassageWays[i] == corridor) return i;
+        }
+        Debug.LogError("Corridor existier nicht");
+        return 2;
+    }
+
 
     public static void EndGame() {
         //ending the game

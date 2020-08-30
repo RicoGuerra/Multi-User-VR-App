@@ -11761,7 +11761,7 @@ GameObject:
   - component: {fileID: 1202722944}
   - component: {fileID: 1202722943}
   m_Layer: 0
-  m_Name: CubeR1_toCorridor1
+  m_Name: CubeR1_toCorridor0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20097,7 +20097,7 @@ GameObject:
   - component: {fileID: 1919516563}
   - component: {fileID: 1919516562}
   m_Layer: 0
-  m_Name: CubeR1_fromCorridor1
+  m_Name: CubeR1_fromCorridor0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

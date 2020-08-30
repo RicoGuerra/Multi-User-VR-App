@@ -17,6 +17,7 @@ public class BorderManager : MonoBehaviour {
             IgnoreObject(c, _allBorders, true);
         }
     }
+
     /// <summary>
     /// A number of borders ignore one specific object
     /// </summary>
@@ -47,6 +48,26 @@ public class BorderManager : MonoBehaviour {
     public void DeactivateAllBorders() {
         foreach (Collider c in _allBorders)
             c.enabled = false;
+    }
+
+    public void CorridorToggle(int option, int corridorIndex) {
+        // option 0 >> beide borders, kein corridor
+        // option 1 >> corridor, border vorn weg
+        // option 2 >> corridor, border hinten weg
+        if (option < 0 || option > 2 || corridorIndex > 1) {
+            Debug.LogError("Ungültige Option für CorridorToggle");
+            return;
+        }
+        List<Collider> corridorBorders = _allBorders.FindAll(c => c.name.Contains("Corridor" + corridorIndex));
+        if (option == 0) {
+            foreach (Collider c in corridorBorders)
+                c.enabled = true;
+        } else if (option == 1) {
+            corridorBorders.Find(border => border.name.Contains("to")).enabled = false;
+        } else if (option == 2) {
+            corridorBorders.Find(border => border.name.Contains("from")).enabled = false;
+            corridorBorders.Find(border => border.name.Contains("to")).enabled = true;
+        }
     }
 
     public void DeactivateBorder(GameObject border) {
