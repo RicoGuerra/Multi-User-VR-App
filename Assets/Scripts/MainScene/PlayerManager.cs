@@ -40,6 +40,8 @@ public class PlayerManager : NetworkBehaviour {
         }
         SetNameTag();
         SetMode();
+        GameManager gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gm.SetLocalPlayerType(this);
     }
 
     private void SetMode() {

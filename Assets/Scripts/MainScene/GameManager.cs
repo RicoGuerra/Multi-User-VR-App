@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.XR;
 
 public class GameManager : MonoBehaviour {
 
@@ -8,12 +10,35 @@ public class GameManager : MonoBehaviour {
     private GameObject[] rooms;
     public GameObject[] players;
     public GameObject[] PassageWays;
+    public BorderManager BorderManager;
 
+    private GameObject[] _passivePlayers;
     private List<GameObject> playersInCorridor = new List<GameObject>();
+    /// <summary>
+    /// Type = 0 >> NONVR-Player
+    /// Type = 1 >> VR-Player
+    /// </summary>
+    private int _localPlayerType;
+    private bool _playerTypeSet;
+    private UnityEvent _borderManagement;
+
+    private void Start() {
+        _borderManagement = new UnityEvent();
+        _borderManagement.AddListener(BorderManager.DeactivateAllBorders);
+    }
 
     private void Update() {
         if (players.Length < 2) {
             players = GameObject.FindGameObjectsWithTag("Player");
+        }
+    }
+
+    public void SetLocalPlayerType(PlayerManager player) {
+        if (XRDevice.isPresent) {
+            _localPlayerType = 1;
+        } else {
+            _localPlayerType = 0;
+            _borderManagement.Invoke();
         }
     }
 
@@ -29,6 +54,9 @@ public class GameManager : MonoBehaviour {
 
     public void ActivateCorridor(int corridorIndex) {
         PassageWays[corridorIndex].SetActive(true);
+        if (corridorIndex == 0) {
+            BorderManager.DeactivateBorder(GameObject.Find("CubeR1_toCorridor1"));
+        }
     }
 
     public void PlayerLeavingCorridor(GameObject corridor) {

@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 7677474570092297930}
   m_Layer: 0
   m_Name: NonVRPassive
-  m_TagString: Player
+  m_TagString: PassivePlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -673,10 +673,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 439031707769282674}
     m_Modifications:
+    - target: {fileID: 1929954853600791464, guid: a299f2730eb94454da2aa2b6d4e757d6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1929954853600791466, guid: a299f2730eb94454da2aa2b6d4e757d6,
         type: 3}
       propertyPath: m_Name
       value: Sunglasses
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929954853600791466, guid: a299f2730eb94454da2aa2b6d4e757d6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1929954853600958346, guid: a299f2730eb94454da2aa2b6d4e757d6,
         type: 3}

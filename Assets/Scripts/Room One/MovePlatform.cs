@@ -52,7 +52,7 @@ public class MovePlatform : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.tag == "Player") {
+        if (other.tag == "PassivePlayer") {
             other.transform.parent = transform;
             playerOnPlatform = true;
             defPlayerSpd = other.GetComponent<PlayerMovement>().Speed;
@@ -61,13 +61,10 @@ public class MovePlatform : MonoBehaviour {
     }
 
     private void OnTriggerExit(Collider other) {
-        if (other.tag == "Player") {
+        if (other.tag == "PassivePlayer") {
             other.transform.parent = null;
             playerOnPlatform = false;
             other.GetComponent<PlayerMovement>().Speed = defPlayerSpd;
         }
     }
-
-
-
 }

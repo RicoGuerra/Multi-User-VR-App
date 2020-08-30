@@ -12,6 +12,7 @@ TagManager:
   - NVRSpawn
   - Floor
   - Pin
+  - PassivePlayer
   layers:
   - Default
   - TransparentFX
@@ -23,8 +24,8 @@ TagManager:
   - 
   - PostProcessing
   - 3DUI
-  - 
-  - 
+  - Borders
+  - PassivePlayer
   - 
   - 
   - 

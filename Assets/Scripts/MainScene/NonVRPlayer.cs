@@ -11,6 +11,10 @@ namespace Assets.Scripts.MainScene {
 
         private GameObject _activeSpawn;
 
+        private void Start() {
+            base.Start();
+        }
+
         private void Update() {
             if (transform.position.y <= -5.0f) {
                 _activeSpawn = GameObject.FindGameObjectWithTag("NVRSpawn");
