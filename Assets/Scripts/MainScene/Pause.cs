@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 using UnityEngine.XR;
 using Valve.VR;
 
@@ -13,7 +6,7 @@ namespace Assets.Scripts.MainScene {
 
     public class Pause : MonoBehaviour {
 
-        public static bool Paused { get; set; }
+        public static bool Paused { get; private set; }
 
         [SerializeField] private SteamVR_Action_Boolean _pauseButton;
 

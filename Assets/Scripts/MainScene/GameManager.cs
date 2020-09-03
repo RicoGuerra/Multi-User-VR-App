@@ -7,29 +7,29 @@ using UnityEngine.XR;
 public class GameManager : MonoBehaviour {
 
     [SerializeField]
-    private GameObject[] rooms;
-    public GameObject[] players;
-    public GameObject[] PassageWays;
-    public BorderManager BorderManager;
-
-    private GameObject[] _passivePlayers;
-    private List<GameObject> playersInCorridor = new List<GameObject>();
+    private GameObject[] _rooms;
+    [SerializeField]
+    private GameObject[] _players;
+    [SerializeField]
+    private GameObject[] _passageWays;
+    [SerializeField]
+    private BorderManager _borderManager;
+    private List<GameObject> _playersInCorridor = new List<GameObject>();
     /// <summary>
     /// Type = 0 >> NONVR-Player
     /// Type = 1 >> VR-Player
     /// </summary>
     private int _localPlayerType;
-    private bool _playerTypeSet;
     private UnityEvent _borderManagement;
 
     private void Start() {
         _borderManagement = new UnityEvent();
-        _borderManagement.AddListener(BorderManager.DeactivateAllBorders);
+        _borderManagement.AddListener(_borderManager.DeactivateAllBorders);
     }
 
     private void Update() {
-        if (players.Length < 2) {
-            players = GameObject.FindGameObjectsWithTag("Player");
+        if (_players.Length < 2) {
+            _players = GameObject.FindGameObjectsWithTag("Player");
         }
     }
 
@@ -53,16 +53,16 @@ public class GameManager : MonoBehaviour {
     }
 
     public void ActivateCorridor(int corridorIndex) {
-        PassageWays[corridorIndex].SetActive(true);
-        BorderManager.CorridorToggle(1, corridorIndex); // opt 1
+        _passageWays[corridorIndex].SetActive(true);
+        _borderManager.CorridorToggle(1, corridorIndex); // opt 1
     }
 
     public void PlayerLeavingCorridor(GameObject corridor) {
         GameObject playerObject = corridor.GetComponentInChildren<CheckTargetCollision>().TargetObjectInfo;
-        playersInCorridor.Remove(playerObject);
-        if (playerObject.transform.position.z < corridor.transform.position.z && playersInCorridor.Count == 0) {
+        _playersInCorridor.Remove(playerObject);
+        if (playerObject.transform.position.z < corridor.transform.position.z && _playersInCorridor.Count == 0) {
             // opt 0
-            BorderManager.CorridorToggle(0, GetCorridorIndex(corridor));
+            _borderManager.CorridorToggle(0, GetCorridorIndex(corridor));
             DeactivateCorridor(corridor);
         }
     }
@@ -73,17 +73,17 @@ public class GameManager : MonoBehaviour {
 
     public void RoomTransition(GameObject corridor) {
         GameObject playerObject = corridor.GetComponentInChildren<CheckTargetCollision>().TargetObjectInfo;
-        if (!playersInCorridor.Contains(playerObject)) {
-            playersInCorridor.Add(playerObject);
+        if (!_playersInCorridor.Contains(playerObject)) {
+            _playersInCorridor.Add(playerObject);
         } else {
             return;
         }
-        for (int i = 0; i < PassageWays.Length; i++) {
-            if (corridor == PassageWays[i] && playersInCorridor.Count == 2) {
-                WakeUpRoom(rooms[i + 1]);
-                DeactivateRoom(rooms[i]);
+        for (int i = 0; i < _passageWays.Length; i++) {
+            if (corridor == _passageWays[i] && _playersInCorridor.Count == 2) {
+                WakeUpRoom(_rooms[i + 1]);
+                DeactivateRoom(_rooms[i]);
                 // opt 2
-                BorderManager.CorridorToggle(2, i);
+                _borderManager.CorridorToggle(2, i);
             } else {
                 Debug.Log("Colliding object does not match any existing corridor in the scene or there are not exactly 2 different objects in the list.");
             }
@@ -91,13 +91,12 @@ public class GameManager : MonoBehaviour {
     }
 
     public int GetCorridorIndex(GameObject corridor) {
-        for (int i = 0; i < PassageWays.Length; i++) {
-            if (PassageWays[i] == corridor) return i;
+        for (int i = 0; i < _passageWays.Length; i++) {
+            if (_passageWays[i] == corridor) return i;
         }
         Debug.LogError("Corridor existier nicht");
         return 2;
     }
-
 
     public static void EndGame() {
         //ending the game

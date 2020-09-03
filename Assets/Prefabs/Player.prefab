@@ -1380,7 +1380,7 @@ GameObject:
   - component: {fileID: 2177480437323249249}
   - component: {fileID: 2177480437330971943}
   m_Layer: 0
-  m_Name: FollowHead
+  m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1450,7 +1450,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2177480437323178395}
   m_Layer: 0
-  m_Name: NoSteamVRFallbackObjects
+  m_Name: 2DFallbackObjects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1950,7 +1950,7 @@ GameObject:
   - component: {fileID: 2177480437324795471}
   - component: {fileID: 2177480437334251541}
   m_Layer: 0
-  m_Name: FallbackObjects
+  m_Name: FallbackCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2026,7 +2026,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   shiftSpeed: 16
-  showInstructions: 1
+  showInstructions: 0
 --- !u!1 &2177480437323348679
 GameObject:
   m_ObjectHideFlags: 0
@@ -2037,7 +2037,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2177480437323206333}
   m_Layer: 0
-  m_Name: SteamVRObjects
+  m_Name: VRObjects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2641,7 +2641,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2177480437323248651
 Transform:
   m_ObjectHideFlags: 0

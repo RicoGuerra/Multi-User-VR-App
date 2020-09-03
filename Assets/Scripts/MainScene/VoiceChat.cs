@@ -1,8 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-//#if(UNITY_2018_3_OR_NEWER)
-//using UnityEngine.Android;
-//#endif
 using agora_gaming_rtc;
 
 namespace Assets.Scripts.MainScene {
@@ -26,13 +23,6 @@ namespace Assets.Scripts.MainScene {
         }
 
         void Start() {
-//#if (UNITY_2018_3_OR_NEWER)
-//            if (Permission.HasUserAuthorizedPermission(Permission.Microphone)) {
-
-//            } else {
-//                Permission.RequestUserPermission(Permission.Microphone);
-//            }
-//#endif
 
             mRtcEngine = IRtcEngine.GetEngine(appId);
 
@@ -129,14 +119,6 @@ namespace Assets.Scripts.MainScene {
             mRtcEngine.SetLogFilter(LOG_FILTER.INFO);
 
             mRtcEngine.SetChannelProfile(CHANNEL_PROFILE.CHANNEL_PROFILE_COMMUNICATION);
-
-            // mRtcEngine.SetChannelProfile (CHANNEL_PROFILE.CHANNEL_PROFILE_LIVE_BROADCASTING);
-            // mRtcEngine.SetClientRole (CLIENT_ROLE.BROADCASTER);
-        }
-
-        // Update is called once per frame
-        void Update() {
-
         }
 
         public void JoinChannel() {
@@ -152,11 +134,6 @@ namespace Assets.Scripts.MainScene {
         }
 
         public void LeaveChannel() {
-            // int duration = mRtcEngine.GetAudioMixingDuration ();
-            // int current_duration = mRtcEngine.GetAudioMixingCurrentPosition ();
-
-            // IAudioEffectManager effect = mRtcEngine.GetAudioEffectManager();
-            // effect.StopAllEffects ();
 
             mRtcEngine.LeaveChannel();
             string channelName = mChannelNameInputField.text.Trim();
