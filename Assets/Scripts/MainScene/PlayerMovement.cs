@@ -17,8 +17,9 @@ public class PlayerMovement : MonoBehaviour {
         Vector3 movement = Vector3.zero;
         movement += orientation * (Speed * Vector3.forward);
         if (Move.axis.magnitude != 0) {
-            //transform.localPosition += movement * Time.deltaTime;
+            //transform.Translate(movement * Time.deltaTime);
             GetComponent<CharacterController>().Move(movement * Time.deltaTime);
+            //GetComponent<Rigidbody>().MovePosition(movement * Time.deltaTime);
         }
     }
 

@@ -9,7 +9,7 @@ public class RoomThree : Room {
     private int callCount;
     private Vector3 destroyingObjectPosition;
     private Vector3 BowlingBallPosition;
-    private Vector3[] throwableBallOrigins;
+    [SerializeField] private Transform[] throwableBallOrigins;
     private Distance distance;
     private List<GameObject> _pins;
 
@@ -21,10 +21,9 @@ public class RoomThree : Room {
     // Start is called before the first frame update
     void Start() {
         BowlingBallPosition = BowlingBall.transform.position;
-        throwableBallOrigins = new Vector3[3];
-        for (int i = 0; i < ThrowableBalls.Length; i++) {
-            throwableBallOrigins[i] = ThrowableBalls[i].transform.position;
-        }
+        //for (int i = 0; i < ThrowableBalls.Length; i++) {
+        //    throwableBallOrigins[i] = ThrowableBalls[i].transform.position;
+        //}
     }
 
     // Update is called once per frame
@@ -40,7 +39,7 @@ public class RoomThree : Room {
         IfPinsMove();
         for (int i = 0; i < ThrowableBalls.Length; i++) {
             if (ThrowableBalls[i].transform.position.y < -15f) {
-                BringBallBack(ThrowableBalls[i], throwableBallOrigins[i]);
+                BringBallBack(ThrowableBalls[i], throwableBallOrigins[i].position);
             }
         }
     }

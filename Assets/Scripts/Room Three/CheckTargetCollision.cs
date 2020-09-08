@@ -42,7 +42,7 @@ public class CheckTargetCollision : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == TargetObject) {
+        if (other.gameObject.name == TargetObject || other.gameObject.tag == TargetObject) {
             TargetTrigger = true;
             TargetTriggerEnter = true;
             TargetTriggerExit = false;
@@ -54,7 +54,7 @@ public class CheckTargetCollision : MonoBehaviour {
     }
 
     private void OnTriggerExit(Collider other) {
-        if (other.gameObject.tag == TargetObject) {
+        if (other.gameObject.name == TargetObject || other.gameObject.tag == TargetObject) {
             TargetTrigger = false;
             TargetTriggerEnter = false;
             TargetTriggerExit = true;

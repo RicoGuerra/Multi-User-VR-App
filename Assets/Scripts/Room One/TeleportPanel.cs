@@ -9,6 +9,7 @@ using Valve.VR;
 using Valve.VR.InteractionSystem;
 
 namespace Assets.Scripts.Room_One {
+
     public class TeleportPanel : MonoBehaviour {
 
         [SerializeField] private Vector3 _teleportSpot;
@@ -19,8 +20,6 @@ namespace Assets.Scripts.Room_One {
             if (_isTeleporting) return;
             _teleportingObject = GetComponentInChildren<HoverButton>().lastHoveredHand.transform.root.gameObject;
             StartCoroutine(Move(_teleportingObject));
-            Debug.Log("TEST");
-
         }
 
         IEnumerator Move(GameObject teleportingObject) {
