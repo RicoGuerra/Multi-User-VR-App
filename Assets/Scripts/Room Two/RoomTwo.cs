@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR;
 
 public class RoomTwo : Room {
 
@@ -20,7 +21,7 @@ public class RoomTwo : Room {
     }
 
     void Update() {
-        if(_rightSolved && _leftSolved) {
+        if (_rightSolved && _leftSolved) {
             Solved = true;
         }
         if (RiddleRight.TrueForAll(TargetCollision)) {
@@ -30,6 +31,7 @@ public class RoomTwo : Room {
                 GameObject.Find("ExitRight").SetActive(false);
             }
         }
+        KeepCubesOnTable();
     }
 
     public void CheckRiddleLeft(int buttonIndex) {
@@ -55,7 +57,21 @@ public class RoomTwo : Room {
         }
     }
 
+    private void KeepCubesOnTable() {
+        GameObject cubeOnFloor = RiddleRight.Find(c => CubeOnFloor(c));
+        if (cubeOnFloor != null) {
+            cubeOnFloor.transform.localPosition = new Vector3(0.1f, 0.5f, -0.5f);
+            cubeOnFloor.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
+    }
+
     private bool TargetCollision(GameObject cube) {
         return cube.GetComponent<CheckTargetCollision>().TargetCollision;
     }
+
+    private bool CubeOnFloor(GameObject cube) {
+        return cube.transform.localPosition.y <= -0.85f ? true : false;
+    }
+
+
 }

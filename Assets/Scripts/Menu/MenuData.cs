@@ -30,11 +30,11 @@ public class MenuData : MonoBehaviour {
     }
 
     public void SetPlayerColor(int color) {
-        if (color == 0) {
+        if (color == 1) {
             Color = Color.red;
-        } else if (color == 1) {
+        } else if (color == 2) {
             Color = Color.green;
-        } else if (color == 2){
+        } else if (color == 3){
             Color = Color.blue;
         }
     }
