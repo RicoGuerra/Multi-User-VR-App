@@ -50,5 +50,14 @@ namespace Assets.Scripts.Menu {
                 picture.SetActive(true);
             }
         }
+
+        public void StartAnimation(Animator a) {
+            if (!a.enabled) {
+                a.enabled = true;
+            } else {
+                a.Play(0);
+            }
+        }
+
     }
 }

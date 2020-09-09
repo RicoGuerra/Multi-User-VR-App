@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Networking;
 using UnityEngine.Networking.Match;
 using UnityEngine.XR;
@@ -9,10 +10,12 @@ using UnityEngine.XR;
 public class MyNetworkManager : NetworkManager {
 
     private MatchInfoSnapshot _match;
+    [SerializeField] private UnityEvent _matchExists;
+    [SerializeField] private UnityEvent _matchDoesntExist;
 
     private void Start() {
         if (!XRDevice.isPresent) {
-            //playerPrefab = spawnPrefabs.First();
+            playerPrefab = spawnPrefabs.First();
         }
     }
 
@@ -28,6 +31,8 @@ public class MyNetworkManager : NetworkManager {
         yield return new WaitForSeconds(0.5f);
         if (matches.Exists(x => x.name == matchName)) {
             Debug.LogError("Match already exitst! Please press SPIEL BEITRETEN to join the match! ");
+            _matchExists.Invoke();
+            StopMatchMaker();
         } else {
             matchMaker.CreateMatch(matchName, matchSize, true, "", "", "", 0, 0, OnMatchCreate);
         }
@@ -50,6 +55,10 @@ public class MyNetworkManager : NetworkManager {
             if (m.name == matchName) {
                 _match = m;
             }
+        }
+        if (_match == null) {
+            _matchDoesntExist.Invoke();
+            StopMatchMaker();
         }
         List<MatchInfoSnapshot.MatchInfoDirectConnectSnapshot> a = _match.directConnectInfos;
         matchMaker.JoinMatch(_match.networkId, "", "", "", 0, 0, OnMatchJoined);
