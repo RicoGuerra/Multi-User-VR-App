@@ -62,7 +62,7 @@ public class RoomOne : Room {
         }
         if (_handleX.transform.localPosition.x != 0 && InterfaceX.GetComponent<InterfaceManager>().PlayerOnInterface == null) {
             LockInterfaceX.Invoke();
-        } else if (_handleY.transform.localPosition.x != 0 && InterfaceY.GetComponent<InterfaceManager>().PlayerOnInterface == null) {
+        } else if (_handleY.transform.localPosition.z != 0 && InterfaceY.GetComponent<InterfaceManager>().PlayerOnInterface == null) {
             LockInterfaceY.Invoke();
         }
     }

@@ -80,7 +80,6 @@ public class GameManager : MonoBehaviour {
         }
         for (int i = 0; i < _passageWays.Length; i++) {
             if (corridor == _passageWays[i] && _playersInCorridor.Count == 2) {
-                WakeUpRoom(_rooms[i + 1]);
                 DeactivateRoom(_rooms[i]);
                 // opt 2
                 _borderManager.CorridorToggle(2, i);

@@ -6,11 +6,13 @@ using Valve.VR;
 public class RoomTwo : Room {
 
     public List<GameObject> RiddleRight;
+    public GameObject[] RiddleLeftIndicators;
+    public RiddleLeft RiddleLeft;
 
     private int[] _riddleLeftOrder;
     private int _buttonCounter;
     private bool _rightSolved;
-    private bool _leftSolved;
+    public bool LeftSolved { get; set; }
     private AudioSource _successSound;
 
     private void Start() {
@@ -21,7 +23,7 @@ public class RoomTwo : Room {
     }
 
     void Update() {
-        if (_rightSolved && _leftSolved) {
+        if (_rightSolved && LeftSolved) {
             Solved = true;
         }
         if (RiddleRight.TrueForAll(TargetCollision)) {
@@ -36,16 +38,38 @@ public class RoomTwo : Room {
 
     public void CheckRiddleLeft(int buttonIndex) {
         _riddleLeftOrder[_buttonCounter] = buttonIndex;
+        ToggleRiddleLeftIndicators(true, _buttonCounter);
         _buttonCounter++;
-        if (_riddleLeftOrder[0] == 2 && _riddleLeftOrder[1] == 1 && _riddleLeftOrder[2] == 0 && _riddleLeftOrder[3] == 4 && !_leftSolved) {
-            _successSound.Play();
-            _leftSolved = true;
-            GameObject.Find("ExitLeft").SetActive(false);
+        if (_riddleLeftOrder[0] == 2 && _riddleLeftOrder[1] == 1 && _riddleLeftOrder[2] == 0 && _riddleLeftOrder[3] == 4 && !LeftSolved) {
+            RiddleLeft.RpcSolvedRiddel();
+            RiddleLeft.CmdSolvedRiddel();
+            LeftSolved = true;
+            LeftSuccessfullySolved();
         } else if (_buttonCounter == 4) {
             _buttonCounter = 0;
+            ToggleRiddleLeftIndicators(false);
             for (int i = 0; i < _riddleLeftOrder.Length; i++)
                 _riddleLeftOrder[i] = 0;
         }
+    }
+
+    private void ToggleRiddleLeftIndicators(bool onOff, int index = 4) {
+        if (!onOff) {
+            foreach (GameObject i in RiddleLeftIndicators) {
+                i.SetActive(onOff);
+            }
+        } else if (onOff && index < 4 && index >= 0) {
+            if (index > 0 && !RiddleLeftIndicators[index - 1].activeInHierarchy) {
+                return;
+            } else {
+                RiddleLeftIndicators[index].SetActive(onOff);
+            }
+        }
+    }
+
+    public void LeftSuccessfullySolved() {
+        _successSound.Play();
+        GameObject.Find("ExitLeft").SetActive(false);
     }
 
     public void Entrance(string enter) {
