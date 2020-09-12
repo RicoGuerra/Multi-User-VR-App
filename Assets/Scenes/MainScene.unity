@@ -1134,7 +1134,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &94159452
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1148,9 +1148,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 1
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!65 &94159453
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3152,7 +3152,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &260944693
 Transform:
   m_ObjectHideFlags: 0
@@ -3161,7 +3161,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260944692}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 12.5, z: 20}
+  m_LocalPosition: {x: 0, y: 14, z: 20}
   m_LocalScale: {x: 20, y: 1, z: 20}
   m_Children:
   - {fileID: 626348021}
@@ -3296,7 +3296,7 @@ MonoBehaviour:
     i14: 0
     i15: 0
   m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
+  m_LocalPlayerAuthority: 0
 --- !u!1 &269752361
 GameObject:
   m_ObjectHideFlags: 0
@@ -4490,7 +4490,7 @@ MonoBehaviour:
   GameManager: {fileID: 1707945584}
   InterfaceX: {fileID: 387211128}
   InterfaceY: {fileID: 997786875}
-  Kugellabyrinth: {fileID: 94159451}
+  Kugellabyrinth: {fileID: 260944692}
   Kugel: {fileID: 5026931472556842499}
   TopCameraY: {fileID: 1568772834}
   TopCamera: {fileID: 534669902}
@@ -9058,7 +9058,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 967028815}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: -10}
+  m_LocalPosition: {x: 0, y: 2, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1621313893}
@@ -17334,6 +17334,7 @@ MonoBehaviour:
   - {fileID: 529872652}
   - {fileID: 1772023543}
   _borderManager: {fileID: 27546065}
+  _wonObject: {fileID: 996907607}
 --- !u!4 &1707945585
 Transform:
   m_ObjectHideFlags: 0
@@ -24338,15 +24339,45 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5026931471405690449, guid: 64433747a497ab5419de39ef80423bbb,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026931471405690449, guid: 64433747a497ab5419de39ef80423bbb,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026931471410116817, guid: 64433747a497ab5419de39ef80423bbb,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5026931472634599800, guid: 64433747a497ab5419de39ef80423bbb,
         type: 3}
       propertyPath: m_SnapThreshold
-      value: 100
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5026931472634599800, guid: 64433747a497ab5419de39ef80423bbb,
         type: 3}
       propertyPath: m_InterpolateMovement
       value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026931472634599800, guid: 64433747a497ab5419de39ef80423bbb,
+        type: 3}
+      propertyPath: m_TransformSyncMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026931472634599800, guid: 64433747a497ab5419de39ef80423bbb,
+        type: 3}
+      propertyPath: m_SendInterval
+      value: 0.033333335
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026931472634599800, guid: 64433747a497ab5419de39ef80423bbb,
+        type: 3}
+      propertyPath: m_RotationSyncCompression
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5026931472634599801, guid: 64433747a497ab5419de39ef80423bbb,
         type: 3}
@@ -24431,7 +24462,7 @@ PrefabInstance:
     - target: {fileID: 5026931472634599801, guid: 64433747a497ab5419de39ef80423bbb,
         type: 3}
       propertyPath: m_LocalPlayerAuthority
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64433747a497ab5419de39ef80423bbb, type: 3}

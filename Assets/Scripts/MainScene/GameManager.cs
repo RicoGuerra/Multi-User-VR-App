@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour {
     private GameObject[] _passageWays;
     [SerializeField]
     private BorderManager _borderManager;
+    [SerializeField]
+    private GameObject _wonObject;
+
     private List<GameObject> _playersInCorridor = new List<GameObject>();
     /// <summary>
     /// Type = 0 >> NONVR-Player
@@ -95,6 +98,10 @@ public class GameManager : MonoBehaviour {
         }
         Debug.LogError("Corridor existier nicht");
         return 2;
+    }
+
+    public void GameWon() {
+        _wonObject.SetActive(true);
     }
 
     public static void EndGame() {

@@ -50,6 +50,7 @@ public class RoomOne : Room {
     public UnityEvent LockInterfaceY;
 
     private void Start() {
+        RoomNumber = 1;
         CorridorToActivate = 0;
         kugelOrigin = Kugel.transform.position;
         _fadeTime = 0.5f;

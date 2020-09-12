@@ -8,7 +8,9 @@ using UnityEngine;
 public abstract class Room : MonoBehaviour {
     private bool solved;
 
-    public bool Solved { get => solved; set { solved = value; if (solved) GameManager.ActivateCorridor(CorridorToActivate); } }
+    public bool Solved { get => solved; set { solved = value; if (solved && RoomNumber != 3) GameManager.ActivateCorridor(CorridorToActivate); } }
+
+    public int RoomNumber { get; set; }
 
     public int CorridorToActivate { get; set; }
 

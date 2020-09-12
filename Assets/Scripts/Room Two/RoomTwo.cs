@@ -16,6 +16,7 @@ public class RoomTwo : Room {
     private AudioSource _successSound;
 
     private void Start() {
+        RoomNumber = 2;
         _successSound = GetComponent<AudioSource>();
         _riddleLeftOrder = new int[4];
         _buttonCounter = 0;

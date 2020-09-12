@@ -18,15 +18,14 @@ public class RoomThree : Room {
     public GameObject BowlingBall;
     public GameObject[] ThrowableBalls;
 
-    // Start is called before the first frame update
     void Start() {
+        RoomNumber = 3;
         BowlingBallPosition = BowlingBall.transform.position;
         //for (int i = 0; i < ThrowableBalls.Length; i++) {
         //    throwableBallOrigins[i] = ThrowableBalls[i].transform.position;
         //}
     }
 
-    // Update is called once per frame
     void Update() {
         if (Platform.TargetCollision) {
             if (callCount < 300) {
@@ -41,6 +40,11 @@ public class RoomThree : Room {
             if (ThrowableBalls[i].transform.position.y < -15f) {
                 BringBallBack(ThrowableBalls[i], throwableBallOrigins[i].position);
             }
+        }
+
+        if (_pins.Count == 0 && !Solved) {
+            Solved = true;
+            GameManager.GameWon();
         }
     }
 
