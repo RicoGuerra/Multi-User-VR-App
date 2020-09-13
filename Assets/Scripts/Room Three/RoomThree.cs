@@ -42,17 +42,17 @@ public class RoomThree : Room {
             }
         }
 
-        if (_pins.Count == 0 && !Solved) {
+        if (_pins != null && _pins.Count == 0 && !Solved) {
             Solved = true;
             GameManager.GameWon();
         }
     }
 
     private void IfPinsMove() {
-        //distance = GameObject.FindGameObjectWithTag("Pin").GetComponent<Distance>(); //testen ob mit array funktioniert
-        _pins = GameObject.FindGameObjectsWithTag("Pin").ToList();
         if (_pins == null)
             return;
+
+        _pins = GameObject.FindGameObjectsWithTag("Pin").ToList();
 
         if (_pins.TrueForAll(IsMoving)) {
             IgnoreBarrier(true);
