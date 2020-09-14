@@ -42,6 +42,10 @@ public class RoomThree : Room {
             }
         }
 
+        if (BowlingBall.transform.position.y < -10) {
+            BringBallBack(BowlingBall, BowlingBallPosition);
+        }
+
         if (_pins != null && _pins.Count == 0 && !Solved) {
             Solved = true;
             GameManager.GameWon();
@@ -49,12 +53,12 @@ public class RoomThree : Room {
     }
 
     private void IfPinsMove() {
-        if (_pins == null)
-            return;
-
         _pins = GameObject.FindGameObjectsWithTag("Pin").ToList();
+        if (_pins == null) {
+            return;
+        }
 
-        if (_pins.TrueForAll(IsMoving)) {
+        if ((_pins.TrueForAll(IsMoving) || _pins.Find(p => IsMoving(p))) && _pins.Count > 0) {
             IgnoreBarrier(true);
         } else {
             IgnoreBarrier(false);

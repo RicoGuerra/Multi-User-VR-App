@@ -74,8 +74,8 @@ public class Distance : MonoBehaviour {
             } else {
                 IsMoving = false;
             }
-        } else {
-            //IsMoving = false;
+        } else if (Obj2.transform.position == origin) {
+            IsMoving = false;
         }
     }
 
