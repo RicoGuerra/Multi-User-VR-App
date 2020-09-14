@@ -69,7 +69,7 @@ public class Teleporter : MonoBehaviour {
         SteamVR_Fade.Start(Color.black, fadeTime, true);
 
         yield return new WaitForSeconds(fadeTime);
-        camera.transform.root.position += translation;
+        camera.transform.root.position += new Vector3(translation.x, 0, translation.z);
 
         SteamVR_Fade.Start(Color.clear, fadeTime, true);
 
