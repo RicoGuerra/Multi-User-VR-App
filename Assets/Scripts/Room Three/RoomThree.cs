@@ -21,9 +21,6 @@ public class RoomThree : Room {
     void Start() {
         RoomNumber = 3;
         BowlingBallPosition = BowlingBall.transform.position;
-        //for (int i = 0; i < ThrowableBalls.Length; i++) {
-        //    throwableBallOrigins[i] = ThrowableBalls[i].transform.position;
-        //}
     }
 
     void Update() {

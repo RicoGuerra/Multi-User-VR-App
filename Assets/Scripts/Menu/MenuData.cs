@@ -9,14 +9,9 @@ public class MenuData : MonoBehaviour {
     public bool ComfortMode;
     public Color Color;
 
-    public void Start() {
-        //LoadData();
-    }
-
     public void WriteData() {
-        //writing menu data into a json file
         string path = Application.persistentDataPath + "/menuData.json";
-        string json = JsonUtility.ToJson(new MenuData() { PlayerName = PlayerName, ComfortMode = ComfortMode, Color = Color });
+        string json = JsonUtility.ToJson(new MenuData() { PlayerName = PlayerName, ComfortMode = ComfortMode, Color = Color }, true);
         File.WriteAllText(path, json);
     }
 

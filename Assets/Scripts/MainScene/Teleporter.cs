@@ -78,7 +78,6 @@ public class Teleporter : MonoBehaviour {
 
     bool UpdatePointer() {
         Ray ray = new Ray(transform.position, transform.forward);
-        RaycastHit hit;
 
         if (Physics.SphereCast(ray, 0.25f, out _hit) && TriggerDown.GetState(pose.inputSource)) {
             Pointer.transform.position = _hit.point;

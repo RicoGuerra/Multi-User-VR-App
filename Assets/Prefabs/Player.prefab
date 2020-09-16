@@ -2182,7 +2182,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.05
+  near clip plane: 0.275
   far clip plane: 300
   field of view: 60
   orthographic: 0
@@ -2190,7 +2190,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 311
+    m_Bits: 4294967295
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3467,10 +3467,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6599085139343604747}
     m_Modifications:
+    - target: {fileID: 1929954853600791464, guid: a299f2730eb94454da2aa2b6d4e757d6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1929954853600791466, guid: a299f2730eb94454da2aa2b6d4e757d6,
         type: 3}
       propertyPath: m_Name
       value: Sunglasses
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929954853600791466, guid: a299f2730eb94454da2aa2b6d4e757d6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1929954853600958346, guid: a299f2730eb94454da2aa2b6d4e757d6,
         type: 3}
