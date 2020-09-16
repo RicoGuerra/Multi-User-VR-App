@@ -20,9 +20,15 @@ public class InterfaceManager : MonoBehaviour {
 
     public void Activate() {
         Activated = true;
+        TogglePlayerMovement(!Activated);
     }
 
     public void Deactivate() {
         Activated = false;
+        TogglePlayerMovement(!Activated);
+    }
+
+    public void TogglePlayerMovement(bool onOff) {
+        PlayerOnInterface.transform.root.GetComponentInChildren<PlayerMovement>(true).enabled = onOff;
     }
 }
