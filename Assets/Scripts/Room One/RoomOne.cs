@@ -70,6 +70,7 @@ public class RoomOne : Room {
 
     private void Rotate() {
         Kugellabyrinth.transform.rotation = Quaternion.Euler(_handleY.transform.localPosition.z * 100, 0, -_handleX.transform.localPosition.x * 100);
+        //Kugellabyrinth.GetComponent<Rigidbody>().MoveRotation(Quaternion.Euler(_handleY.transform.localPosition.z * 100, 0, -_handleX.transform.localPosition.x * 100));
     }
 
     public void SwitchCameraX() { // Bug#002
