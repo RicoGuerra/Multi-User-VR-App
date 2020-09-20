@@ -25,7 +25,7 @@ public class RoomThree : Room {
 
     void Update() {
         if (Platform.TargetCollision) {
-            if (callCount < 300) {
+            if (callCount < 600) {
                 callCount++;
             } else {
                 callCount = 0;
@@ -54,7 +54,6 @@ public class RoomThree : Room {
         if (_pins == null) {
             return;
         }
-
         if ((_pins.TrueForAll(IsMoving) || _pins.Find(p => IsMoving(p))) && _pins.Count > 0) {
             IgnoreBarrier(true);
         } else {

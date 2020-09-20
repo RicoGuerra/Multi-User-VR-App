@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using agora_gaming_rtc;
+using Valve.VR;
 
 namespace Assets.Scripts.MainScene {
 
@@ -10,36 +11,34 @@ namespace Assets.Scripts.MainScene {
         private Text versionText;
         private Button joinChannel;
         private Button leaveChannel;
-        private Button muteButton;
+        public Button muteText;
+        public SteamVR_Action_Boolean MuteButtonVR;
 
         private IRtcEngine mRtcEngine = null;
 
         [SerializeField]
         private string appId = "";
 
-        void Awake() {
-            QualitySettings.vSyncCount = 0;
-            Application.targetFrameRate = 30;
-        }
+        //void Awake() {
+        //    QualitySettings.vSyncCount = 0;
+        //    Application.targetFrameRate = 30;
+        //}
 
         void Start() {
-
             mRtcEngine = IRtcEngine.GetEngine(appId);
-
             JoinChannel();
-
             mRtcEngine.OnJoinChannelSuccess += (string channelName, uint uid, int elapsed) => {
                 string joinSuccessMessage = string.Format("joinChannel callback uid: {0}, channel: {1}, version: {2}", uid, channelName, getSdkVersion());
                 Debug.Log(joinSuccessMessage);
                 mShownMessage.GetComponent<Text>().text = (joinSuccessMessage);
-                muteButton.enabled = true;
+                muteText.enabled = true;
             };
 
             mRtcEngine.OnLeaveChannel += (RtcStats stats) => {
                 string leaveChannelMessage = string.Format("onLeaveChannel callback duration {0}, tx: {1}, rx: {2}, tx kbps: {3}, rx kbps: {4}", stats.duration, stats.txBytes, stats.rxBytes, stats.txKBitRate, stats.rxKBitRate);
                 Debug.Log(leaveChannelMessage);
                 mShownMessage.GetComponent<Text>().text = (leaveChannelMessage);
-                muteButton.enabled = false;
+                muteText.enabled = false;
                 // reset the mute button state
                 if (isMuted) {
                     MuteButtonTapped();
@@ -121,6 +120,12 @@ namespace Assets.Scripts.MainScene {
             mRtcEngine.SetChannelProfile(CHANNEL_PROFILE.CHANNEL_PROFILE_COMMUNICATION);
         }
 
+        void Update() {
+            if (Input.GetKey(KeyCode.M) || MuteButtonVR.GetStateDown(SteamVR_Input_Sources.Any)) {
+                MuteButtonTapped();
+            }
+        }
+
         public void JoinChannel() {
             string channelName = "Bachelorarbeit";
 
@@ -160,13 +165,14 @@ namespace Assets.Scripts.MainScene {
 
         bool isMuted = false;
         void MuteButtonTapped() {
-            string labeltext = isMuted ? "Mute" : "Unmute";
-            Text label = muteButton.GetComponentInChildren<Text>();
+            string labeltext = isMuted ? "Unmuted" : "Muted";
+            Text label = muteText.GetComponentInChildren<Text>();
             if (label != null) {
                 label.text = labeltext;
             }
             isMuted = !isMuted;
             mRtcEngine.EnableLocalAudio(!isMuted);
+            Debug.Log("__Audio muted == " + isMuted + "__");
         }
     }
 }

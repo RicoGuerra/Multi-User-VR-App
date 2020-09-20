@@ -14,27 +14,24 @@ public class Distance : MonoBehaviour {
     [Tooltip("Objekt von dem sich wegbewegt wird")]
     public GameObject Obj1;
     private GameObject Obj2;
-    public float distance;
-    public float x = 3f;
-    public float z = 3f;
+    private float distance;
+    private float x = 3f;
+    private float z = 3f;
     private Vector3 origin;
     private bool safeDistance;
-    public float threshold;
-    public bool ShallNotFall;
+    private float threshold;
     public bool IsMoving { get; private set; }
-    [Header("Border")]
-    public float North;
-    public float East;
-    public float South;
-    public float West;
+    //[Header("Border")]
+    //public float North;
+    //public float East;
+    //public float South;
+    //public float West;
 
     void Start() {
         Obj2 = gameObject;
         origin = Obj2.transform.position;
         threshold = 0.15f;
-        if (ShallNotFall) {
-            gameObject.GetComponent<Rigidbody>().freezeRotation = true;
-        }
+        gameObject.GetComponent<Rigidbody>().freezeRotation = true;
     }
 
     void Update() {
@@ -55,7 +52,6 @@ public class Distance : MonoBehaviour {
 
     private void BackToOrigin() {
         if (safeDistance && Obj2.transform.position != origin) {
-            //IsMoving = true;
             if (Obj2.transform.position.x < origin.x && Obj2.transform.position.x < origin.x - threshold) {
                 Obj2.transform.position += new Vector3(x * Time.deltaTime, 0, 0);
             } else if (Obj2.transform.position.x > origin.x && Obj2.transform.position.x > origin.x + threshold) {
@@ -79,9 +75,9 @@ public class Distance : MonoBehaviour {
         }
     }
 
-    private void AwayFromPlayer() {//Info1
+    private void AwayFromPlayer() {
         if (!safeDistance) {
-            if (Obj2.transform.position.x > Obj1.transform.position.x ) {
+            if (Obj2.transform.position.x > Obj1.transform.position.x) {
                 Obj2.transform.position += new Vector3(x * Time.deltaTime, 0, 0);
             } else {
                 Obj2.transform.position -= new Vector3(x * Time.deltaTime, 0, 0);
