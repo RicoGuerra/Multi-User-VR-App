@@ -74,6 +74,8 @@ public class PlayerManager : NetworkBehaviour {
             foreach (Behaviour b in disableWhenPaused) {
                 if (ComfortMode && b.Equals(GetComponent<PlayerMovement>())) {
                     b.enabled = false;
+                } else if (!ComfortMode && b.Equals(_teleporting)) {
+                    b.enabled = false;
                 } else {
                     b.enabled = !Pause.Paused;
                 }
@@ -87,6 +89,7 @@ public class PlayerManager : NetworkBehaviour {
     public void RpcReadData() {
         LoadMenuData load = new LoadMenuData(gameObject);
         load.LoadData();
+        CmdReadData();
     }
 
     [Command]
