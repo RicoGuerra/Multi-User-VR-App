@@ -20,12 +20,12 @@ public class MyNetworkManager : NetworkManager {
     }
 
     public void StartMatch() {
-        StartCoroutine(StartM());
+        StartCoroutine(StartingMatch());
         //StartMatchMaker();
         //matchMaker.CreateMatch(matchName, matchSize, true, "", "", "", 0, 0, OnMatchCreate);
     }
 
-    public IEnumerator StartM() {
+    public IEnumerator StartingMatch() {
         StartMatchMaker();
         matchMaker.ListMatches(0, 1, "", true, 0, 0, OnMatchList);
         yield return new WaitForSeconds(0.5f);
@@ -44,10 +44,10 @@ public class MyNetworkManager : NetworkManager {
     }
 
     public void JoinMatch() {
-        StartCoroutine(Join());
+        StartCoroutine(JoiningMatch());
     }
 
-    public IEnumerator Join() {
+    public IEnumerator JoiningMatch() {
         StartMatchMaker();
         matchMaker.ListMatches(0, 1, "", true, 0, 0, OnMatchList);
         yield return new WaitForSeconds(0.5f);

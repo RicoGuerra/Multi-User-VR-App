@@ -29,6 +29,10 @@ public class InterfaceManager : MonoBehaviour {
     }
 
     public void TogglePlayerMovement(bool onOff) {
-        PlayerOnInterface.transform.root.GetComponentInChildren<PlayerMovement>(true).enabled = onOff;
+        if(PlayerOnInterface.ComfortMode) {
+            PlayerOnInterface.transform.root.GetComponentInChildren<Teleporter>(true).enabled = onOff;
+        } else {
+            PlayerOnInterface.transform.root.GetComponentInChildren<PlayerMovement>(true).enabled = onOff;
+        }
     }
 }

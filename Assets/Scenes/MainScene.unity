@@ -18322,7 +18322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99b9b6c44f723de418368e1574a4dfa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  muteText: {fileID: 0}
+  muteText: {fileID: 962730007}
   MuteButtonVR:
     actionPath: /actions/default/in/GrabGrip
     needsReinit: 0

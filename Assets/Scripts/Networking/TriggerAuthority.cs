@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using Valve.VR.InteractionSystem;
 
+[RequireComponent(typeof(Interactable))]
 public class TriggerAuthority : MonoBehaviour {
 
     private PlayerManager _player;

@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Networking;
+﻿using UnityEngine.Networking;
 
 public class RiddleLeft : NetworkBehaviour {
 
@@ -18,6 +15,12 @@ public class RiddleLeft : NetworkBehaviour {
 
     [Command]
     public void CmdSolvedRiddel() {
+        RiddleSolved = true;
+        RoomTwo.LeftSolved = RiddleSolved;
+        RoomTwo.LeftSuccessfullySolved();
+    }
+
+    public void IsSolved() {
         RiddleSolved = true;
         RoomTwo.LeftSolved = RiddleSolved;
         RoomTwo.LeftSuccessfullySolved();

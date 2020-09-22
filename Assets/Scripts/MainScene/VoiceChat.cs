@@ -121,7 +121,7 @@ namespace Assets.Scripts.MainScene {
         }
 
         void Update() {
-            if (Input.GetKey(KeyCode.M) || MuteButtonVR.GetStateDown(SteamVR_Input_Sources.Any)) {
+            if (Input.GetKeyDown(KeyCode.M) || MuteButtonVR.GetStateDown(SteamVR_Input_Sources.Any)) {
                 MuteButtonTapped();
             }
         }
