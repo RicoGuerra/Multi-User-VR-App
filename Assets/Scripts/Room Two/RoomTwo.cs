@@ -9,6 +9,7 @@ public class RoomTwo : Room {
     public GameObject[] RiddleLeftIndicators;
     public RiddleLeft RiddleLeft;
 
+    [SerializeField] private List<GameObject> _labyrinthEntrances;
     private int[] _riddleLeftOrder;
     private int _buttonCounter;
     private bool _rightSolved;
@@ -74,11 +75,18 @@ public class RoomTwo : Room {
     }
 
     public void Entrance(string enter) {
-        GameObject entrance = GameObject.Find(enter);
-        CheckTargetCollision target = entrance.GetComponent<CheckTargetCollision>();
-        if (target.TargetTriggerExit && target.TargetObjectInfo.transform.position.z < entrance.transform.position.z) {
-            entrance.GetComponent<MeshRenderer>().enabled = true;
-            entrance.GetComponent<Collider>().isTrigger = false;
+        //GameObject entrance = GameObject.Find(enter);
+        GameObject entrance = _labyrinthEntrances.Find(e => e.name == enter);
+        CheckTargetCollision target;
+        if (entrance.name == "EntranceLeft") {
+            target = GameObject.Find("EntrancePlaneL").GetComponent<CheckTargetCollision>();
+        } else {
+            target = GameObject.Find("EntrancePlaneR").GetComponent<CheckTargetCollision>();
+        }
+        if (target.TargetTriggerEnter /*&& target.TargetObjectInfo.transform.position.z < entrance.transform.position.z*/) {
+            //entrance.GetComponent<MeshRenderer>().enabled = true;
+            //entrance.GetComponent<Collider>().isTrigger = false;
+            entrance.SetActive(true);
         }
     }
 
