@@ -33,11 +33,6 @@ public class RoomThree : Room {
             }
         }
         IfPinsMove();
-        for (int i = 0; i < ThrowableBalls.Length; i++) {
-            if (ThrowableBalls[i].transform.position.y < -15f) {
-                BringBallBack(ThrowableBalls[i], throwableBallOrigins[i].position);
-            }
-        }
 
         if (BowlingBall.transform.position.y < -10) {
             BringBallBack(BowlingBall, BowlingBallPosition);
@@ -46,6 +41,11 @@ public class RoomThree : Room {
         if (_pins != null && _pins.Count == 0 && !Solved) {
             Solved = true;
             GameManager.GameWon();
+        }
+        for (int i = 0; i < ThrowableBalls.Length; i++) {
+            if (ThrowableBalls[i].transform.position.y < -15f) {
+                BringBallBack(ThrowableBalls[i], throwableBallOrigins[i].position);
+            }
         }
     }
 
