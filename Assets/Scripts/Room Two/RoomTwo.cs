@@ -10,6 +10,7 @@ public class RoomTwo : Room {
     public RiddleLeft RiddleLeft;
 
     [SerializeField] private List<GameObject> _labyrinthEntrances;
+    [SerializeField] private GameObject _rightSolvedIndicator;
     private int[] _riddleLeftOrder;
     private int _buttonCounter;
     private bool _rightSolved;
@@ -33,6 +34,7 @@ public class RoomTwo : Room {
                 _successSound.Play();
                 _rightSolved = true;
                 GameObject.Find("ExitRight").SetActive(false);
+                _rightSolvedIndicator.SetActive(true);
             }
         }
         KeepCubesOnTable();
