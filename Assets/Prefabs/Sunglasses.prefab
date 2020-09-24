@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1929954853600958344}
   - component: {fileID: 1929954853599664040}
   - component: {fileID: 1929954853598532968}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1929954853600958346}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Sunglasses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
