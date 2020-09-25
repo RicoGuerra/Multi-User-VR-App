@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EndCountDown : MonoBehaviour {
 
-    private float _timer = 60;
+    [SerializeField] private float _timer;
 
     [SerializeField]
     private TextMesh _timerText;

@@ -14,6 +14,7 @@ namespace Assets.Scripts.Menu {
         [SerializeField] private GameObject _keyboard;
         [SerializeField] private Camera _VRInputSource;
         [SerializeField] private Camera _nonVRInputSource;
+        public GameObject EndCountDown;
 
         private void Start() {
             SetEventSystem();

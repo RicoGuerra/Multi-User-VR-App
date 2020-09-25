@@ -1,10 +1,12 @@
-﻿using System.Collections;
+﻿using Assets.Scripts.Menu;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 using UnityEngine.Networking.Match;
+using UnityEngine.SceneManagement;
 using UnityEngine.XR;
 
 public class MyNetworkManager : NetworkManager {
@@ -14,9 +16,21 @@ public class MyNetworkManager : NetworkManager {
     [SerializeField] private UnityEvent _matchDoesntExist;
 
     private void Start() {
+        SceneManager.activeSceneChanged += ChangedActiveScene;
         if (!XRDevice.isPresent) {
             //playerPrefab = spawnPrefabs.First();
         }
+    }
+
+    private void ChangedActiveScene(Scene current, Scene next) {
+        GameObject[] canvas = GameObject.FindGameObjectsWithTag("Canvas");
+        if (next.buildIndex == 0) {
+            foreach (GameObject c in canvas) {
+                c.SetActive(false);
+            }
+            GameObject.Find("Menu").GetComponent<MenuManager>().EndCountDown.SetActive(true);
+        }
+        Debug.Log("Scene: " + next.name);
     }
 
     public void StartMatch() {

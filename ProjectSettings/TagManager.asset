@@ -13,6 +13,7 @@ TagManager:
   - Floor
   - Pin
   - PassivePlayer
+  - Canvas
   layers:
   - Default
   - TransparentFX
