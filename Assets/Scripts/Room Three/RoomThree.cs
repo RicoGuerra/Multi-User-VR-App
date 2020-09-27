@@ -21,6 +21,7 @@ public class RoomThree : Room {
     void Start() {
         RoomNumber = 3;
         BowlingBallPosition = BowlingBall.transform.position;
+        Physics.IgnoreCollision(BowlingBall.GetComponentInChildren<Collider>(), Barriere[8], true);
     }
 
     void Update() {
@@ -76,5 +77,16 @@ public class RoomThree : Room {
 
     private bool IsMoving(GameObject pin) {
         return pin.GetComponent<Distance>().IsMoving;
+    }
+
+    public void BringSmallBallBack(GameObject ball) {
+        Vector3 orig;
+        for (int i = 0; i < ThrowableBalls.Length; i++) {
+            if (ball == ThrowableBalls[i]) {
+                orig = throwableBallOrigins[i].position;
+                BringBallBack(ball, orig);
+                return;
+            }
+        }
     }
 }

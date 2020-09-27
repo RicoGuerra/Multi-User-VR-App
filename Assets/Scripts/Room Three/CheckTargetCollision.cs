@@ -11,12 +11,20 @@ public class CheckTargetCollision : MonoBehaviour {
     public bool TargetTriggerExit { get; private set; }
     [Tooltip("If there is not target needed, leave this empty")]
     public string TargetObject;
+    public int CollisionCountTheshold;
+    public int CollisionCount { get; private set; }
 
     public UnityEvent OnTargetCollisionEnter;
     public UnityEvent OnTargetTriggerEnter;
     public UnityEvent OnTargetCollisionExit;
     public UnityEvent OnTargetTriggerExit;
+    public UnityEvent OnCollisionCount;
     public GameObject TargetObjectInfo { get; private set; }
+
+    private void Update() {
+        if (CollisionCount > CollisionCountTheshold && CollisionCountTheshold != 0)
+            OnCollisionCount.Invoke();
+    }
 
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.name == TargetObject || collision.gameObject.tag == TargetObject) {
@@ -38,6 +46,7 @@ public class CheckTargetCollision : MonoBehaviour {
             TargetCollisionExit = true;
             TargetObjectInfo = collision.gameObject;
             OnTargetCollisionExit.Invoke();
+            CollisionCount = 0;
         }
     }
 
@@ -60,6 +69,13 @@ public class CheckTargetCollision : MonoBehaviour {
             TargetTriggerExit = true;
             TargetObjectInfo = other.gameObject;
             OnTargetTriggerExit.Invoke();
+            CollisionCount = 0;
+        }
+    }
+
+    private void OnCollisionStay(Collision collision) {
+        if(collision.gameObject.name == TargetObject || collision.gameObject.tag == TargetObject) {
+            CollisionCount++;
         }
     }
 }

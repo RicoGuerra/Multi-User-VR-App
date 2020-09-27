@@ -437,6 +437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: Player
+  CollisionCountTheshold: 0
   OnTargetCollisionEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -471,6 +472,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnCollisionCount:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &47018885
 GameObject:
   m_ObjectHideFlags: 0
@@ -8037,6 +8041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: RollerBall
+  CollisionCountTheshold: 0
   OnTargetCollisionEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -8058,6 +8063,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnTargetTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionCount:
     m_PersistentCalls:
       m_Calls: []
 --- !u!224 &802282483 stripped
@@ -9802,6 +9810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: Player
+  CollisionCountTheshold: 0
   OnTargetCollisionEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -9812,6 +9821,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnTargetTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionCount:
     m_PersistentCalls:
       m_Calls: []
 --- !u!135 &955950539 stripped
@@ -10365,6 +10377,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: Big Ball
+  CollisionCountTheshold: 0
   OnTargetCollisionEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -10375,6 +10388,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnTargetTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionCount:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &996907607
@@ -11221,6 +11237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: PurpleCube
+  CollisionCountTheshold: 0
   OnTargetCollisionEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -11231,6 +11248,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnTargetTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionCount:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1044128781
@@ -12496,6 +12516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: BlueCube
+  CollisionCountTheshold: 0
   OnTargetCollisionEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -12506,6 +12527,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnTargetTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionCount:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1128706862
@@ -13429,6 +13453,46 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 388116648}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1235388412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235388411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db52615deb9e8864ea4f91f2ccdd6a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetObject: Platform
+  CollisionCountTheshold: 200
+  OnTargetCollisionEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTargetTriggerEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTargetCollisionExit:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTargetTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionCount:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1621313894}
+        m_MethodName: BringSmallBallBack
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1235388411}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1238858568
 GameObject:
   m_ObjectHideFlags: 0
@@ -13476,6 +13540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: Player
+  CollisionCountTheshold: 0
   OnTargetCollisionEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -13497,6 +13562,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnTargetTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionCount:
     m_PersistentCalls:
       m_Calls: []
 --- !u!64 &1238858571
@@ -15580,6 +15648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: Player
+  CollisionCountTheshold: 0
   OnTargetCollisionEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -15601,6 +15670,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnTargetTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionCount:
     m_PersistentCalls:
       m_Calls: []
 --- !u!64 &1376124075
@@ -16797,6 +16869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: Player
+  CollisionCountTheshold: 0
   OnTargetCollisionEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -16807,6 +16880,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnTargetTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionCount:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1488025081
@@ -18183,6 +18259,7 @@ MonoBehaviour:
   - {fileID: 1818070888}
   - {fileID: 1867605601}
   - {fileID: 1913969675}
+  - {fileID: 1784274864}
   BowlingBall: {fileID: 1000013416659992}
   ThrowableBalls:
   - {fileID: 1000012714677250}
@@ -20151,6 +20228,7 @@ Transform:
   - {fileID: 1818070887}
   - {fileID: 1867605600}
   - {fileID: 1913969674}
+  - {fileID: 1784274867}
   m_Father: {fileID: 1478573759}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20511,6 +20589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: Player
+  CollisionCountTheshold: 0
   OnTargetCollisionEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -20545,6 +20624,100 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  OnCollisionCount:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &1784274863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1784274867}
+  - component: {fileID: 1784274866}
+  - component: {fileID: 1784274865}
+  - component: {fileID: 1784274864}
+  m_Layer: 0
+  m_Name: EntranceWall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1784274864
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784274863}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1784274865
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784274863}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1784274866
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784274863}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1784274867
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784274863}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 4.71, y: 3, z: 0.03}
+  m_LocalScale: {x: 4.871202, y: 4.6569815, z: 0.25}
+  m_Children: []
+  m_Father: {fileID: 1751300356}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1788142865
 GameObject:
   m_ObjectHideFlags: 0
@@ -21097,6 +21270,46 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 190618888}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1822250152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822250151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db52615deb9e8864ea4f91f2ccdd6a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetObject: Platform
+  CollisionCountTheshold: 200
+  OnTargetCollisionEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTargetTriggerEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTargetCollisionExit:
+    m_PersistentCalls:
+      m_Calls: []
+  OnTargetTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionCount:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1621313894}
+        m_MethodName: BringSmallBallBack
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1822250151}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1834874858
 GameObject:
   m_ObjectHideFlags: 0
@@ -21627,6 +21840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: BlueCube
+  CollisionCountTheshold: 0
   OnTargetCollisionEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -21637,6 +21851,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnTargetTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionCount:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1850723657
@@ -22888,6 +23105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: RedCube
+  CollisionCountTheshold: 0
   OnTargetCollisionEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -22898,6 +23116,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnTargetTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionCount:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1934893426
@@ -23672,6 +23893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TargetObject: GreenCube
+  CollisionCountTheshold: 0
   OnTargetCollisionEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -23682,6 +23904,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnTargetTriggerExit:
+    m_PersistentCalls:
+      m_Calls: []
+  OnCollisionCount:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &1985494017
@@ -25567,7 +25792,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db52615deb9e8864ea4f91f2ccdd6a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetObject: Ceiling
+  TargetObject: Platform
+  CollisionCountTheshold: 200
   OnTargetCollisionEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -25580,6 +25806,20 @@ MonoBehaviour:
   OnTargetTriggerExit:
     m_PersistentCalls:
       m_Calls: []
+  OnCollisionCount:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1621313894}
+        m_MethodName: BringSmallBallBack
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1000012714677250}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1000013416659992 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3120598622273184903, guid: 1050e88dc6e3fa04195974e0406d428b,
