@@ -21,6 +21,7 @@ public class PlayerManager : NetworkBehaviour {
     [SerializeField] private Behaviour[] componentsToDisable;
     [SerializeField] private List<Behaviour> disableWhenPaused;
     [SerializeField] private GameObject _pauseViewVR;
+    [SerializeField] private GameObject _sunglasses;
 
     public void Start() {
         RpcReadData();
@@ -37,6 +38,7 @@ public class PlayerManager : NetworkBehaviour {
             foreach (Behaviour b in componentsToDisable) {
                 b.enabled = false;
             }
+            _sunglasses.layer = LayerMask.NameToLayer("Default");
         }
         SetNameTag();
         SetMode();

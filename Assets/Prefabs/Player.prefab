@@ -1641,7 +1641,7 @@ MonoBehaviour:
   - {fileID: 2177480437334251541}
   - {fileID: 3536905833715265951}
   _pauseViewVR: {fileID: 1180466272245986500}
-  _sunglasses: {fileID: 3470699744880800036}
+  _sunglasses: {fileID: 3470699744880800038}
 --- !u!114 &114984724725279954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1993,7 +1993,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.275
+  near clip plane: 0.1
   far clip plane: 300
   field of view: 60
   orthographic: 0
@@ -2001,7 +2001,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 3895
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2183,7 +2183,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.275
+  near clip plane: 0.1
   far clip plane: 300
   field of view: 60
   orthographic: 0
@@ -2191,7 +2191,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 3895
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3481,7 +3481,7 @@ PrefabInstance:
     - target: {fileID: 1929954853600791466, guid: a299f2730eb94454da2aa2b6d4e757d6,
         type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1929954853600958346, guid: a299f2730eb94454da2aa2b6d4e757d6,
         type: 3}
@@ -3540,15 +3540,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a299f2730eb94454da2aa2b6d4e757d6, type: 3}
---- !u!4 &3470699744881224964 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1929954853600958346, guid: a299f2730eb94454da2aa2b6d4e757d6,
+--- !u!1 &3470699744880800038 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1929954853600791464, guid: a299f2730eb94454da2aa2b6d4e757d6,
     type: 3}
   m_PrefabInstance: {fileID: 3090301336697322126}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3470699744880800036 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1929954853600791466, guid: a299f2730eb94454da2aa2b6d4e757d6,
+--- !u!4 &3470699744881224964 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1929954853600958346, guid: a299f2730eb94454da2aa2b6d4e757d6,
     type: 3}
   m_PrefabInstance: {fileID: 3090301336697322126}
   m_PrefabAsset: {fileID: 0}
