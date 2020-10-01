@@ -35,8 +35,6 @@ public class MyNetworkManager : NetworkManager {
 
     public void StartMatch() {
         StartCoroutine(StartingMatch());
-        //StartMatchMaker();
-        //matchMaker.CreateMatch(matchName, matchSize, true, "", "", "", 0, 0, OnMatchCreate);
     }
 
     public IEnumerator StartingMatch() {

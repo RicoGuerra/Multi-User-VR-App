@@ -365,7 +365,7 @@ MonoBehaviour:
   Avatar: {fileID: 5430329717274280119}
   NameTag: {fileID: 1131279088368546527}
   PlayerName: 
-  PlayerColor: {r: 0, g: 0, b: 0, a: 0}
+  PlayerColor: {r: 0.764151, g: 0.764151, b: 0.764151, a: 0}
   ComfortMode: 0
   _playerCamera: {fileID: 100002}
   _teleporting: {fileID: 0}
@@ -377,7 +377,7 @@ MonoBehaviour:
   disableWhenPaused:
   - {fileID: 11400000}
   _pauseViewVR: {fileID: 0}
-  _sunglasses: {fileID: 6883792739772400255}
+  _sunglasses: {fileID: 6883792739772400253}
 --- !u!135 &7677474570092297930
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -447,7 +447,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.275
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -455,7 +455,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 3895
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -509,7 +509,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2676741556151795084}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 1.75, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 0.015, y: 0.015, z: 0.015}
   m_Children: []
   m_Father: {fileID: 400000}
@@ -746,15 +746,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a299f2730eb94454da2aa2b6d4e757d6, type: 3}
---- !u!1 &6883792739772400255 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1929954853600791466, guid: a299f2730eb94454da2aa2b6d4e757d6,
-    type: 3}
-  m_PrefabInstance: {fileID: 4990189256990689749}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6883792739772374623 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1929954853600958346, guid: a299f2730eb94454da2aa2b6d4e757d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4990189256990689749}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6883792739772400253 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1929954853600791464, guid: a299f2730eb94454da2aa2b6d4e757d6,
     type: 3}
   m_PrefabInstance: {fileID: 4990189256990689749}
   m_PrefabAsset: {fileID: 0}
