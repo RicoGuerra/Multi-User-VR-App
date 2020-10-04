@@ -120,11 +120,11 @@ namespace Assets.Scripts.MainScene {
             mRtcEngine.SetChannelProfile(CHANNEL_PROFILE.CHANNEL_PROFILE_COMMUNICATION);
         }
 
-        //void Update() {
-        //    if (Input.GetKeyDown(KeyCode.M) || MuteButtonVR.GetStateDown(SteamVR_Input_Sources.Any)) {
-        //        MuteButtonTapped();
-        //    }
-        //}
+        void Update() {
+            if (Input.GetKeyDown(KeyCode.M) || MuteButtonVR.GetStateDown(SteamVR_Input_Sources.Any)) {
+                MuteButtonTapped();
+            }
+        }
 
         public void JoinChannel() {
             string channelName = "Bachelorarbeit";
