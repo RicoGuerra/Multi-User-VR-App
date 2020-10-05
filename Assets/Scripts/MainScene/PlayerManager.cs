@@ -52,7 +52,7 @@ public class PlayerManager : NetworkBehaviour {
     }
 
     private void SetMode() {
-        if (ComfortMode && XRDevice.isPresent) {
+        if (ComfortMode && XRDevice.isPresent && isLocalPlayer) {
             _teleporting.enabled = true;
             GetComponent<PlayerMovement>().enabled = false;
         }
