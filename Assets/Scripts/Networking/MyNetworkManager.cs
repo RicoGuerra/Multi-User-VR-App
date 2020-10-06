@@ -18,7 +18,7 @@ public class MyNetworkManager : NetworkManager {
     private void Start() {
         SceneManager.activeSceneChanged += ChangedActiveScene;
         if (!XRDevice.isPresent) {
-            playerPrefab = spawnPrefabs.First();
+            //playerPrefab = spawnPrefabs.First();
         }
     }
 
