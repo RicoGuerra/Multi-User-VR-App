@@ -812,7 +812,7 @@ namespace Valve.VR.InteractionSystem
         protected virtual IEnumerator Start()
         {
             // save off player instance
-            playerInstance = Player.instance;
+            playerInstance = transform.root.gameObject.GetComponent<Player>();
             if (!playerInstance)
             {
                 Debug.LogError("<b>[SteamVR Interaction]</b> No player instance found in Hand Start()", this);
