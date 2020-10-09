@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
-using UnityStandardAssets.Characters.FirstPerson;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.MainScene {
+
     public class NonVRPlayer : PlayerManager {
 
         private GameObject _activeSpawn;

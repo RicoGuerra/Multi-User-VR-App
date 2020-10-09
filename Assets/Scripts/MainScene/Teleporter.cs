@@ -26,21 +26,12 @@ public class Teleporter : MonoBehaviour {
         hasPosition = UpdatePointer();
         Pointer.SetActive(hasPosition);
         _lineRenderer.enabled = hasPosition;
-        //UpdateLineRenderer(hasPosition);
         SetPointerMaterial();
 
         if (TeleportAction.GetStateUp(pose.inputSource) && _hit.collider.tag == "Floor" && _hit.distance <= 10f) {
             TryTeleport();
         }
     }
-
-    //private void UpdateLineRenderer(bool enabled) {
-    //    _lineRenderer.enabled = enabled;
-    //    if (_lineRenderer.enabled) {
-    //        _lineRenderer.SetPosition(0, transform.position);
-    //        _lineRenderer.SetPosition(1, _hit.point);
-    //    }
-    //}
 
     private void SetPointerMaterial() {
         if (_hit.collider.tag == "Floor" && _hit.distance <= 10f) {

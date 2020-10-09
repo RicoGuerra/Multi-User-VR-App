@@ -2,21 +2,19 @@
 using UnityEngine.Networking;
 using UnityEngine.XR;
 using System.Linq;
-using Random = System.Random;
 using System.Collections.Generic;
 using Assets.Scripts.MainScene;
-using UnityStandardAssets.Characters.FirstPerson;
 
 public class PlayerManager : NetworkBehaviour {
 
-    [SyncVar] public int PlayerID; /*{ get; private set; }*/
+    [SyncVar] public int PlayerID; 
     public GameObject Avatar;
     public TextMesh NameTag;
-    [SyncVar] public string PlayerName; /*{ get; set; }*/
-    [SyncVar] public Color PlayerColor; /*{ get; set; }*/
-    [SyncVar] public bool ComfortMode; /*{ get; set; }*/
+    [SyncVar] public string PlayerName; 
+    [SyncVar] public Color PlayerColor; 
+    [SyncVar] public bool ComfortMode; 
 
-    [SerializeField] private GameObject _playerCamera; // Zum testen wird die NonVRCamera des DebugModes zugeteilt
+    [SerializeField] private GameObject _playerCamera;
     [SerializeField] private Teleporter _teleporting;
     [SerializeField] private Behaviour[] componentsToDisable;
     [SerializeField] private List<Behaviour> disableWhenPaused;

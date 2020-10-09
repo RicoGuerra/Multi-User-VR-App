@@ -1,30 +1,6 @@
-﻿/// <ClassInfo>
-/// __Allg. Infos:__
-///     _Info1_(26.06.20)
-///         TopCamera & TopCameraY koennen in der Szene lokal aktiviert werden, ohne, dass es interferenzen mit der Kamera des anderen Spielers gibt. 
-///         Dies ist jedoch noch ausgiebiger zu testen.
-/// 
-/// __Bugs gefunden:__
-///     _#001_(13.06.20)
-///         Hier wird die Hand immer wieder auf "NULL" gesetzt. Somit kann die Rotation des Controllers beim InterfaceY niemals erkannt werden, 
-///         da die Hand ja immer wieder herausgelöscht wird.
-///     _#002_(13.06.20)
-///         Bug liegt höchstwahrscheinlich in der SwitchCamera-Methode. Manchmal ist es möglich das Interface zu aktivieren (also Kamera zu wechseln)
-///         obwohl das Interface gar nicht berührt wird. Tritt immer nur dann auf nachdem das Interface einmal benutzt wurde. Dann kann man es EINMAL
-///         machen. Danach tritt der Bug nicht mehr auf. (Note for future-Rico: Hoffentlich verstehst du das morgen noch)
-///     
-/// __Bugs behoben:__
-///     Bug#001 -> gefixt. Hand wird nun nicht immer wieder auf NULL gesetzt, sondern nur wenn weder "isInteracting", noch "isInteractingY" 
-///                auf TRUE stehen.
-///     Bug#002 -> fixed
-///     
-/// </ClassInfo>
-
-using Assets.Scripts.MainScene;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Networking;
 using Valve.VR;
 using Valve.VR.InteractionSystem;
 
@@ -70,10 +46,9 @@ public class RoomOne : Room {
 
     private void Rotate() {
         Kugellabyrinth.transform.rotation = Quaternion.Euler(_handleY.transform.localPosition.z * 100, 0, -_handleX.transform.localPosition.x * 100);
-        //Kugellabyrinth.GetComponent<Rigidbody>().MoveRotation(Quaternion.Euler(_handleY.transform.localPosition.z * 100, 0, -_handleX.transform.localPosition.x * 100));
     }
 
-    public void SwitchCameraX() { // Bug#002
+    public void SwitchCameraX() { 
         if (!InterfaceX.GetComponent<InterfaceManager>().Activated && InterfaceX.GetComponent<InterfaceManager>().PlayerOnInterface != null) {
             StartCoroutine(FadeAndSwitch(TopCamera, InterfaceX.GetComponent<InterfaceManager>().PlayerOnInterface.GetCamera()));
         } else if (InterfaceX.GetComponent<InterfaceManager>().Activated) {

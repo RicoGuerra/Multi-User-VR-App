@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Border : MonoBehaviour {
 
@@ -14,11 +12,6 @@ public class Border : MonoBehaviour {
 
     void Start() {
         _borderManager = GetComponentInParent<BorderManager>();
-    }
-
-    // Update is called once per frame
-    void Update() {
-
     }
 
     private void OnCollisionEnter(Collision collision) {

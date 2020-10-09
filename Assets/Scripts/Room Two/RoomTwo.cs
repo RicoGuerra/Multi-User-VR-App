@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using Valve.VR;
 
 public class RoomTwo : Room {
 
@@ -77,7 +75,6 @@ public class RoomTwo : Room {
     }
 
     public void Entrance(string enter) {
-        //GameObject entrance = GameObject.Find(enter);
         GameObject entrance = _labyrinthEntrances.Find(e => e.name == enter);
         CheckTargetCollision target;
         if (entrance.name == "EntranceLeft") {
@@ -85,9 +82,7 @@ public class RoomTwo : Room {
         } else {
             target = GameObject.Find("EntrancePlaneR").GetComponent<CheckTargetCollision>();
         }
-        if (target.TargetTriggerEnter /*&& target.TargetObjectInfo.transform.position.z < entrance.transform.position.z*/) {
-            //entrance.GetComponent<MeshRenderer>().enabled = true;
-            //entrance.GetComponent<Collider>().isTrigger = false;
+        if (target.TargetTriggerEnter) {
             entrance.SetActive(true);
         }
     }

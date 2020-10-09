@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Networking;
+﻿using UnityEngine;
 using Valve.VR.InteractionSystem;
 
 [RequireComponent(typeof(Interactable))]
@@ -47,13 +44,4 @@ public class TriggerAuthority : MonoBehaviour {
             _player.RpcRemoveAuthority(obj);
         }
     }
-
-    private void OnCollisionEnter(Collision collision) {
-        //coming later
-    }
-
-    private void OnCollisionExit(Collision collision) {
-        //coming later
-    }
-
 }

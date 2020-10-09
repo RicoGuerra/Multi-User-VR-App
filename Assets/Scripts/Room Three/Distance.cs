@@ -1,14 +1,4 @@
-﻿/// <ClassInfo>
-/// __Allg. Infos:__
-///     _Info1_(29.06.20)
-///         Versuch eine unsichtbare Barriere zu erzeugen, sodass die Pins nicht herunterfallen können. Basiert auf der Position des Objekts.
-///         !Funktioniert noch nicht!
-///     
-/// </ClassInfo>
-
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Distance : MonoBehaviour {
     [Tooltip("Objekt von dem sich wegbewegt wird")]
@@ -21,11 +11,6 @@ public class Distance : MonoBehaviour {
     private bool safeDistance;
     private float threshold;
     public bool IsMoving { get; private set; }
-    //[Header("Border")]
-    //public float North;
-    //public float East;
-    //public float South;
-    //public float West;
 
     void Start() {
         Obj2 = gameObject;

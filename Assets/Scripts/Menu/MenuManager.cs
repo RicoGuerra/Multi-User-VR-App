@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.XR;
 
 namespace Assets.Scripts.Menu {
-    // Managing properties of the menuScene
     public class MenuManager : MonoBehaviour {
 
         [SerializeField] private Canvas[] _menuCanvas;
