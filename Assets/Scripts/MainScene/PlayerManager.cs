@@ -4,6 +4,7 @@ using UnityEngine.XR;
 using System.Linq;
 using System.Collections.Generic;
 using Assets.Scripts.MainScene;
+using Valve.VR;
 
 public class PlayerManager : NetworkBehaviour {
 
@@ -20,6 +21,9 @@ public class PlayerManager : NetworkBehaviour {
     [SerializeField] private List<Behaviour> disableWhenPaused;
     [SerializeField] private GameObject _pauseViewVR;
     [SerializeField] private GameObject _sunglasses;
+    [SerializeField] private SteamVR_Action_Boolean _muteButton;
+    [SerializeField] private GameObject _muteSign;
+
 
     public void Start() {
         RpcReadData();
@@ -29,6 +33,13 @@ public class PlayerManager : NetworkBehaviour {
 
     public void Update() {
         PauseMenu();
+        ToggleMuteSign();
+    }
+
+    private void ToggleMuteSign() {
+        if (Input.GetKeyDown(KeyCode.M) || _muteButton.GetStateDown(SteamVR_Input_Sources.Any)) {
+            _muteSign.SetActive(!_muteSign.activeInHierarchy);
+        }
     }
 
     public void PlayerSetup() {
