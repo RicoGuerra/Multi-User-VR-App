@@ -5,4 +5,5 @@
 * **This app runs on the SteamVR plattform**
 
 ### Feel free to use this application in any way you want. If you have any questions though, go ahead and contact me. Best via Discord:  
-![social](https://discord-md-badge.vercel.app/api/shield/471390077772365854?style=social)
+
+![social](https://discord-md-badge.vercel.app/api/shield/471390077772365854?style=social) 
